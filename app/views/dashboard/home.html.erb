@@ -1,2 +1,52 @@
 <h1>Synthèse</h1>
 
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <% @wallets.each do |wallet| %>
+                <th><%= wallet.name %></th>
+            <% end %>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @coins.each do |coin| %>
+            <tr>
+                <td><%= coin.display_name %></td>
+                <% @wallets.each do |wallet| %>
+                    <td>
+                        <%= @coin_wallets.find{|coin_wallet| coin_wallet.coin_id == coin.id && coin_wallet.wallet_id == wallet.id}&.quantity || '-' %>
+                    </td>
+                <% end %>
+                <td><%= coin.total_quantity %></td>
+            </tr>
+        <% end %>
+        <tr>
+            <td>Total (USD) </td>
+            <% @wallets.each do |wallet| %>
+                <td>
+                    <%= wallet.usd_value %>
+                </td>
+            <% end %>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total (EUR) </td>
+            <% @wallets.each do |wallet| %>
+                <td>
+                    <%= wallet.eur_value %>
+                </td>
+            <% end %>
+        </tr>
+        <tr>
+            <td>Total (BTC) </td>
+            <% @wallets.each do |wallet| %>
+                <td>
+                    <%= wallet.btc_value %>
+                </td>
+            <% end %>
+        </tr>
+    </tfoot>
+</table>
