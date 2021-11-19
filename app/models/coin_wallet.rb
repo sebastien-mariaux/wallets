@@ -4,21 +4,13 @@ class CoinWallet < ApplicationRecord
 
     validates :quantity, presence: true
 
-    def self.total_usd_value
-        CoinWallet.all.inject(0) do |sum, wallet|
-            sum += wallet.usd_value
-        end
-    end
-
-    def self.total_eur_value
-        CoinWallet.all.inject(0) do |sum, wallet|
-            sum += wallet.eur_value
-        end
-    end
-
-    def self.total_btc_value
-        CoinWallet.all.inject(0) do |sum, wallet|
-            sum += wallet.btc_value
+    class << self
+        %w[eur usd btc].each do |currency|
+            define_method "total_#{currency}_value" do
+                CoinWallet.all.inject(0) do |sum, wallet|
+                    sum += wallet.send("#{currency}_value")
+                end
+            end
         end
     end
 

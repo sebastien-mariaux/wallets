@@ -18,14 +18,7 @@ class WalletsController < ApplicationController
   end
 
   def total
-    @currency_value = case params['currency'] 
-                      when 'eur'
-                        @wallet.eur_value
-                      when 'btc'
-                        @wallet.btc_value
-                      else
-                        @wallet.usd_value
-                      end
+    @currency_value = @wallet.send("#{params['currency']}_value")  
   end
 
   private

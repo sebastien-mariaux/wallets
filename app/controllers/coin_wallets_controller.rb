@@ -9,14 +9,7 @@ class CoinWalletsController < ApplicationController
   end
 
   def total
-    @total_value = case params['currency'] 
-                      when 'eur'
-                        CoinWallet.total_eur_value
-                      when 'btc'
-                        CoinWallet.total_btc_value
-                      else
-                        CoinWallet.total_usd_value
-                      end
+    @total_value = CoinWallet.send("total_#{params['currency']}_value")
   end
 
   private
