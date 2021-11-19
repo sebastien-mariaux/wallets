@@ -1,19 +1,19 @@
 <h1>Synthèse</h1>
 
-<table>
+<table class='table table-bordered'>
     <thead>
         <tr>
-            <th></th>
+            <th scope='col'></th>
             <% @wallets.each do |wallet| %>
-                <th><%= wallet.name %></th>
+                <th scope='col'><%= wallet.name %></th>
             <% end %>
-            <th>Total</th>
+            <th scope='col'>Total</th>
         </tr>
     </thead>
     <tbody>
         <% @coins.each do |coin| %>
             <tr>
-                <td><%= coin.display_name %></td>
+                <th scope='row'><%= coin.display_name %></th>
                 <% @wallets.each do |wallet| %>
                     <%= render 'cell_form', coin: coin, wallet: wallet %>
                 <% end %>
@@ -23,31 +23,25 @@
     </tbody>
     <tfoot>
         <tr>
-            <td>Total (USD) </td>
+            <th scope='row'>Total (USD) </th>
             <% @wallets.each do |wallet| %>
                 <%= render 'wallet_total', wallet_id: wallet.id, currency: 'usd'  %>
             <% end %>
-            <td>
-                <%= render 'main_total', currency: 'usd' %>
-            </td>
+            <%= render 'main_total', currency: 'usd' %>
         </tr>
         <tr>
-            <td>Total (EUR) </td>
+            <th scope='row'>Total (EUR) </th>
             <% @wallets.each do |wallet| %>
                 <%= render 'wallet_total', wallet_id: wallet.id, currency: 'eur'  %>
             <% end %>
-            <td>
-                <%= render 'main_total', currency: 'eur' %>
-            </td>
+            <%= render 'main_total', currency: 'eur' %>
         </tr>
         <tr>
-            <td>Total (BTC) </td>
+            <th scope='row'>Total (BTC) </th>
             <% @wallets.each do |wallet| %>
                 <%= render 'wallet_total', wallet_id: wallet.id, currency: 'btc'  %>
             <% end %>
-            <td>
-                <%= render 'main_total', currency: 'btc' %>
-            </td>
+            <%= render 'main_total', currency: 'btc' %>
         </tr>
     </tfoot>
 </table>
