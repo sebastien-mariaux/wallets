@@ -1,5 +1,7 @@
 class WalletsController < ApplicationController
   before_action :load_wallets, only: :index
+  before_action :load_wallet, only: :total
+  layout false, only: :total
 
   def new
   end
@@ -15,6 +17,17 @@ class WalletsController < ApplicationController
     end
   end
 
+  def total
+    @currency_value = case params['currency'] 
+                      when 'eur'
+                        @wallet.eur_value
+                      when 'btc'
+                        @wallet.btc_value
+                      else
+                        @wallet.usd_value
+                      end
+  end
+
   private
 
   def create_params
@@ -23,6 +36,10 @@ class WalletsController < ApplicationController
 
   def load_wallets
     @wallets = Wallet.all
+  end
+
+  def load_wallet
+    @wallet = Wallet.find(params[:id])
   end
 
 end

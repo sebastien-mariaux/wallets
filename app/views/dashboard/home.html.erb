@@ -15,38 +15,39 @@
             <tr>
                 <td><%= coin.display_name %></td>
                 <% @wallets.each do |wallet| %>
-                    <td>
-                        <%= @coin_wallets.find{|coin_wallet| coin_wallet.coin_id == coin.id && coin_wallet.wallet_id == wallet.id}&.quantity || '-' %>
-                    </td>
+                    <%= render 'cell_form', coin: coin, wallet: wallet %>
                 <% end %>
-                <td><%= coin.total_quantity %></td>
+                <%= render 'coin_total', coin_id: coin.id  %>
             </tr>
         <% end %>
-        <tr>
-            <td>Total (USD) </td>
-            <% @wallets.each do |wallet| %>
-                <td>
-                    <%= wallet.usd_value %>
-                </td>
-            <% end %>
-        </tr>
     </tbody>
     <tfoot>
         <tr>
+            <td>Total (USD) </td>
+            <% @wallets.each do |wallet| %>
+                <%= render 'wallet_total', wallet_id: wallet.id, currency: 'usd'  %>
+            <% end %>
+            <td>
+                <%= render 'main_total', currency: 'usd' %>
+            </td>
+        </tr>
+        <tr>
             <td>Total (EUR) </td>
             <% @wallets.each do |wallet| %>
-                <td>
-                    <%= wallet.eur_value %>
-                </td>
+                <%= render 'wallet_total', wallet_id: wallet.id, currency: 'eur'  %>
             <% end %>
+            <td>
+                <%= render 'main_total', currency: 'eur' %>
+            </td>
         </tr>
         <tr>
             <td>Total (BTC) </td>
             <% @wallets.each do |wallet| %>
-                <td>
-                    <%= wallet.btc_value %>
-                </td>
+                <%= render 'wallet_total', wallet_id: wallet.id, currency: 'btc'  %>
             <% end %>
+            <td>
+                <%= render 'main_total', currency: 'btc' %>
+            </td>
         </tr>
     </tfoot>
 </table>

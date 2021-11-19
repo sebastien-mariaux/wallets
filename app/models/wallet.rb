@@ -6,21 +6,18 @@ class Wallet < ApplicationRecord
     def usd_value
         coin_wallets.inject(0) do |sum, coin_wallet|
             sum += coin_wallet.usd_value
-            sum
         end
     end
 
     def eur_value
         coin_wallets.inject(0) do |sum, coin_wallet|
             sum += coin_wallet.eur_value
-            sum
         end
     end
 
     def btc_value
         coin_wallets.inject(0) do |sum, coin_wallet|
             sum += coin_wallet.btc_value
-            sum
         end
     end
 end

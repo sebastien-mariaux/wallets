@@ -1,5 +1,8 @@
 class CoinsController < ApplicationController
   before_action :load_coins, only: :index
+  before_action :load_coin, only: :total
+
+  layout false, only: :total
 
   def new
   end
@@ -15,6 +18,10 @@ class CoinsController < ApplicationController
     end
   end
 
+  def total
+    @total_quantity = @coin.total_quantity
+  end
+
   private
 
   def create_params
@@ -23,6 +30,10 @@ class CoinsController < ApplicationController
 
   def load_coins
     @coins = Coin.all
+  end
+
+  def load_coin
+    @coin = Coin.find(params[:id])
   end
 
 end
