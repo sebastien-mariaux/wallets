@@ -1,0 +1,11 @@
+<h1>New Coin</h1>
+
+<%= form_for Coin.new, url: coins_path, method: :create do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+    <%= form.label :api_id %>
+    <%= form.text_field :api_id %>
+    <%= form.submit "Create" %>
+<% end %>

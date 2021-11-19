@@ -1,0 +1,9 @@
+<h1>Coins</h1>
+
+<ul>
+    <% @coins.each do |coin| %>
+        <li><%= coin.display_name %> </li>
+    <% end %>
+</ul>
+
+<%= link_to "New coin", new_coin_path %>
