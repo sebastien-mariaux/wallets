@@ -13,4 +13,12 @@ Rails.application.routes.draw do
     get :total, on: :collection
     post :create_or_update, on: :collection
   end
+
+  resources :api, only: [] do
+    get :list, on: :collection
+  end
+
+  resources :gecko_coins, only: [] do
+    get :search, on: :collection
+  end
 end

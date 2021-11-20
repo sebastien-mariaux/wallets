@@ -1,14 +1,14 @@
 class DashboardController < ApplicationController
-    before_action :load_data, only: :home
+  before_action :load_data, only: :home
 
-    def home
-    end
+  def home
+  end
 
-    private
+  private
 
-    def load_data
-        @coins = Coin.all
-        @wallets = Wallet.all
-        @coin_wallets = CoinWallet.all
-    end
+  def load_data
+    @coins = Coin.all
+    @wallets = Wallet.all
+    @coin_wallets = CoinWallet.all
+  end
 end

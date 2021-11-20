@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_18_232540) do
+ActiveRecord::Schema.define(version: 2021_11_20_165816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -29,10 +29,19 @@ ActiveRecord::Schema.define(version: 2021_11_18_232540) do
   create_table "coins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "code"
-    t.string "api_id"
     t.decimal "market_value_usd"
     t.decimal "market_value_eur"
     t.decimal "market_value_btc"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.uuid "gecko_coin_id"
+    t.index ["gecko_coin_id"], name: "index_coins_on_gecko_coin_id"
+  end
+
+  create_table "gecko_coins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.string "api_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

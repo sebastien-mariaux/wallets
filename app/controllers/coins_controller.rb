@@ -25,7 +25,7 @@ class CoinsController < ApplicationController
   private
 
   def create_params
-    params.require(:coin).permit(:name, :code, :api_id)
+    params.require(:coin).permit(:name, :code, :gecko_coin_id)
   end
 
   def load_coins

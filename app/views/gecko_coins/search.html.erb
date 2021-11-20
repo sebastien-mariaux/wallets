@@ -1,0 +1,11 @@
+<ul class="list-group">
+  <% @results.each do |result| %>
+    <li class="list-group-item selectable"
+        data-action="click->search-dropdown#selectAndFill"
+        data-id="<%= result.id %>"
+        data-name="<%= result.name %>"
+        data-code="<%= result.code %>">
+      <%= result.display_name %>
+    </li>
+  <% end %>
+</ul>

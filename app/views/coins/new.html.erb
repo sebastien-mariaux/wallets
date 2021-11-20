@@ -1,11 +1,23 @@
 <h1>New Coin</h1>
 
 <%= form_for Coin.new, url: coins_path, method: :create do |form| %>
-    <%= form.label :name %>
-    <%= form.text_field :name, required: true %>
-    <%= form.label :code %>
-    <%= form.text_field :code %>
-    <%= form.label :api_id %>
-    <%= form.text_field :api_id %>
-    <%= form.submit "Create" %>
+  <div class="mb-3" 
+      data-controller='search-dropdown'
+      data-search-dropdown-url-value="<%= search_gecko_coins_path %>">
+    <%= form.label :gecko_coin, class: "form-label" %>
+    <%= text_field_tag :gecko_coin, '', class: "form-control", 
+                       data: {action: "input->search-dropdown#load"} %>
+    <div data-search-dropdown-target='results'></div>
+    <%= form.hidden_field :gecko_coin_id,
+                          data: {'search-dropdown-target' => 'input'} %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, required: true, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :code, class: "form-label" %>
+    <%= form.text_field :code, class: "form-control" %>
+  </div>
+  <%= form.submit "Create", class: "btn btn-primary" %>
 <% end %>
