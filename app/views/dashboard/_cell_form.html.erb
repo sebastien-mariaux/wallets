@@ -1,5 +1,8 @@
 <td  data-controller="coin-wallet-form" 
-     data-coin-wallet-form-url-value="<%= quantity_coin_wallets_path(coin_id: coin.id, wallet_id: wallet.id) %>">
-  <div class='text-end' data-coin-wallet-form-target="quantity"></div>
+     data-action="click->coin-wallet-form#displayForm"
+     data-coin-wallet-form-url-value="<%= quantity_coin_wallets_path(coin_id: coin.id, wallet_id: wallet.id) %>"
+     class='user-input'>
+    <div class='text-end quantity-value' data-coin-wallet-form-target="quantity"></div>
+    <form><%= hidden_field_tag :quantity, nil, class: "form-control form-control-sm", 'data-action'=>"focusout->coin-wallet-form#updateValue" %></form>
 </td>
 
