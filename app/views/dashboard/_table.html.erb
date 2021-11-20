@@ -1,0 +1,66 @@
+
+  <table class='table table-bordered  table-sm'>
+    <thead>
+      <tr>
+        <th scope='col'></th>
+        <th scope='col'>Cours (USD)</th>
+        <% @wallets.each do |wallet| %>
+          <th scope='col'><%= wallet.name %></th>
+        <% end %>
+        <th scope='col'>Total (token)</th>
+        <th scope='col'>Total (USD)</th>
+        <th scope='col'>Total (EUR)</th>
+        <th scope='col'>Total (BTC)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @coins.each do |coin| %>
+        <tr>
+          <th scope='row'><%= coin.display_name %></th>
+          <td scope='row' class='text-end'><%= number_with_precision coin.market_value_usd, precision: 4 %></td>
+          <% @wallets.each do |wallet| %>
+            <%= render 'cell_form', coin: coin, wallet: wallet %>
+          <% end %>
+          <%= render 'coin_total', coin_id: coin.id, currency: nil  %>
+          <%= render 'coin_total', coin_id: coin.id, currency: 'usd'  %>
+          <%= render 'coin_total', coin_id: coin.id, currency: 'eur'  %>
+          <%= render 'coin_total', coin_id: coin.id, currency: 'btc'  %>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th scope='row'>Total (USD) </th>
+        <th scope='row'></th>
+        <% @wallets.each do |wallet| %>
+          <%= render 'wallet_total', wallet_id: wallet.id, currency: 'usd'  %>
+        <% end %>
+        <td></td>
+        <%= render 'main_total', currency: 'usd' %>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope='row'>Total (EUR) </th>
+        <th scope='row'></th>
+        <% @wallets.each do |wallet| %>
+          <%= render 'wallet_total', wallet_id: wallet.id, currency: 'eur'  %>
+        <% end %>
+        <td></td>
+        <td></td>
+        <%= render 'main_total', currency: 'eur' %>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope='row'>Total (BTC) </th>
+        <th scope='row'></th>
+        <% @wallets.each do |wallet| %>
+          <%= render 'wallet_total', wallet_id: wallet.id, currency: 'btc'  %>
+        <% end %>
+        <td></td>
+        <td></td>
+        <td></td>
+        <%= render 'main_total', currency: 'btc' %>
+      </tr>
+    </tfoot>
+  </table>

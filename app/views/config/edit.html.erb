@@ -1,0 +1,11 @@
+<h1>Modifier la configuration</h1>
+
+
+<%= form_for @config, url: config_path, method: :put do |form| %>
+  <div class="mb-3">
+    <%= form.label :investment_eur, class: "form-label" %>
+    <%= form.text_field :investment_eur, required: true, class: "form-control" %>
+  </div>
+
+  <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
+<% end %>

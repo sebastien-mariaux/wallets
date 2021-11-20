@@ -1,57 +1,25 @@
 <div class='home'>
   <h1>Synthèse</h1>
 
+  <div >
+    <div>Investissement : <%= number_with_precision(@config.investment_eur, precision: 2) %> EUR </div>
+    <div>Valeur actuelle : <%= number_with_precision(@total_value, precision: 2) %> EUR </div>
+    <div>Variation : <%= total_variation %> </div>
+  </div>
+
   <div class='buttons'>
     <%= button_tag "Mettre à jour la liste des Cryptos", 
                    class:"btn btn-outline-secondary btn-sm",
                    data: {controller: 'api',
                           'api-url-value' => list_api_index_path,
                           'action': 'click->api#load' } %>
+    <%= button_tag "Mettre à jour les prix", 
+                   class:"btn btn-outline-secondary btn-sm",
+                   data: {controller: 'api',
+                          'api-url-value' => prices_api_index_path,
+                          'action': 'click->api#load' } %>
   </div>
 
-  <table class='table table-bordered'>
-    <thead>
-      <tr>
-        <th scope='col'></th>
-        <% @wallets.each do |wallet| %>
-          <th scope='col'><%= wallet.name %></th>
-        <% end %>
-        <th scope='col'>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @coins.each do |coin| %>
-        <tr>
-          <th scope='row'><%= coin.display_name %></th>
-          <% @wallets.each do |wallet| %>
-            <%= render 'cell_form', coin: coin, wallet: wallet %>
-          <% end %>
-          <%= render 'coin_total', coin_id: coin.id  %>
-        </tr>
-      <% end %>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th scope='row'>Total (USD) </th>
-        <% @wallets.each do |wallet| %>
-          <%= render 'wallet_total', wallet_id: wallet.id, currency: 'usd'  %>
-        <% end %>
-        <%= render 'main_total', currency: 'usd' %>
-      </tr>
-      <tr>
-        <th scope='row'>Total (EUR) </th>
-        <% @wallets.each do |wallet| %>
-          <%= render 'wallet_total', wallet_id: wallet.id, currency: 'eur'  %>
-        <% end %>
-        <%= render 'main_total', currency: 'eur' %>
-      </tr>
-      <tr>
-        <th scope='row'>Total (BTC) </th>
-        <% @wallets.each do |wallet| %>
-          <%= render 'wallet_total', wallet_id: wallet.id, currency: 'btc'  %>
-        <% end %>
-        <%= render 'main_total', currency: 'btc' %>
-      </tr>
-    </tfoot>
-  </table>
+  <%= render 'table' %>
+
 </div>

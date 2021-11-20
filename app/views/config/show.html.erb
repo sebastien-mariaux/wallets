@@ -1,0 +1,13 @@
+<h1>Configuration</h1>
+<ol class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Investissement (EUR)</div>
+      <%= @config.investment_eur %>
+    </div>
+  </li>
+</ol>
+
+<div class='buttons'>
+  <%= link_to 'Modifier', edit_config_path, class: "btn btn-primary" %>
+</div>

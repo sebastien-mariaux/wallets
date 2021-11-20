@@ -9,13 +9,21 @@ class Coin < ApplicationRecord
 
 
   def display_name
-    "#{name} (#{code})"
+    "#{name} (#{code.upcase})"
   end
 
   def total_quantity
     coin_wallets.inject(0) do |acc, coin_wallet|
       acc += coin_wallet.quantity
       acc
+    end
+  end
+
+  %w[usd eur btc].each do |currency|
+    define_method "#{currency}_value" do
+      coin_wallets.inject(0) do |sum, coin_wallet|
+        sum += coin_wallet.send("#{currency}_value")
+      end
     end
   end
 

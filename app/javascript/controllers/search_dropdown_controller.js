@@ -6,7 +6,7 @@ export default class extends Controller {
 
   load(event) {
     let value = (event.target).value
-    if ( value.length < 3 ) { return }
+    if ( value.length < 2 ) { return }
 
     let url = this.urlValue + "?query=" + value
     fetch(url)

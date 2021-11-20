@@ -3,4 +3,9 @@ class ApiController < ApplicationController
     ApiListJob.perform_later
     head :ok
   end
+
+  def prices
+    ApiPricesJob.perform_later
+    head :ok
+  end
 end

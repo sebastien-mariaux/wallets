@@ -16,9 +16,12 @@ Rails.application.routes.draw do
 
   resources :api, only: [] do
     get :list, on: :collection
+    get :prices, on: :collection
   end
 
   resources :gecko_coins, only: [] do
     get :search, on: :collection
   end
+  
+  resource :config, controller: :config
 end

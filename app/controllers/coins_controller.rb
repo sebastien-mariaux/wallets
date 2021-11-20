@@ -19,10 +19,17 @@ class CoinsController < ApplicationController
   end
 
   def total
-    @total_quantity = @coin.total_quantity
+    currency = params['currency']
+    @total_quantity = compute_total(currency)
   end
 
   private
+
+  def compute_total(currency)
+    return @coin.total_quantity if currency.nil?
+
+    @currency_value = @coin.send("#{params['currency']}_value")
+  end
 
   def create_params
     params.require(:coin).permit(:name, :code, :gecko_coin_id)

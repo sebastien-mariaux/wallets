@@ -1,6 +1,6 @@
 <h1>New Coin</h1>
 
-<%= form_for Coin.new, url: coins_path, method: :create do |form| %>
+<%= form_for Coin.new, url: coins_path, method: :post do |form| %>
   <div class="mb-3" 
       data-controller='search-dropdown'
       data-search-dropdown-url-value="<%= search_gecko_coins_path %>">
