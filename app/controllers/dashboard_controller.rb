@@ -13,7 +13,7 @@ class DashboardController < ApplicationController
   private
 
   def generate_chart_data
-    coins = Coin.all
+    coins = Coin.all.sort_by(&:usd_value)
     {
       labels: compute_labels(coins),
       values: compute_values(coins)

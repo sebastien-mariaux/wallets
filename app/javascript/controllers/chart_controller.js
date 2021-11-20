@@ -21,25 +21,20 @@ export default class extends Controller {
     .then(data => this.initChart(data))
   }
 
-  chartParams(data) {
+  chartParams(walletData) {
     return {
       type: 'pie',
       data: {
-        labels: data.labels,
+        labels: walletData.labels,
         datasets: [{
           label: 'Wallet repartition',
-          data: data.values,
+          data: walletData.values,
+          backgroundColor: this.getColors(walletData.labels),
           hoverOffset: 4
         }],
       }
     }
   }
-
-  // json.dumps({
-  //   "labels": [c.name for c in currencies],
-  //   "values": [round(c.usd_value / total_value * 100, 2) 
-  //              for c in currencies]
-  // })
 
   getRandomColor() {
     var letters = '0123456789ABCDEF';
