@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'dashboard#home'
 
+  resource :dashboard, controller: :dashboard, only: [] do
+    get :chart_data
+  end
+
   resources :wallets do
     get :total, on: :member
   end
