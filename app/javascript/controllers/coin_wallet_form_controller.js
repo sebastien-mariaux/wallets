@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import Rails from "@rails/ujs";
 
 export default class extends Controller {
   static values = { url: String }
@@ -17,8 +18,14 @@ export default class extends Controller {
   displayForm() {
     this.quantityInput().type = 'number'
     this.quantityInput().value = this.quantityValue()
-    this.element.querySelector(".quantity-value").classList.add('hidden')
+    this.quantityTarget.classList.add('hidden')
     this.quantityInput().focus()
+  }
+
+  hideForm() {
+    this.quantityInput().type = 'hidden'
+    this.load()
+    this.quantityTarget.classList.remove('hidden')
   }
 
   quantityInput() {
@@ -26,11 +33,20 @@ export default class extends Controller {
   }
 
   updateValue() {
-    let newValue = this.quantityInput().value
+    let form = this.element.querySelector('form')
+    Rails.fire(form, 'submit')
   }
 
   quantityValue() {
     let rawValue = this.quantityTarget.innerHTML
     return parseFloat(rawValue) || 0
+  }
+
+  handleSuccess() {
+    this.hideForm()
+  }
+
+  handleError() {
+    this.hideForm()
   }
 }

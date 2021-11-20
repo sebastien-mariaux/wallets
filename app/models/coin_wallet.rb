@@ -2,7 +2,7 @@ class CoinWallet < ApplicationRecord
     belongs_to :coin
     belongs_to :wallet
 
-    validates :quantity, presence: true
+    validates :quantity, presence: true, numericality: {greater_than_or_equal_to: 0} 
 
     class << self
         %w[eur usd btc].each do |currency|
