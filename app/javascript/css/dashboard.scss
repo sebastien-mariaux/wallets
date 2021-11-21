@@ -1,12 +1,18 @@
-table {
-  input {
-    &#quantity {
-      max-width: 100px;
+.home {
+  table {
+    input {
+      &#quantity {
+        max-width: 100px;
+      }
     }
   }
-}
 
-#pie-chart {
-  max-width: 600px;
-  margin: auto;
+  #pie-chart {
+    max-width: 600px;
+    margin: auto;
+  }
+
+  .spinner-container {
+    padding: 2em;
+  }
 }

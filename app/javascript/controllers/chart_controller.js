@@ -13,6 +13,7 @@ export default class extends Controller {
     let params = this.chartParams(data)
     console.log(params)
     new Chart(ctx, params);
+    this.element.querySelector('.spinner-container').remove()
   }
 
   getChartData(callback) {

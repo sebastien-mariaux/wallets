@@ -12,18 +12,37 @@
                    class:"btn btn-outline-secondary btn-sm",
                    data: {controller: 'api',
                           'api-url-value' => list_api_index_path,
-                          'action': 'click->api#load' } %>
+                            'action': 'click->api#load' } %>
     <%= button_tag "Mettre à jour les prix", 
                    class:"btn btn-outline-secondary btn-sm",
                    data: {controller: 'api',
                           'api-url-value' => prices_api_index_path,
                           'action': 'click->api#load' } %>
-    </div>
+  </div>
 
-  <%= render 'table' %>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="tableau-tab" data-bs-toggle="tab" data-bs-target="#tableau" type="button" role="tab" aria-controls="tableau" aria-selected="false">Tableau</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="graph-tab" data-bs-toggle="tab" data-bs-target="#graph" type="button" role="tab" aria-controls="graph" aria-selected="true">Graphique</button>
+  </li>
 
-  <div id="pie-chart" data-controller='chart' data-chart=''
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="tableau" role="tabpanel" aria-labelledby="tableau-tab">
+    <%= render 'table' %>
+  </div>
+  <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
+    <div id="pie-chart" data-controller='chart'
                       data-chart-url-value="<%= chart_data_dashboard_path %>">
-    <canvas id="wallet-pie" width="400" height="400"></canvas>
+      <div class="text-center spinner-container">
+        <div class="spinner-border text-secondary" role="status" id='graph-spinner'>
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <canvas id="wallet-pie" width="400" height="400">
+      </canvas>
+    </div>
   </div>
 </div>
