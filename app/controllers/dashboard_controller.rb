@@ -39,8 +39,8 @@ class DashboardController < ApplicationController
   end
 
   def load_data
-    @coins = Coin.all
-    @wallets = Wallet.all
+    @coins = Coin.order(:name)
+    @wallets = Wallet.order(:name)
     @coin_wallets = CoinWallet.all
   end
 end
