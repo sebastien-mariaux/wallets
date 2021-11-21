@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   before_action :load_data, only: :home
 
   def home
-    @config = Config.first
+    @config = Config.fetch
     @total_value = CoinWallet.total_eur_value
   end
 

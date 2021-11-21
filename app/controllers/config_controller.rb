@@ -1,5 +1,5 @@
 class ConfigController < ApplicationController
-  before_action :load_config, only: %i[edit show update]
+  before_action :load_config 
 
   def show
   end
@@ -22,6 +22,6 @@ class ConfigController < ApplicationController
   end
   
   def load_config
-    @config = Config.first || Config.create
+    @config = Config.fetch
   end
 end
