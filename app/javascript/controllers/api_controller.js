@@ -24,12 +24,18 @@ export default class extends Controller {
 
   handleProcessResponse(data) {
     if (data.status == 'done') {
-      this.element.querySelector('.spinner').classList.add('hidden')
-      this.element.removeAttribute('disabled')
-      this.displayFlash(data.message)
+       this.onProcessSuccess(data)
     } else {
       this.waitForCompletion(data.id)
     }
+  }
+
+  onProcessSuccess(data) {
+    this.element.querySelector('.spinner').classList.add('hidden')
+    this.element.removeAttribute('disabled')
+    this.displayFlash(data.message)
+    const event = new CustomEvent("update-data")
+    window.dispatchEvent(event)    
   }
 
   displayFlash(message) {

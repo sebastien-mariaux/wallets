@@ -5,20 +5,21 @@ export default class extends Controller {
   static values = { url: String }
 
   connect() {
-    this.getChartData()
+    this.initChart()
+    window.addEventListener('update-data', () => this.initChart(), false)
   }
 
-  initChart(data) {
+  createChart(data) {
     var ctx = document.querySelector('#wallet-pie');
     let params = this.chartParams(data)
     new Chart(ctx, params);
     this.element.querySelector('.spinner-container').remove()
   }
 
-  getChartData(callback) {
+  initChart() {
     fetch(this.urlValue)
     .then(response =>  response.json())
-    .then(data => this.initChart(data))
+    .then(data => this.createChart(data))
   }
 
   chartParams(walletData) {

@@ -1,13 +1,17 @@
 class DashboardController < ApplicationController
-  before_action :load_data, only: :home
+  before_action :load_data, only: %i[home]
+  before_action :load_summary_data, only: %i[home summary]
+
+  layout false, only: :summary
 
   def home
-    @config = Config.fetch
-    @total_value = CoinWallet.total_eur_value
   end
 
   def chart_data
     render json: generate_chart_data
+  end
+
+  def summary
   end
 
   private
@@ -18,6 +22,11 @@ class DashboardController < ApplicationController
       labels: compute_labels(coins),
       values: compute_values(coins)
     }
+  end
+
+  def load_summary_data
+    @config = Config.fetch
+    @total_value = CoinWallet.total_eur_value
   end
 
   def compute_labels(coins)

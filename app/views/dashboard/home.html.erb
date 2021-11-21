@@ -1,10 +1,10 @@
 <div class='home'>
   <h1>Synthèse</h1>
 
-  <div >
-    <div>Investissement : <%= number_with_precision(@config.investment_eur, precision: 2) %> EUR </div>
-    <div>Valeur actuelle : <%= number_with_precision(@total_value, precision: 2) %> EUR </div>
-    <div>Variation : <%= total_variation %> </div>
+   <div class="summary"
+       data-controller='summary'
+       data-summary-url-value="<%= summary_dashboard_path %>">
+    <%= render 'summary' %>
   </div>
 
   <div class='buttons'>

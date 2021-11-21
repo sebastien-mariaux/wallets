@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resource :dashboard, controller: :dashboard, only: [] do
     get :chart_data
+    get :summary
   end
 
   resources :wallets do
