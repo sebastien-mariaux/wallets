@@ -29,7 +29,8 @@
 /public/assets
 .byebug_history
 
-# Ignore master key for decrypting credentials and more.
+# Ignore master key for decrypting credentiadb/migrate/20211121195817_create_snapshot.rb
+ls and more.
 /config/master.key
 
 /public/packs

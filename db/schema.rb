@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_21_161354) do
+ActiveRecord::Schema.define(version: 2021_11_21_195817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2021_11_21_161354) do
     t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "coin_snapshots", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "coin_id"
+    t.uuid "snapshot_id"
+    t.decimal "quantity"
+    t.decimal "usd_price"
+    t.decimal "eur_price"
+    t.index ["coin_id"], name: "index_coin_snapshots_on_coin_id"
+    t.index ["snapshot_id"], name: "index_coin_snapshots_on_snapshot_id"
   end
 
   create_table "coin_wallets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -60,6 +70,15 @@ ActiveRecord::Schema.define(version: 2021_11_21_161354) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "snapshots", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.decimal "total_usd_value"
+    t.decimal "total_eur_value"
+    t.decimal "total_btc_value"
+    t.decimal "investment_eur"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "wallets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -67,6 +86,8 @@ ActiveRecord::Schema.define(version: 2021_11_21_161354) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "coin_snapshots", "coins"
+  add_foreign_key "coin_snapshots", "snapshots"
   add_foreign_key "coin_wallets", "coins"
   add_foreign_key "coin_wallets", "wallets"
 end

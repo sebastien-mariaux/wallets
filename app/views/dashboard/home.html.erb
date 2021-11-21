@@ -7,24 +7,7 @@
     <%= render 'summary' %>
   </div>
 
-  <div class='buttons'>
-    <%= button_tag "Mettre à jour la liste des Cryptos", 
-                   class:"btn btn-outline-secondary btn-sm",
-                   data: {controller: 'api',
-                          'api-url-value' => list_api_index_path,
-                          'action': 'click->api#load' } do %>
-      <span class="spinner hidden spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      <span> Mettre à jour la liste des Cryptos </span>
-    <%end %>
-    <%= button_tag "Mettre à jour les prix", 
-                   class:"btn btn-outline-secondary btn-sm",
-                   data: {controller: 'api',
-                          'api-url-value' => prices_api_index_path,
-                          'action': 'click->api#load' } do %>
-      <span class="spinner hidden spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      <span> Mettre à jour les prix </span>
-    <% end %>
-  </div>
+  <%= render 'actions' %>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">

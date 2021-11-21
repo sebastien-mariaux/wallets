@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   resource :config, controller: :config
 
   resources :app_processes, only: :show
+
+  resources :snapshots, only: [] do
+    get :request_snap, on: :collection
+  end 
 end
