@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'dashboard#home'
 
@@ -27,12 +29,12 @@ Rails.application.routes.draw do
   resources :gecko_coins, only: [] do
     get :search, on: :collection
   end
-  
+
   resource :config, controller: :config
 
   resources :app_processes, only: :show
 
   resources :snapshots, only: [] do
     get :request_snap, on: :collection
-  end 
+  end
 end

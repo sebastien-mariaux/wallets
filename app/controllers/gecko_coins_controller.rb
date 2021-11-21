@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GeckoCoinsController < ApplicationController
   layout false, only: :search
 

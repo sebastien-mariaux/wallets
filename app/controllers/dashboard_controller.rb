@@ -1,18 +1,18 @@
+# frozen_string_literal: true
+
 class DashboardController < ApplicationController
   before_action :load_data, only: %i[home]
   before_action :load_summary_data, only: %i[home summary]
 
   layout false, only: :summary
 
-  def home
-  end
+  def home; end
 
   def chart_data
     render json: generate_chart_data
   end
 
-  def summary
-  end
+  def summary; end
 
   private
 
@@ -35,7 +35,7 @@ class DashboardController < ApplicationController
 
   def compute_values(coins)
     total_value = CoinWallet.total_usd_value
-    coins.map{|coin| (coin.usd_value / total_value * 100).round(2)}
+    coins.map { |coin| (coin.usd_value / total_value * 100).round(2) }
   end
 
   def load_data

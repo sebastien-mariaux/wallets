@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module CoinGecko
     class Base
@@ -5,9 +7,7 @@ module Api
 
       attr_accessor :message
 
-      base_uri "https://api.coingecko.com/api/v3" 
-
-
+      base_uri 'https://api.coingecko.com/api/v3'
     end
   end
 end

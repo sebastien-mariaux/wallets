@@ -1,14 +1,14 @@
+# frozen_string_literal: true
+
 class CoinsController < ApplicationController
   before_action :load_coins, only: :index
   before_action :load_coin, only: :total
 
   layout false, only: :total
 
-  def new
-  end
+  def new; end
 
-  def index
-  end
+  def index; end
 
   def create
     if Coin.create(create_params)
@@ -42,5 +42,4 @@ class CoinsController < ApplicationController
   def load_coin
     @coin = Coin.find(params[:id])
   end
-
 end

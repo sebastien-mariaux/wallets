@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require_relative './base'
 
 module Backup
   class Import < Base
     def run
-      ordered_models.each do |model| 
+      ordered_models.each do |model|
         import_model(model)
       end
     end

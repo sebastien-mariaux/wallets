@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require_relative './base'
 
-module Api 
+module Api
   module CoinGecko
     class CoinList < Base
       def run
-        response = self.class.get("/coins/list")
+        response = self.class.get('/coins/list')
         all_coins = JSON.parse(response.body)
         create_or_update_coins(all_coins)
       end
@@ -18,7 +20,7 @@ module Api
       end
 
       def message
-        "Mise à jour de la liste des cryptos terminée"
+        'Mise à jour de la liste des cryptos terminée'
       end
     end
   end

@@ -1,4 +1,6 @@
-require "active_support/concern"
+# frozen_string_literal: true
+
+require 'active_support/concern'
 
 module Processable
   extend ActiveSupport::Concern
@@ -7,7 +9,7 @@ module Processable
     before_action :create_process
   end
 
-  private 
+  private
 
   def create_process
     @app_process = AppProcess.create!

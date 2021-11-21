@@ -1,11 +1,11 @@
+# frozen_string_literal: true
+
 class ConfigController < ApplicationController
-  before_action :load_config 
+  before_action :load_config
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @config.update(update_params)
@@ -20,7 +20,7 @@ class ConfigController < ApplicationController
   def update_params
     params.require(:config).permit(:investment_eur)
   end
-  
+
   def load_config
     @config = Config.fetch
   end

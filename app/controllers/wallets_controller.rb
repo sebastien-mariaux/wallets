@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 class WalletsController < ApplicationController
   before_action :load_wallets, only: :index
   before_action :load_wallet, only: :total
   layout false, only: :total
 
-  def new
-  end
+  def new; end
 
-  def index
-  end
+  def index; end
 
   def create
     if Wallet.create(create_params)
@@ -18,7 +18,7 @@ class WalletsController < ApplicationController
   end
 
   def total
-    @currency_value = @wallet.send("#{params['currency']}_value")  
+    @currency_value = @wallet.send("#{params['currency']}_value")
   end
 
   private
@@ -34,5 +34,4 @@ class WalletsController < ApplicationController
   def load_wallet
     @wallet = Wallet.find(params[:id])
   end
-
 end

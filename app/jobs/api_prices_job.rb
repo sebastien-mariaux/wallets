@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'api/coin_gecko/coin_value'
 
 class ApiPricesJob < ApplicationJob

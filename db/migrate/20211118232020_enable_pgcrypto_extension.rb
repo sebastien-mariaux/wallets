@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class EnablePgcryptoExtension < ActiveRecord::Migration[6.1]
   def change

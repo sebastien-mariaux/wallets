@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateWallet < ActiveRecord::Migration[6.1]
   def change
     create_table :wallets, id: :uuid do |t|

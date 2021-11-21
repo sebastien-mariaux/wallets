@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'api/coin_gecko/coin_value'
 
 module Builders
@@ -7,7 +9,7 @@ module Builders
     end
 
     def build
-      snapshot = Snapshot.create!(
+      Snapshot.create!(
         total_usd_value: CoinWallet.total_usd_value,
         total_eur_value: CoinWallet.total_eur_value,
         total_btc_value: CoinWallet.total_btc_value,
@@ -21,17 +23,16 @@ module Builders
     end
 
     def coin_snapshots_attributes
-      owned_coins.map { |coin|  { coin_id: coin.id } }
+      owned_coins.map { |coin| { coin_id: coin.id } }
     end
 
     def owned_coins
-      Coin.all.select{|coin| coin.total_quantity > 0}
+      Coin.all.select { |coin| coin.total_quantity.positive? }
     end
 
     def update_prices
       api = Api::CoinGecko::CoinValue.new
       api.run
     end
-
   end
 end

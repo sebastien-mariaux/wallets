@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AppProcessesController < ApplicationController
   before_action :load_app_process, only: :show
 

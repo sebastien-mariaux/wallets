@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DashboardHelper
   def total_variation
     delta = (CoinWallet.total_eur_value / Config.first.investment_eur - 1) * 100
