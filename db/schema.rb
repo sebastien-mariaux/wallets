@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2021_11_21_161354) do
     t.decimal "investment_eur", default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "pending_notifications", array: true
   end
 
   create_table "gecko_coins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
