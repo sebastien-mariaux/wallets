@@ -28,4 +28,6 @@ Rails.application.routes.draw do
   end
   
   resource :config, controller: :config
+
+  resources :app_processes, only: :show
 end

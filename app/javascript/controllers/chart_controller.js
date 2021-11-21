@@ -11,7 +11,6 @@ export default class extends Controller {
   initChart(data) {
     var ctx = document.querySelector('#wallet-pie');
     let params = this.chartParams(data)
-    console.log(params)
     new Chart(ctx, params);
     this.element.querySelector('.spinner-container').remove()
   }

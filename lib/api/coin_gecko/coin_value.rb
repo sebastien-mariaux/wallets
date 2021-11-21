@@ -33,6 +33,10 @@ module Api
           )
         end
       end
+
+      def message
+        "Mise à jour des prix terminée"
+      end
     end
   end
 end

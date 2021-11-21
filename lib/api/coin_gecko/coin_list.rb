@@ -4,7 +4,6 @@ require_relative './base'
 module Api 
   module CoinGecko
     class CoinList < Base
-
       def run
         response = self.class.get("/coins/list")
         all_coins = JSON.parse(response.body)
@@ -16,6 +15,10 @@ module Api
           gecko_coin = GeckoCoin.find_or_create_by(api_id: api_coin['id'])
           gecko_coin.update(code: api_coin['symbol'], name: api_coin['name'])
         end
+      end
+
+      def message
+        "Mise à jour de la liste des cryptos terminée"
       end
     end
   end

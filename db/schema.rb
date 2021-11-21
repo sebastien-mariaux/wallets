@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_200032) do
+ActiveRecord::Schema.define(version: 2021_11_21_161354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "app_processes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "status"
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "coin_wallets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "coin_id"
@@ -43,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_11_20_200032) do
     t.decimal "investment_eur", default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "pending_notifications", array: true
   end
 
   create_table "gecko_coins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
