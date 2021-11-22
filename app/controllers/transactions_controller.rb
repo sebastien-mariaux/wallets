@@ -1,11 +1,17 @@
 class TransactionsController < ApplicationController
   before_action :load_coin
-  before_action :load_transactions, only: :index
+  before_action :load_transactions, only: %i[index destroy]
+  before_action :load_transaction, only: :destroy
 
   def index
   end
 
   def new
+  end
+
+  def destroy
+    @transaction.destroy
+    redirect_to coin_transactions_path(@coin)
   end
 
   def create
@@ -29,5 +35,9 @@ class TransactionsController < ApplicationController
 
   def load_transactions
     @transactions = @coin.transactions
+  end
+
+  def load_transaction
+    @transaction = @transactions.find(params[:id])
   end
 end

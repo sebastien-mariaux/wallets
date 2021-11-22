@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :coins do
     get :total, on: :member
     
-    resources :transactions, only: %i[index new create]
+    resources :transactions, only: %i[index new create destroy]
   end
 
   resources :coin_wallets, only: [] do

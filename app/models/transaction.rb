@@ -20,4 +20,11 @@ class Transaction < ApplicationRecord
   validates :quantity, presence: true
   validates :price_usd, presence: true
 
+  scope :buy, -> {where(order_type: 'buy')}
+  scope :sell, -> {where(order_type: 'sell')}
+
+  def usd_value
+    price_usd * quantity
+  end
+
 end

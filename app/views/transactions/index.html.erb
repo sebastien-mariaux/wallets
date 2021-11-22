@@ -2,6 +2,17 @@
 
 <%= link_to "Ajouter", new_coin_transaction_path(@coin) %>
 
+<section class='summary'>
+  <ul>
+    <li>Investissement total (USD) : <%= @coin.total_buy_usd %></li>
+    <li>Prix d'achat moyen (USD) : <%= @coin.average_buy_price %></li>
+    <li>Total vendu (USD) : <%= @coin.total_sell_usd %></li>
+    <li>Prix de vente moyen (USD) : <%= @coin.average_sell_price %></li>
+    <li>Valeur en portefeuille (USD) : <%= @coin.current_usd_value_in_wallet %></li>
+    <li>Résultat net : <%= @coin.net_result %></li>
+  </ul>
+</section>
+
 <table class='table table-sm'>
   <thead>
     <tr>
@@ -9,6 +20,7 @@
       <th scope='col'>Type</th>
       <th scope='col'>Quantité</th>
       <th scope='col'>Valeur (USD)</th>
+      <th scope='col'></th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +30,9 @@
         <td><%= transaction.order_type %> </td>
         <td><%= transaction.quantity %> </td>
         <td><%= transaction.price_usd %> </td>
+        <td>
+          <%= link_to('Supprimer', coin_transaction_path(@coin, transaction), method: 'delete')  %>
+        </td>
       </tr>
     <% end %>
   </tbody>

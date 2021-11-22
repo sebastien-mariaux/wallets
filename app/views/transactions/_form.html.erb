@@ -9,11 +9,11 @@
   </div>
   <div class="mb-3">
     <%= form.label :quantity, class: "form-label" %>
-    <%= form.number_field :quantity, class: "form-control" %>
+    <%= form.text_field :quantity, class: "form-control" %>
   </div>
   <div class="mb-3">
     <%= form.label :price_usd, class: "form-label" %>
-    <%= form.number_field :price_usd, class: "form-control" %>
+    <%= form.text_field :price_usd, class: "form-control" %>
   </div>
   <%= form.submit "Create", class: "btn btn-primary" %>
 <% end %>
