@@ -15,11 +15,14 @@
 #  gecko_coin_id    :uuid
 #
 class Coin < ApplicationRecord
+  belongs_to :gecko_coin, optional: true
+
   has_many :coin_wallets
   has_many :wallets, through: :coin_wallets
+  has_many :transactions
+
   validates :name, presence: true, uniqueness: true
   validates :code, presence: true, uniqueness: true
-  belongs_to :gecko_coin, optional: true
 
   delegate :api_id, to: :gecko_coin
 
