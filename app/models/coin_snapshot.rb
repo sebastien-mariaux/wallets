@@ -17,6 +17,8 @@ class CoinSnapshot < ApplicationRecord
 
   before_create :update_data
 
+  delegate :display_name, to: :coin
+
   def update_data
     self.quantity = coin.total_quantity
     self.usd_price = coin.market_value_usd
