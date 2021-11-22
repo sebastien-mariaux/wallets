@@ -6,6 +6,6 @@ class ApiPricesJob < ApplicationJob
   def perform(process)
     api = Api::CoinGecko::CoinValue.new
     api.run
-    process.reload.update!(status: 'done', message: api.message)
+    process.reload.update!(status: 'done', message: api.message, reload_data: true)
   end
 end

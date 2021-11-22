@@ -2,8 +2,8 @@
 
 class SnapshotsController < ApplicationController
   include Processable
-
   before_action :load_snapshots, only: :index
+  before_action :create_process, only: :request_snap
 
   def request_snap
     SnapshotCreateJob.perform_later(@app_process)
@@ -11,7 +11,6 @@ class SnapshotsController < ApplicationController
   end
 
   def index
-
   end
 
   private

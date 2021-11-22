@@ -34,8 +34,10 @@ export default class extends Controller {
     this.element.querySelector('.spinner').classList.add('hidden')
     this.element.removeAttribute('disabled')
     this.displayFlash(data.message)
-    const event = new CustomEvent("update-data")
-    window.dispatchEvent(event)    
+    if (data.reload_data) {
+      const event = new CustomEvent("update-data")
+      window.dispatchEvent(event)    
+    }
   }
 
   displayFlash(message) {

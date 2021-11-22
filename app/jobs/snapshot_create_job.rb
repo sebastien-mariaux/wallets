@@ -6,6 +6,6 @@ class SnapshotCreateJob < ApplicationJob
   def perform(process)
     builder = Builders::SnapshotBuilder.new
     builder.build
-    process.reload.update!(status: 'done', message: 'Snapshot taken!')
+    process.reload.update!(status: 'done', message: 'Snapshot taken!', reload_data: true)
   end
 end

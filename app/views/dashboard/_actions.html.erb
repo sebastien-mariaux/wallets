@@ -25,4 +25,13 @@
       <span class="spinner hidden spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       <span> Snapshot </span>
     <% end %>
+
+    <%= button_tag "Backup", 
+                   class:"btn btn-outline-secondary btn-sm",
+                   data: {controller: 'button',
+                          'button-url-value' => export_backup_path,
+                          'action': 'click->button#load' } do %>
+      <span class="spinner hidden spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span> Backup </span>
+    <% end %>
   </div>

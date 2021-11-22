@@ -4,11 +4,7 @@ require 'active_support/concern'
 
 module Processable
   extend ActiveSupport::Concern
-
-  included do
-    before_action :create_process
-  end
-
+  
   private
 
   def create_process

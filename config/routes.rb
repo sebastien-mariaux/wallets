@@ -37,4 +37,9 @@ Rails.application.routes.draw do
   resources :snapshots, only: %i[index] do
     get :request_snap, on: :collection
   end
+
+  resource :backup, only: [] do
+    get :import, on: :collection
+    get :export, on: :collection
+  end
 end
