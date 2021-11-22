@@ -1,0 +1,24 @@
+<h1><%= @coin.display_name %> - Transactions</h1>
+
+<%= link_to "Ajouter", new_coin_transaction_path(@coin) %>
+
+<table class='table table-sm'>
+  <thead>
+    <tr>
+      <th scope='col'>Date</th>
+      <th scope='col'>Type</th>
+      <th scope='col'>Quantité</th>
+      <th scope='col'>Valeur (USD)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.date %> </td>
+        <td><%= transaction.order_type %> </td>
+        <td><%= transaction.quantity %> </td>
+        <td><%= transaction.price_usd %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

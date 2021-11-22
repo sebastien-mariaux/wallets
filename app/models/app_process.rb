@@ -4,11 +4,12 @@
 #
 # Table name: app_processes
 #
-#  id         :uuid             not null, primary key
-#  status     :string
-#  message    :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :uuid             not null, primary key
+#  status      :string
+#  message     :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  reload_data :boolean          default(FALSE)
 #
 class AppProcess < ApplicationRecord
   STATUSES = %w[pending done].freeze

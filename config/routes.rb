@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
   resources :coins do
     get :total, on: :member
+    
+    resources :transactions, only: %i[index new create]
   end
 
   resources :coin_wallets, only: [] do

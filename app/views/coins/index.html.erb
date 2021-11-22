@@ -1,9 +1,22 @@
 <h1>Tokens</h1>
 
-<ul>
+<table class='table table-sm'>
+  <thead>
+    <tr>
+      <th scope='col'>Token</th>
+      <th scope='col'></th>
+    </tr>
+  </thead>
+  <tbody>
     <% @coins.each do |coin| %>
-        <li><%= coin.display_name %> </li>
+      <tr>
+        <td><%= coin.display_name %> </td>
+        <td>
+          <%= link_to 'Transactions', coin_transactions_path(coin) %>
+        </td>
+      </tr>
     <% end %>
-</ul>
+  </tbody>
+</table>
 
 <%= link_to "New coin", new_coin_path %>

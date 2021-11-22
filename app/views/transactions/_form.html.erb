@@ -1,0 +1,19 @@
+<%= form_for  [@coin, transaction], method: method do |form| %>
+  <div class="mb-3">
+    <%= form.label :date, class: "form-label" %>
+    <%= form.date_field :date, class: "form-control" %>
+  </div>
+    <div class="mb-3">
+    <%= form.label :order_type, class: "form-label" %>
+    <%= form.select :order_type, %w[sell buy], {}, class: "form-select" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :quantity, class: "form-label" %>
+    <%= form.number_field :quantity, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :price_usd, class: "form-label" %>
+    <%= form.number_field :price_usd, class: "form-control" %>
+  </div>
+  <%= form.submit "Create", class: "btn btn-primary" %>
+<% end %>
