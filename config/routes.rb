@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   resources :coins do
     get :total, on: :member
+    get :reference_price, on: :member
     
     resources :transactions, only: %i[index new create destroy]
   end

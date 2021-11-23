@@ -1,17 +1,18 @@
 <% quantity =  get_quantity(@coin_wallets, coin.id, wallet.id) %>
 
-<td  data-controller="coin-wallet-form" 
-     data-action="click->coin-wallet-form#displayForm"
-     data-coin-wallet-form-url-value="<%= quantity_coin_wallets_path(coin_id: coin.id, wallet_id: wallet.id) %>"
+<td  data-controller="dynamic-field" 
+     data-action="click->dynamic-field#displayForm"
+     data-dynamic-field-url-value="<%= quantity_coin_wallets_path(coin_id: coin.id, wallet_id: wallet.id) %>"
      class='user-input'>
     <div class='text-end quantity-value' 
-         data-coin-wallet-form-target="quantity"><%= quantity %></div>
+         data-dynamic-field-target="display"><%= quantity %></div>
     <%= form_with url: create_or_update_coin_wallets_path(coin_id: coin.id, wallet_id: wallet.id),
                   remote: true, local: false,
-                  data: {action: "ajax:error->coin-wallet-form#handleError ajax:success->coin-wallet-form#handleSuccess"} do %>
+                  data: {action: "ajax:error->dynamic-field#handleError ajax:success->dynamic-field#handleSuccess"} do %>
     <%= hidden_field_tag :quantity, nil, 
                           class: "form-control form-control-sm", 
-                          data: { action: "focusout->coin-wallet-form#updateValue" } %>
+                          data: { 'action' => "focusout->dynamic-field#updateValue",
+                                  'dynamic-field-target' => "input" } %>
     <% end %>
 </td>
 

@@ -2,9 +2,9 @@
 
 class CoinsController < ApplicationController
   before_action :load_coins, only: :index
-  before_action :load_coin, only: %i[total edit update]
+  before_action :load_coin, only: %i[total edit update reference_price]
 
-  layout false, only: :total
+  layout false, only: %i[total reference_price]
 
   def new
     @coin = Coin.new
@@ -33,6 +33,9 @@ class CoinsController < ApplicationController
   def total
     currency = params['currency']
     @total_quantity = compute_total(currency)
+  end
+
+  def reference_price
   end
 
   private

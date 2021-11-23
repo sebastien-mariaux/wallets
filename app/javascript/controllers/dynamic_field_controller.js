@@ -3,30 +3,30 @@ import Rails from "@rails/ujs";
 
 export default class extends Controller {
   static values = { url: String }
-  static targets = ['quantity']
+  static targets = ['display', 'input']
 
   load() {
     fetch(this.urlValue)
       .then(response => response.text())
-      .then(html => this.quantityTarget.innerHTML = html)
+      .then(html => this.displayTarget.innerHTML = html)
   }
 
   displayForm() {
-    this.quantityInput().type = 'number'
-    this.quantityInput().value = this.quantityValue()
-    this.quantityTarget.classList.add('hidden')
-    this.quantityInput().focus()
+    this.inputTarget.type = 'number'
+    this.inputTarget.value = this.quantityValue()
+    this.displayTarget.classList.add('hidden')
+    this.inputTarget.focus()
   }
 
   hideForm() {
-    this.quantityInput().type = 'hidden'
+    this.inputTarget.type = 'hidden'
     this.load()
-    this.quantityTarget.classList.remove('hidden')
+    this.displayTarget.classList.remove('hidden')
   }
 
-  quantityInput() {
-    return this.element.querySelector("input[name='quantity']")
-  }
+  // quantityInput() {
+  //   return this.element.querySelector("input[name='quantity']")
+  // }
 
   updateValue() {
     let form = this.element.querySelector('form')
@@ -34,7 +34,7 @@ export default class extends Controller {
   }
 
   quantityValue() {
-    let rawValue = this.quantityTarget.innerHTML
+    let rawValue = this.displayTarget.innerHTML
     return parseFloat(rawValue) || 0
   }
 
