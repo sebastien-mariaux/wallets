@@ -98,4 +98,10 @@ class Coin < ApplicationRecord
       end
     end
   end
+
+  def variation_from_reference
+    return 0 unless market_value_usd && reference_price
+
+   ( (market_value_usd / reference_price) - 1 ) * 100
+  end
 end

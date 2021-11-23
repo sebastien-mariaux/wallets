@@ -2,14 +2,16 @@
 #
 # Table name: transactions
 #
-#  id         :bigint           not null, primary key
-#  order_type :string
-#  coin_id    :uuid
-#  quantity   :decimal(, )
-#  price_usd  :decimal(, )
-#  date       :date
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id             :bigint           not null, primary key
+#  order_type     :string
+#  coin_id        :uuid
+#  quantity       :decimal(, )
+#  price_usd      :decimal(, )
+#  date           :date
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  imported_from  :string
+#  cex_identifier :string
 #
 class Transaction < ApplicationRecord
   ORDER_TYPES = %w[sell buy]

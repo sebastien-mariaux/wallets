@@ -4,6 +4,8 @@
   <thead>
     <tr>
       <th scope='col'>Token</th>
+      <th scope='col'>Prix de marché (USD)</th>
+      <th scope='col'>Prix de référence (USD)</th>
       <th scope='col'></th>
     </tr>
   </thead>
@@ -11,8 +13,11 @@
     <% @coins.each do |coin| %>
       <tr>
         <td><%= coin.display_name %> </td>
+        <td><%= coin.market_value_usd %> </td>
+        <td><%= coin.reference_price %> </td>
         <td>
           <%= link_to 'Transactions', coin_transactions_path(coin) %>
+          <%= link_to 'Modifier', edit_coin_path(coin) %>
         </td>
       </tr>
     <% end %>
