@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ['total']
 
   connect() {
-    this.load()
     window.addEventListener('update-data', () => this.load(), false)
   }
 

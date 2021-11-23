@@ -21,7 +21,32 @@ module DashboardHelper
     coin_wallet = coin_wallets.find do |cw| 
       cw.coin_id == coin_id && cw.wallet_id == wallet_id
     end
-    quantity = coin_wallet&.quantity || 0
-    quantity > 0 ? quantity : '-' 
+    quantity = coin_wallet&.quantity
+    format_number(quantity)
+  end
+
+  def get_wallet_total(wallets, wallet_id, currency)
+    value = wallets.find{ |wallet| wallet.id == wallet_id }&.send("#{currency}_value")
+    format_number(value)
+  end
+
+  def get_coin_total(coins, coin_id, currency)
+    coin = coins.find{ |coin| coin.id == coin_id }
+    value = if currency
+            coin&.send("#{currency}_value")
+          else
+            coin.total_quantity
+          end
+    format_number(value)
+  end
+
+  def get_main_total(coin_wallets, currency)
+    total = coin_wallets.send("total_#{currency}_value")
+    format_number(total, precision: 6)
+  end
+
+  def format_number(value, precision: 6)
+    formatted_value = (value || 0) > 0 ? value : '-' 
+    number_with_precision formatted_value, precision: precision
   end
 end

@@ -1,7 +1,9 @@
+<% wallet_total = get_wallet_total(@wallets, wallet_id, currency) %>
+
 <td  data-controller="total" 
      data-total-url-value="<%= total_wallet_path(wallet_id, currency: currency) %>"
      data-action="update-quantity@window->total#load"
      >
-  <div class='text-end' data-total-target="total"></div>
+  <div class='text-end' data-total-target="total"><%= wallet_total %></div>
 </td>
 

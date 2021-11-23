@@ -3,8 +3,8 @@
     <thead>
       <tr>
         <th scope='col'></th>
-        <th scope='col'>Cours (USD)</th>
-        <th scope='col'>Prix de référence (USD)</th>
+        <th scope='col' data-bs-toggle="tooltip" data-bs-placement="top" title="USD">Cours</th>
+        <th scope='col' data-bs-toggle="tooltip" data-bs-placement="top" title="USD">Prix de réf.</th>
         <th scope='col'>Variation</th>
         <% @wallets.each do |wallet| %>
           <th scope='col'><%= wallet.name %></th>
@@ -18,7 +18,7 @@
     <tbody>
       <% @coins.each do |coin| %>
         <tr>
-          <th scope='row'><%= coin.display_name %></th>
+          <th scope='row' data-bs-toggle="tooltip" data-bs-placement="right" title="<%= coin.name %>" ><%= coin.code.upcase %></th>
           <td scope='row' class='text-end'><%= number_with_precision coin.market_value_usd, precision: 4 %></td>
           <td scope='row' class='text-end'><%= number_with_precision coin.reference_price, precision: 4 %></td>
           <td scope='row' class='text-end'><%= variation_from_reference(coin) %></td>

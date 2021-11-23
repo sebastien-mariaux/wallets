@@ -18,3 +18,8 @@ ActiveStorage.start()
 import "controllers"
 
 import 'css/site'
+
+// $(document).on('ready turbolinks:load', () => {
+//   $('[data-toggle="tooltip"]').tooltip();
+//   $('[data-toggle="popover"]').popover();
+// });
