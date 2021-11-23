@@ -1,9 +1,11 @@
+<% quantity =  get_quantity(@coin_wallets, coin.id, wallet.id) %>
+
 <td  data-controller="coin-wallet-form" 
      data-action="click->coin-wallet-form#displayForm"
      data-coin-wallet-form-url-value="<%= quantity_coin_wallets_path(coin_id: coin.id, wallet_id: wallet.id) %>"
      class='user-input'>
     <div class='text-end quantity-value' 
-         data-coin-wallet-form-target="quantity"></div>
+         data-coin-wallet-form-target="quantity"><%= quantity %></div>
     <%= form_with url: create_or_update_coin_wallets_path(coin_id: coin.id, wallet_id: wallet.id),
                   remote: true, local: false,
                   data: {action: "ajax:error->coin-wallet-form#handleError ajax:success->coin-wallet-form#handleSuccess"} do %>

@@ -4,6 +4,8 @@
       <tr>
         <th scope='col'></th>
         <th scope='col'>Cours (USD)</th>
+        <th scope='col'>Prix de référence (USD)</th>
+        <th scope='col'>Variation</th>
         <% @wallets.each do |wallet| %>
           <th scope='col'><%= wallet.name %></th>
         <% end %>
@@ -18,6 +20,8 @@
         <tr>
           <th scope='row'><%= coin.display_name %></th>
           <td scope='row' class='text-end'><%= number_with_precision coin.market_value_usd, precision: 4 %></td>
+          <td scope='row' class='text-end'><%= number_with_precision coin.reference_price, precision: 4 %></td>
+          <td scope='row' class='text-end'><%= variation_from_reference(coin) %></td>
           <% @wallets.each do |wallet| %>
             <%= render 'cell_form', coin: coin, wallet: wallet %>
           <% end %>
@@ -31,6 +35,8 @@
     <tfoot>
       <tr>
         <th scope='row'>Total (USD) </th>
+        <td></td>
+        <td></td>
         <th scope='row'></th>
         <% @wallets.each do |wallet| %>
           <%= render 'wallet_total', wallet_id: wallet.id, currency: 'usd'  %>
@@ -42,6 +48,8 @@
       </tr>
       <tr>
         <th scope='row'>Total (EUR) </th>
+        <td></td>
+        <td></td>
         <th scope='row'></th>
         <% @wallets.each do |wallet| %>
           <%= render 'wallet_total', wallet_id: wallet.id, currency: 'eur'  %>
@@ -53,6 +61,8 @@
       </tr>
       <tr>
         <th scope='row'>Total (BTC) </th>
+        <td></td>
+        <td></td>
         <th scope='row'></th>
         <% @wallets.each do |wallet| %>
           <%= render 'wallet_total', wallet_id: wallet.id, currency: 'btc'  %>
