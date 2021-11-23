@@ -19,7 +19,4 @@ import "controllers"
 
 import 'css/site'
 
-// $(document).on('ready turbolinks:load', () => {
-//   $('[data-toggle="tooltip"]').tooltip();
-//   $('[data-toggle="popover"]').popover();
-// });
+import "@fortawesome/fontawesome-free/css/all"

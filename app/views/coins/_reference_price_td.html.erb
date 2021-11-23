@@ -1,0 +1,15 @@
+<td  data-controller="dynamic-field" 
+    data-action="click->dynamic-field#displayForm"
+    data-dynamic-field-url-value="<%= reference_price_coin_path(coin) %>"
+    class='user-input'>
+    <div class='reference_price_value' 
+        data-dynamic-field-target="display"><%= coin.reference_price %></div>
+    <%= form_for coin, url: coin_path(coin),
+                  method: :put, remote: true, local: false, 
+                  data: {action: "ajax:error->dynamic-field#handleError ajax:success->dynamic-field#handleSuccess"} do |form| %>
+    <%= form.hidden_field :reference_price, 
+                          class: "form-control form-control-sm", 
+                          data: { 'action' => "focusout->dynamic-field#updateValue",
+                                  'dynamic-field-target' => "input" } %>
+    <% end %>
+</td>
