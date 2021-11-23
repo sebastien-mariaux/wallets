@@ -1,5 +1,5 @@
 <% if (@coin_wallet&.quantity || 0) > 0 %>
-  <%= number_with_precision(@coin_wallet.quantity , precision: 6)  %>
+  <%= number_with_precision(@coin_wallet.quantity, precision: @config.precision)  %>
 <% else %>
   -
 <% end %>

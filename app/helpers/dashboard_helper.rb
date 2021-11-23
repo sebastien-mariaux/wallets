@@ -42,11 +42,15 @@ module DashboardHelper
 
   def get_main_total(coin_wallets, currency)
     total = coin_wallets.send("total_#{currency}_value")
-    format_number(total, precision: 6)
+    format_number(total)
   end
 
-  def format_number(value, precision: 6)
+  def format_number(value, precision: nil)
     formatted_value = (value || 0) > 0 ? value : '-' 
-    number_with_precision formatted_value, precision: precision
+    number_with_precision formatted_value, precision: precision || default_precision
+  end
+
+  def default_precision
+    Config.fetch.precision
   end
 end

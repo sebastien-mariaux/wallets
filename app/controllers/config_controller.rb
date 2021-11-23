@@ -18,7 +18,7 @@ class ConfigController < ApplicationController
   private
 
   def update_params
-    params.require(:config).permit(:investment_eur)
+    params.require(:config).permit(:investment_eur, :precision)
   end
 
   def load_config
