@@ -5,6 +5,7 @@ export default class extends Controller {
 
   connect() {
     window.addEventListener('update-data', () => this.load(), false)
+    window.addEventListener('update-quantity', () => this.load(), false)
   }
 
   load() {
