@@ -1,0 +1,15 @@
+<h1>Import des transactions</h1>
+
+<%= form_with url: imports_path do |form| %>
+
+  <div class="mb-3">
+    <%= form.label :source, class: "form-label" %>
+    <%= form.select :source, %w[gate binance], {}, class: "form-select" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :csv_file, class: "form-label" %>
+    <%= form.file_field :csv_file, class: "form-select", accept: 'text/csv' %>
+  </div>
+
+  <%= form.submit "Create", class: "btn btn-primary" %>
+<% end %>

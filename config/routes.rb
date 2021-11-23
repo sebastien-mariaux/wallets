@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     
     resources :transactions, only: %i[index new create destroy]
   end
-
+  
   resources :coin_wallets, only: [] do
     get :quantity, on: :collection
     get :total, on: :collection
@@ -44,4 +44,6 @@ Rails.application.routes.draw do
     get :import, on: :collection
     get :export, on: :collection
   end
+
+  resource :imports, only: %i[new create]
 end
