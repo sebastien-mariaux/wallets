@@ -10,7 +10,7 @@ module Api
 
       def run
         run_api_call({}) do
-          all_coins = JSON.parse(response.body)
+          all_coins = JSON.parse(@response.body)
           create_or_update_coins(all_coins)
         end
       end

@@ -12,8 +12,8 @@ module Api
       def run_api_call(params, &block)
         log("GET #{self.class::PATH}")
         begin
-          response = self.class.get(self.class::PATH, params)
-          yield(response)
+          @response = self.class.get(self.class::PATH, params)
+          yield
         rescue Exception => e
           log(e)
         end

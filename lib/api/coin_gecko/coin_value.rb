@@ -10,7 +10,7 @@ module Api
 
       def run
         run_api_call(params) do
-          update_coins(response)
+          update_coins(@response)
         end
       end
 
