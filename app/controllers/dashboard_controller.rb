@@ -40,6 +40,7 @@ class DashboardController < ApplicationController
 
   def load_data
     @coins = Coin.order(:name)
+    @coins = @coins.visible unless params[:display_all]
     @wallets = Wallet.order(:name)
     @coin_wallets = CoinWallet.all
   end

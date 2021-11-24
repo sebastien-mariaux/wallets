@@ -26,6 +26,10 @@ class Coin < ApplicationRecord
 
   delegate :api_id, to: :gecko_coin
 
+  scope :visible, lambda { 
+    where.not(hide: true)
+  }
+
   def display_name
     "#{name} (#{code.upcase})"
   end

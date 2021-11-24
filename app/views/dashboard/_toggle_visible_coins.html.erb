@@ -1,0 +1,7 @@
+<div class=''>
+  <% if params[:display_all] %>
+    <%= icon_link_to("Masquer inactifs", "far fa-eye-slash", root_path) %>
+  <% else %>
+    <%= icon_link_to("Afficher tous", "far fa-eye", root_path(display_all: true)) %>
+  <% end %>
+</div>
