@@ -47,7 +47,7 @@ class CoinsController < ApplicationController
   end
 
   def allowed_params
-    params.require(:coin).permit(:name, :code, :gecko_coin_id, :reference_price)
+    params.require(:coin).permit(:name, :code, :gecko_coin_id, :reference_price, :hide)
   end
 
   def load_coins

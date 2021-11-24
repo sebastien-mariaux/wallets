@@ -21,6 +21,10 @@
     <%= form.label :reference_price, class: "form-label" %>
     <%= form.text_field :reference_price, class: "form-control" %>
   </div>
+  <div class="mb-3 form-check">
+    <%= form.check_box :hide, class: "form-check-input" %>
+    <%= form.label :hide, class: "form-check-label" %>
+  </div>
 
   <%= form.submit action, class: "btn btn-primary" %>
 <% end %>

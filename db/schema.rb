@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_204648) do
+ActiveRecord::Schema.define(version: 2021_11_23_235647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_204648) do
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "gecko_coin_id"
     t.decimal "reference_price"
+    t.boolean "hide", default: false
     t.index ["gecko_coin_id"], name: "index_coins_on_gecko_coin_id"
   end
 

@@ -6,6 +6,7 @@
       <th scope='col'>Token</th>
       <th scope='col'>Prix de marché (USD)</th>
       <th scope='col'>Prix de référence (USD)</th>
+      <th scope='col'>Masquer</th>
       <th scope='col'></th>
     </tr>
   </thead>
@@ -14,7 +15,12 @@
       <tr>
         <td><%= coin.display_name %> </td>
         <td><%= coin.market_value_usd %> </td>
-        <%= render 'reference_price_td', coin: coin%>
+        <%= render 'reference_price_td', coin: coin %>
+        <td>
+          <% if coin.hide %>
+            <i class="fas fa-check"></i>
+          <% end %>
+        </td>
         <td>
           <%= icon_link_to('Transactions', "fas fa-exchange-alt", coin_transactions_path(coin)) %>
           <%= icon_link_to('Modifier', "far fa-edit",  edit_coin_path(coin)) %>
