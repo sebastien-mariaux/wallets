@@ -1,0 +1,20 @@
+stak: 
+  name: Jigstack
+  code: stak
+  api_id: jigstack
+eth:
+  name: Ethereum
+  code: eth
+  api_id: ethereum
+btc:
+  name: Bitcoin
+  code: btc
+  api_id: bitcoin
+xrp:
+  name: XRP
+  code: xrp 
+  api_id: ripple
+cvx: 
+  name: CVX
+  code: cvx
+  api_id: "convex-finance

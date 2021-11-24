@@ -1,0 +1,35 @@
+stak:
+  code: stak
+  name: Jigstack
+  market_value_usd: 0.01156245
+  market_value_eur: 0.01025913
+  market_value_btc: 0.000000201009
+  gecko_coin: stak
+eth:
+  name: Ethereum
+  code: eth
+  market_value_usd: 4212.51
+  market_value_eur: 3737.68
+  market_value_btc: 0.07319436
+  gecko_coin: eth
+btc:
+  name: Bitcoin
+  code: btc
+  market_value_usd: 57693.0
+  market_value_eur: 51190.0
+  market_value_btc: 1.0
+  gecko_coin: btc
+xrp:
+  name: XRP
+  code: xrp
+  market_value_usd: 1.05
+  market_value_eur: 0.930316
+  market_value_btc: 0.00001822
+  gecko_coin: xrp
+cvx: 
+  name: Convex Finance
+  code: cvx
+  market_value_usd: 20.67
+  market_value_eur: 18.34
+  market_value_btc: 0.00035915
+  gecko_coin: cvx

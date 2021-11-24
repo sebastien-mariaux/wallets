@@ -1,0 +1,6 @@
+fr:
+  activerecord:
+    models:
+      coin:
+        one: Token
+        other: Tokens

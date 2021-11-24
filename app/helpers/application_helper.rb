@@ -7,4 +7,8 @@ module ApplicationHelper
       tag.i(class: icon)
     end
   end
+
+  def model_t(model_name)
+    t("activerecord.models.#{model_name}.one")
+  end
 end
