@@ -8,6 +8,28 @@ module Api
       attr_accessor :message
 
       base_uri 'https://api.coingecko.com/api/v3'
+
+      def run_api_call(params, &block)
+        log("GET #{self.class::PATH}")
+        begin
+          response = self.class.get(self.class::PATH, params)
+          yield(response)
+        rescue Exception => e
+          log(e)
+        end
+        log("Completed")
+        log("---------")
+      end
+
+      def log(text)
+        File.open('log/api.log', 'a') do |f|
+          f.puts formatted(text)
+        end
+      end
+
+      def formatted(text)
+        "#{DateTime.current} - [GECKO] - #{text}"
+      end
     end
   end
 end

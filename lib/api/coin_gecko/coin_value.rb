@@ -6,9 +6,12 @@ require_relative './base'
 module Api
   module CoinGecko
     class CoinValue < Base
+      PATH = '/simple/price'
+
       def run
-        response = self.class.get('/simple/price', params)
-        update_coins(response)
+        run_api_call(params) do
+          update_coins(response)
+        end
       end
 
       def params
@@ -26,14 +29,21 @@ module Api
       end
 
       def update_coins(response)
+        log("Response: #{response.code} (#{response.message})")
+        @counter = 0
         response.each do |api_id, value_hash|
-          coin = coins.find_by(gecko_coin: { api_id: api_id })
-          coin.update(
-            market_value_usd: value_hash['usd'],
-            market_value_btc: value_hash['btc'],
-            market_value_eur: value_hash['eur']
-          )
+          update_coin api_id, value_hash
         end
+        log "#{@counter} coins updated"
+      end
+
+      def update_coin(api_id, value_hash)
+        coin = coins.find_by(gecko_coin: { api_id: api_id })
+        @counter += 1 if coin.update(
+          market_value_usd: value_hash['usd'],
+          market_value_btc: value_hash['btc'],
+          market_value_eur: value_hash['eur']
+        )
       end
 
       def message
@@ -43,4 +53,3 @@ module Api
   end
 end
 
-# {"hedera-hashgraph"=>{"usd"=>0.388959}, "ethereum"=>{"usd"=>4392.35}, "cardano"=>{"usd"=>1.92}, "basic-attention-token"=>{"usd"=>1.09}, "bitcoin"=>{"usd"=>59723}, "cu

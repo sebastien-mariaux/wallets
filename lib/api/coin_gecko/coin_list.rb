@@ -6,10 +6,13 @@ require_relative './base'
 module Api
   module CoinGecko
     class CoinList < Base
+      PATH = '/coins/list'
+
       def run
-        response = self.class.get('/coins/list')
-        all_coins = JSON.parse(response.body)
-        create_or_update_coins(all_coins)
+        run_api_call({}) do
+          all_coins = JSON.parse(response.body)
+          create_or_update_coins(all_coins)
+        end
       end
 
       def create_or_update_coins(api_coins)

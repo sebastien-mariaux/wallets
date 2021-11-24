@@ -1,7 +1,7 @@
   <div class='buttons'>
     <%= button_tag "Mettre à jour la liste des Cryptos", 
                    class:"btn btn-outline-secondary btn-sm",
-                   data: {controller: 'api',
+                   data: {controller: 'button',
                           'button-url-value' => list_api_index_path,
                           'action': 'click->button#load' } do %>
       <span class="spinner hidden spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
