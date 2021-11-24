@@ -5,12 +5,11 @@ export default class extends Controller {
 
   connect() {
     window.addEventListener('update-data', () => this.load(), false)
-    window.addEventListener('update-quantity', () => this.load(), false)
   }
 
   load() {
     fetch(this.urlValue)
-      .then(response => response.text())
-      .then(html => this.element.innerHTML = html)
+      .then(response => response.json())
+      .then(data => this.element.innerHTML = data.value)
   }
 }

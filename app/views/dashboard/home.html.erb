@@ -1,10 +1,13 @@
 <div class='home'>
   <h1>Synthèse</h1>
 
-   <div class="summary"
-       data-controller='summary'
-       data-summary-url-value="<%= summary_dashboard_path %>">
-    <%= render 'summary' %>
+   <div class="template"
+       data-controller='template'
+       data-template-url-value="<%= summary_dashboard_path %>"
+       data-action="update-quantity@window->template#load update-data@window->template#load">
+    <div data-template-target="template">
+      <%= render 'summary' %>
+    </div>
   </div>
 
   <%= render 'actions' %>

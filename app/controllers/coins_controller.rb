@@ -2,9 +2,10 @@
 
 class CoinsController < ApplicationController
   before_action :load_coins, only: :index
-  before_action :load_coin, only: %i[total edit update reference_price]
+  before_action :load_coin, only: %i[total edit update reference_price 
+                                     market_value_usd variation_from_reference]
 
-  layout false, only: %i[total reference_price]
+  layout false, only: %i[total reference_price market_value_usd variation_from_reference]
 
   def new
     @coin = Coin.new
@@ -36,6 +37,15 @@ class CoinsController < ApplicationController
   end
 
   def reference_price
+  end
+
+  def market_value_usd
+    value = @coin.market_value_usd.round(@config.precision)
+
+    render json: {value: value}
+  end
+
+  def variation_from_reference
   end
 
   private

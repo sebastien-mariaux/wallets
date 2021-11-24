@@ -1,9 +1,9 @@
 <% main_total = get_main_total(@coin_wallets, currency) %>
 
-<th scope='row'  data-controller="total" 
-     data-total-url-value="<%= total_coin_wallets_path(currency: currency) %>"
-     data-action="update-quantity@window->total#load"
+<th scope='row'  data-controller="template" 
+     data-template-url-value="<%= total_coin_wallets_path(currency: currency) %>"
+     data-action="update-quantity@window->template#load update-data@window->template#load"
      >
-  <div class='text-end' data-total-target="total"><%= main_total %></div>
+  <div class='text-end' data-template-target="template"><%= main_total %></div>
 </th>
 

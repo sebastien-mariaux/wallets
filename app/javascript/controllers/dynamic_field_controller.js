@@ -24,10 +24,6 @@ export default class extends Controller {
     this.displayTarget.classList.remove('hidden')
   }
 
-  // quantityInput() {
-  //   return this.element.querySelector("input[name='quantity']")
-  // }
-
   updateValue() {
     let form = this.element.querySelector('form')
     Rails.fire(form, 'submit')
