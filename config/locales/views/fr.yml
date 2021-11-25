@@ -1,0 +1,15 @@
+fr:
+  dashboard:
+    actions:
+      backup: Backup
+      snapshot: Snapshot
+      update_list: Mettre à jour la liste des Cryptos
+      update_prices: Mettre à jour les prix
+    home:
+      title: Synthèse
+    summary:
+      current_value: "Valeur actuelle :"
+      delta: "Variation :"
+      investment: "Investissement :"
+    table:
+      delta: Variation

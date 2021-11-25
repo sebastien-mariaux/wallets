@@ -1,0 +1,7 @@
+fr:
+  app:
+    actions:
+      edit: Modifier
+      new: Nouveau
+    events:
+      loading: En cours de chargement...

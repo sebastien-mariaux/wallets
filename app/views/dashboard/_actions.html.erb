@@ -5,7 +5,7 @@
                           'button-url-value' => list_api_index_path,
                           'action': 'click->button#load' } do %>
       <span class="spinner hidden spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      <span> Mettre à jour la liste des Cryptos </span>
+      <span> <%= t '.update_list' %> </span>
     <%end %>
 
     <%= button_tag "Mettre à jour les prix", 
@@ -14,7 +14,7 @@
                           'button-url-value' => prices_api_index_path,
                           'action': 'click->button#load' } do %>
       <span class="spinner hidden spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      <span> Mettre à jour les prix </span>
+      <span> <%= t('.update_prices') %> </span>
     <% end %>
 
     <%= button_tag "Snapshot", 
@@ -23,7 +23,7 @@
                           'button-url-value' => request_snap_snapshots_path,
                           'action': 'click->button#load' } do %>
       <span class="spinner hidden spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      <span> Snapshot </span>
+      <span> <%= t('.snapshot') %> </span>
     <% end %>
 
     <%= button_tag "Backup", 
@@ -32,6 +32,6 @@
                           'button-url-value' => export_backup_path,
                           'action': 'click->button#load' } do %>
       <span class="spinner hidden spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      <span> Backup </span>
+      <span> <%= t '.backup' %> </span>
     <% end %>
   </div>

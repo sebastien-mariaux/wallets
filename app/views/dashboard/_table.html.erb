@@ -7,7 +7,7 @@
         </th>
         <th scope='col' data-bs-toggle="tooltip" data-bs-placement="top" title="USD">Cours</th>
         <th scope='col' data-bs-toggle="tooltip" data-bs-placement="top" title="USD">Prix de réf.</th>
-        <th scope='col'>Variation</th>
+        <th scope='col'><%= t '.delta' %></th>
         <% @wallets.each do |wallet| %>
           <th scope='col'><%= wallet.name %></th>
         <% end %>

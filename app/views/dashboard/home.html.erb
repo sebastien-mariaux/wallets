@@ -1,5 +1,5 @@
 <div class='home'>
-  <h1>Synthèse</h1>
+  <h1><%= t '.title' %></h1>
 
    <div class="template"
        data-controller='template'
@@ -30,7 +30,7 @@
                       data-chart-url-value="<%= chart_data_dashboard_path %>">
       <div class="text-center spinner-container">
         <div class="spinner-border text-secondary" role="status" id='graph-spinner'>
-          <span class="visually-hidden">Loading...</span>
+          <span class="visually-hidden"><%= t 'app.events.loading' %></span>
         </div>
       </div>
       <canvas id="wallet-pie" width="400" height="400">
