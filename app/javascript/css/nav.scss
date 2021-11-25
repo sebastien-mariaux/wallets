@@ -16,3 +16,13 @@ nav {
         }
     }
 }
+
+.nav.nav-tabs {
+  .nav-link {
+    color: $fire_red;
+    &.active {
+      background-color: $fire_red;
+      color: #fff;
+    }
+  }
+}
