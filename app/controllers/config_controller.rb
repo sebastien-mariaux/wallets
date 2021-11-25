@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ConfigController < ApplicationController
-  before_action :load_config
 
   def show; end
 
@@ -21,7 +20,4 @@ class ConfigController < ApplicationController
     params.require(:config).permit(:investment_eur, :precision)
   end
 
-  def load_config
-    @config = Config.fetch
-  end
 end

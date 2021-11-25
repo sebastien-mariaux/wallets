@@ -1,4 +1,4 @@
-<h1>Modifier la configuration</h1>
+<h1><%= t '.title' %></h1>
 
 
 <%= form_for @config, url: config_path, method: :put do |form| %>
@@ -11,5 +11,5 @@
     <%= form.number_field :precision, required: true, class: "form-control" %>
   </div>
 
-  <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
+  <%= form.submit t('app.actions.update'), class: "btn btn-primary" %>
 <% end %>

@@ -5,6 +5,11 @@ fr:
       title: Mes cryptos
     new:
       title: Nouvelle crypto
+  config:
+    edit:
+      title: Modifier la configuration
+    show:
+      title: Configuration
   dashboard:
     actions:
       backup: Backup

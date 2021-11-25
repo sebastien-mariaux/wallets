@@ -18,6 +18,8 @@ nav {
 }
 
 .nav.nav-tabs {
+  border-bottom-color: $fire_red;
+  
   .nav-link {
     color: $fire_red;
     &.active {
