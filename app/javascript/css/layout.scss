@@ -1,3 +1,13 @@
+body {
+  background-color: $white;
+  color: $black;
+
+}
+
+h1 {
+  color: $blue;
+}
+
 .main-container {
   max-width: 1500px;
   margin: auto;
@@ -9,7 +19,7 @@
 }
 
 .user-input {
-  color: rgb(99, 99, 211);
+  color: $blue;
 }
 
 .buttons {
@@ -30,6 +40,7 @@
 .green {
   color: green;
 }
+
 
 #flash{
   min-width: 500 px;

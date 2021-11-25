@@ -1,13 +1,18 @@
 nav {
     display: flex;
     padding: 0.5em;
-    background-color: gold;
+    background-color: $gold;
 
     .item {
         margin: 0 1em;
 
         a {
             text-decoration: none;
+            color: $blue;
+
+            &:hover {
+                font-weight: bold;
+            }
         }
     }
 }

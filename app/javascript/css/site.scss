@@ -1,5 +1,7 @@
 // bootstrap sass variable overrides here
 
+@import "./colors.scss";
 @import "~bootstrap/scss/bootstrap.scss";
 @import "./layout.scss";
 @import "./dashboard.scss";
+@import "./nav.scss";
