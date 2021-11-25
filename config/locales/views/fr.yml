@@ -1,4 +1,10 @@
 fr:
+  coins:
+    index:
+      new_coin: Ajouter une crypto
+      title: Mes cryptos
+    new:
+      title: Nouvelle crypto
   dashboard:
     actions:
       backup: Backup
@@ -8,8 +14,14 @@ fr:
     home:
       title: Synthèse
     summary:
-      current_value: "Valeur actuelle :"
-      delta: "Variation :"
-      investment: "Investissement :"
+      current_value: "Valeur actuelle : "
+      delta: "Variation : "
+      investment: "Investissement : "
     table:
       delta: Variation
+  wallets:
+    index:
+      new: Nouvelle plateforme
+      title: Mes Plateformes
+    new:
+      title: Nouvelle plateforme

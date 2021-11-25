@@ -1,9 +1,9 @@
-<h1><%= t('activerecord.models.coin.other').capitalize %></h1>
+<h1><%= t('.title').capitalize %></h1>
 
 <table class='table table-sm'>
   <thead>
     <tr>
-      <th scope='col'>Token</th>
+      <th scope='col'>Crypto</th>
       <th scope='col'>Prix de marché (USD)</th>
       <th scope='col'>Prix de référence (USD)</th>
       <th scope='col'>Masquer</th>
@@ -30,4 +30,4 @@
   </tbody>
 </table>
 
-<%= link_to "New coin", new_coin_path %>
+<%= link_to t('.new_coin'), new_coin_path, class: 'btn btn-info' %>

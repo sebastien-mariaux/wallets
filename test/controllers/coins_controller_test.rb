@@ -10,13 +10,14 @@ class CoinsControllerTest < ControllersTest
   should  'index' do
     get coins_path
     assert_response :success
-    assert_select 'h1', text: 'Tokens'
+    assert_select 'h1', text: 'Mes cryptos'
+    assert_select '.btn', text: 'Ajouter une crypto'
   end
 
   should 'get new' do
     get new_coin_path
     assert_response :success
-    assert_select 'h1', text: 'Nouveau token'
+    assert_select 'h1', text: 'Nouvelle crypto'
   end
 
   should 'get edit' do

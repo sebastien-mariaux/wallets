@@ -2,18 +2,31 @@
 
 class WalletsController < ApplicationController
   before_action :load_wallets, only: :index
-  before_action :load_wallet, only: :total
+  before_action :load_wallet, only: %i[edit total update]
   layout false, only: :total
 
-  def new; end
+  def new
+    @wallet = Wallet.new
+  end
 
   def index; end
 
+  def edit; end
+
   def create
-    if Wallet.create(create_params)
+    @wallet = Wallet.create(allowed_params)
+    if @wallet.save
       redirect_to wallets_path, notice: 'Success!'
     else
-      render status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @wallet.update(allowed_params)
+      redirect_to coins_path, notice: 'Success!'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -23,7 +36,7 @@ class WalletsController < ApplicationController
 
   private
 
-  def create_params
+  def allowed_params
     params.require(:wallet).permit(:name, :description)
   end
 
