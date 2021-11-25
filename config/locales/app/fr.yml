@@ -1,7 +1,9 @@
 fr:
   app:
     actions:
+      create: Créer
       edit: Modifier
       new: Nouveau
+      update: Modifier
     events:
       loading: En cours de chargement...

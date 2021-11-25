@@ -1,3 +1,3 @@
 <h1><%=" #{t 'app.actions.edit'} #{@wallet.name}" %></h1>
 
-<%= render 'form', url: edit_wallet_path(@wallet), method: :put %>
+<%= render 'form', url: wallet_path(@wallet), method: :put, action: t('app.actions.update') %>

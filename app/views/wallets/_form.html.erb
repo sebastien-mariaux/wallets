@@ -1,7 +1,11 @@
 <%= form_for @wallet, url: url, method: method do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name, required: true %>
-  <%= form.label :description %>
-  <%= form.text_field :description %>
-  <%= form.submit "Create" %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, required: true, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_field :description, class: "form-control" %>
+  </div>
+  <%= form.submit action, class: "btn btn-info" %>
 <% end %>

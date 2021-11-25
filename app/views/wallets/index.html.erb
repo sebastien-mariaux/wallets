@@ -3,7 +3,8 @@
 <table class='table table-sm'>
   <thead>
     <tr>
-      <th scope='col'>Nom de la plateforme</th>
+      <th scope='col'><%= Wallet.human_attribute_name(:name) %></th>
+      <th scope='col'><%= Wallet.human_attribute_name(:description) %></th>
       <th scope='col'></th>
     </tr>
   </thead>
@@ -11,6 +12,7 @@
     <% @wallets.each do |wallet| %>
       <tr>
         <td><%= wallet.name %></td>
+        <td><%= wallet.description %></td>
         <td>
           <%= icon_link_to('Modifier', "far fa-edit",  edit_wallet_path(wallet)) %>
         </td>
