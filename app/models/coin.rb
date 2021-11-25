@@ -13,6 +13,8 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  gecko_coin_id    :uuid
+#  reference_price  :decimal(, )
+#  hide             :boolean          default(FALSE)
 #
 class Coin < ApplicationRecord
   belongs_to :gecko_coin, optional: true

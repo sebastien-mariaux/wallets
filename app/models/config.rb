@@ -9,6 +9,7 @@
 #  investment_eur  :decimal(, )      default(0.0)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  precision       :integer          default(6)
 #
 class Config < ApplicationRecord
   validates :singleton_guard, uniqueness: true, presence: true

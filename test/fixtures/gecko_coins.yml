@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: gecko_coins
+#
+#  id         :uuid             not null, primary key
+#  name       :string
+#  code       :string
+#  api_id     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 stak: 
   name: Jigstack
   code: stak

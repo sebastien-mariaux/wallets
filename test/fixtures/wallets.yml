@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: wallets
+#
+#  id          :uuid             not null, primary key
+#  name        :string
+#  description :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 binance:
   name: Binance
 coinbase:
