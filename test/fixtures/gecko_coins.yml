@@ -9,7 +9,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-stak: 
+stak:
   name: Jigstack
   code: stak
   api_id: jigstack
@@ -23,9 +23,13 @@ btc:
   api_id: bitcoin
 xrp:
   name: XRP
-  code: xrp 
+  code: xrp
   api_id: ripple
-cvx: 
+cvx:
   name: CVX
   code: cvx
   api_id: "convex-finance"
+ada:
+  name: Cardano
+  code: ada
+  api_id: cardano

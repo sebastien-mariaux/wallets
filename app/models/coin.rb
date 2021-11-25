@@ -32,6 +32,7 @@ class Coin < ApplicationRecord
     where.not(hide: true)
   }
 
+
   def display_name
     "#{name} (#{code.upcase})"
   end

@@ -4,31 +4,98 @@ class CoinsControllerTest < ControllersTest
   setup do
     @busd = coins(:busd)
     @eth = coins(:eth)
+    @gecko_coin = gecko_coins(:ada)
   end
 
-  context 'index' do
-    setup do
-      
-    end
-    
-    should  'succeed' do
-      get coins_path
-      assert_response :ok
-    end
+  should  'index' do
+    get coins_path
+    assert_response :success
+    assert_select 'h1', text: 'Tokens'
+  end
 
-    should 'display all coins' do
-      get coins_path(display_all: true)
-      coins = assigns(:coins)
-      assert coins.include? @busd
-      assert coins.include? @eth
-    end
+  should 'get new' do
+    get new_coin_path
+    assert_response :success
+    assert_select 'h1', text: 'Nouveau token'
+  end
 
-    should 'not display hidden coins' do
-      get coins_path
-      coins = assigns(:coins)
-      assert_not coins.include? @busd
-      assert coins.include? @eth
-    end
+  should 'get edit' do
+    get edit_coin_path(@eth)
+    assert_response :success
+    assert_select 'h1', text: 'Modifier Ethereum (ETH)'
   end
   
+  should 'create successfully with gecko coin' do
+    params = { coin: { gecko_coin_id: @gecko_coin.id, hide: true }}
+    assert_difference 'Coin.count', 1 do
+      post coins_path, params: params
+      assert_response :redirect
+    end
+    new_coin = Coin.find_by(gecko_coin_id: @gecko_coin.id)
+    assert_equal @gecko_coin.name, new_coin.name
+    assert_equal @gecko_coin.code, new_coin.code
+    assert new_coin.hide
+  end
+
+  should 'create successfully without gecko coin' do
+    params = { coin: { name: 'some weird coin', code: 'SWC', reference_price: 10 }}
+    assert_difference 'Coin.count', 1 do
+      post coins_path, params: params
+      assert_response :redirect
+    end
+    new_coin = Coin.find_by(name: 'some weird coin')
+    assert_equal 'SWC', new_coin.code
+    assert_equal 10, new_coin.reference_price
+    assert_not new_coin.hide
+  end
+
+  should 'fail to create' do
+    params = { coin: { name: 'some weird coin' }}
+    assert_no_difference 'Coin.count' do
+      post coins_path, params: params
+      assert_response :unprocessable_entity
+    end
+  end
+
+  should 'update successfully' do
+    params = { coin: { hide: true, reference_price: 0.9999, name: 'biiinance' } }
+    assert_no_difference 'Coin.count', 1 do
+      put coin_path(@busd), params: params
+      assert_response :redirect
+    end
+    assert_equal 'biiinance', @busd.reload.name
+  end
+
+  should 'fail to update' do
+    params = { coin: { hide: true, reference_price: 0.9999, name: '' } }
+    assert_no_difference 'Coin.count', 1 do
+      put coin_path(@busd), params: params
+      assert_response :unprocessable_entity
+    end
+    assert_equal 'Binance USD', @busd.reload.name
+  end
+
+  should 'get total quantity' do
+    get total_coin_path(@eth)
+    assert_response :success
+    assert_template :total
+  end
+
+  should 'get reference price' do
+    get reference_price_coin_path(@eth)
+    assert_response :success
+    assert_template :reference_price
+  end
+
+  should 'get market_value_usd' do
+    get market_value_usd_coin_path(@eth)
+    assert_response :success
+    assert_equal ['value'], JSON.parse(response.body).keys
+  end
+
+  should 'get variation from reference' do
+    get variation_from_reference_coin_path(@eth)
+    assert_response :success
+    assert_template :variation_from_reference
+  end
 end

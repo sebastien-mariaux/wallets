@@ -19,15 +19,17 @@ class CoinsController < ApplicationController
     if @coin.update(allowed_params)
       redirect_to coins_path, notice: 'Success!'
     else
-      render status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def create  
-    if Coin.create(allowed_params)
+    @coin = Coin.new(allowed_params)
+    set_name_and_code
+    if @coin.save
       redirect_to coins_path, notice: 'Success!'
     else
-      render status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -66,5 +68,12 @@ class CoinsController < ApplicationController
 
   def load_coin
     @coin = Coin.find(params[:id])
+  end
+
+  def set_name_and_code
+    return if @coin.gecko_coin.nil?
+
+    @coin.name = @coin.gecko_coin.name if @coin.name.nil?
+    @coin.code = @coin.gecko_coin.code if @coin.code.nil?
   end
 end
