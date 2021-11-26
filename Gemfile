@@ -61,7 +61,7 @@ group :test do
   gem 'webdrivers'
   gem "minitest-rails"
 
-  gem 'shoulda', '~> 4.0'
+   gem 'shoulda', '~> 4.0'
   gem 'rails-controller-testing'
 end
 

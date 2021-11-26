@@ -12,7 +12,6 @@ class ConfigControllerTest < ControllersTest
     get edit_config_path
     assert_response :success
     assert_select 'h1', text: 'Modifier la configuration'
-    assert_select '.btn', text: 'Modifier'
   end
 
   should 'create' do
