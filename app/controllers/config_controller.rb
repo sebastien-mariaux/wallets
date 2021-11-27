@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ConfigController < ApplicationController
-
   def show; end
 
   def edit; end
@@ -19,5 +18,4 @@ class ConfigController < ApplicationController
   def update_params
     params.require(:config).permit(:investment_eur, :precision)
   end
-
 end

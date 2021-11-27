@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './controllers_test'
 
 class CoinsControllerTest < ControllersTest
@@ -7,7 +9,7 @@ class CoinsControllerTest < ControllersTest
     @gecko_coin = gecko_coins(:ada)
   end
 
-  should  'index' do
+  should 'index' do
     get coins_path
     assert_response :success
     assert_select 'h1', text: 'Mes cryptos'
@@ -25,9 +27,9 @@ class CoinsControllerTest < ControllersTest
     assert_response :success
     assert_select 'h1', text: 'Modifier Ethereum (ETH)'
   end
-  
+
   should 'create successfully with gecko coin' do
-    params = { coin: { gecko_coin_id: @gecko_coin.id, hide: true }}
+    params = { coin: { gecko_coin_id: @gecko_coin.id, hide: true } }
     assert_difference 'Coin.count', 1 do
       post coins_path, params: params
       assert_response :redirect
@@ -39,7 +41,7 @@ class CoinsControllerTest < ControllersTest
   end
 
   should 'create successfully without gecko coin' do
-    params = { coin: { name: 'some weird coin', code: 'SWC', reference_price: 10 }}
+    params = { coin: { name: 'some weird coin', code: 'SWC', reference_price: 10 } }
     assert_difference 'Coin.count', 1 do
       post coins_path, params: params
       assert_response :redirect
@@ -51,7 +53,7 @@ class CoinsControllerTest < ControllersTest
   end
 
   should 'fail to create' do
-    params = { coin: { name: 'some weird coin' }}
+    params = { coin: { name: 'some weird coin' } }
     assert_no_difference 'Coin.count' do
       post coins_path, params: params
       assert_response :unprocessable_entity

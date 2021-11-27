@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 class TransactionsController < ApplicationController
   before_action :load_coin
   before_action :load_transactions, only: %i[index destroy]
   before_action :load_transaction, only: :destroy
 
-  def index
-  end
+  def index; end
 
-  def new
-  end
+  def new; end
 
   def destroy
     @transaction.destroy
@@ -22,7 +22,7 @@ class TransactionsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   private
 
   def allowed_params

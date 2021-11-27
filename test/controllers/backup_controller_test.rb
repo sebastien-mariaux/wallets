@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require_relative './controllers_test'
 
 class CoinsControllerTest < ControllersTest
-
   context 'run import' do
     should 'return process id' do
       get import_backup_path

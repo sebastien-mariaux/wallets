@@ -28,10 +28,9 @@ class Coin < ApplicationRecord
 
   delegate :api_id, to: :gecko_coin
 
-  scope :visible, lambda { 
+  scope :visible, lambda {
     where.not(hide: true)
   }
-
 
   def display_name
     "#{name} (#{code.upcase})"
@@ -109,6 +108,6 @@ class Coin < ApplicationRecord
   def variation_from_reference
     return 0 unless market_value_usd && reference_price
 
-   ( (market_value_usd / reference_price) - 1 ) * 100
+    ((market_value_usd / reference_price) - 1) * 100
   end
 end

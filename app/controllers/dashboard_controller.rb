@@ -44,6 +44,4 @@ class DashboardController < ApplicationController
     @wallets = Wallet.order(:name)
     @coin_wallets = CoinWallet.all
   end
-
-
 end

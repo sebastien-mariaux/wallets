@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './controllers_test'
 
 class ConfigControllerTest < ControllersTest
@@ -15,7 +17,7 @@ class ConfigControllerTest < ControllersTest
   end
 
   should 'create' do
-    params = {config: {investment_eur: 10_000, precision: 4}}
+    params = { config: { investment_eur: 10_000, precision: 4 } }
     assert_difference 'Config.count', 1 do
       put config_path, params: params
       assert_response :redirect
@@ -26,7 +28,7 @@ class ConfigControllerTest < ControllersTest
 
   should 'update' do
     @config = Config.fetch
-    params = {config: {investment_eur: 10_000, precision: 4}}
+    params = { config: { investment_eur: 10_000, precision: 4 } }
     assert_no_difference 'Config.count' do
       put config_path, params: params
       assert_response :redirect

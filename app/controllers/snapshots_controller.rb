@@ -10,8 +10,7 @@ class SnapshotsController < ApplicationController
     render json: { id: @app_process.id }
   end
 
-  def index
-  end
+  def index; end
 
   private
 

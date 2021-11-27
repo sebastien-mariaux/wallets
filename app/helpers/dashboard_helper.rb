@@ -13,12 +13,12 @@ module DashboardHelper
     delta = coin.variation_from_reference
     klass = delta >= 0 ? 'green' : 'red'
     tag.span(class: klass) do
-     "#{ number_with_precision delta, precision: 2} %"
+      "#{number_with_precision delta, precision: 2} %"
     end
   end
 
   def get_quantity(coin_wallets, coin_id, wallet_id)
-    coin_wallet = coin_wallets.find do |cw| 
+    coin_wallet = coin_wallets.find do |cw|
       cw.coin_id == coin_id && cw.wallet_id == wallet_id
     end
     quantity = coin_wallet&.quantity
@@ -26,17 +26,17 @@ module DashboardHelper
   end
 
   def get_wallet_total(wallets, wallet_id, currency)
-    value = wallets.find{ |wallet| wallet.id == wallet_id }&.send("#{currency}_value")
+    value = wallets.find { |wallet| wallet.id == wallet_id }&.send("#{currency}_value")
     format_number(value)
   end
 
   def get_coin_total(coins, coin_id, currency)
-    coin = coins.find{ |coin| coin.id == coin_id }
+    coin = coins.find { |coin| coin.id == coin_id }
     value = if currency
-            coin&.send("#{currency}_value")
-          else
-            coin.total_quantity
-          end
+              coin&.send("#{currency}_value")
+            else
+              coin.total_quantity
+            end
     format_number(value)
   end
 
@@ -46,7 +46,7 @@ module DashboardHelper
   end
 
   def format_number(value, precision: nil)
-    formatted_value = (value || 0) > 0 ? value : '-' 
+    formatted_value = (value || 0).positive? ? value : '-'
     number_with_precision formatted_value, precision: precision || default_precision
   end
 

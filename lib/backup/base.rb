@@ -7,7 +7,7 @@ module Backup
     BASE_DIR = Rails.root.join('db', 'dump')
 
     def ordered_models
-      [Config, GeckoCoin, Coin, Wallet, CoinWallet, AppProcess, 
+      [Config, GeckoCoin, Coin, Wallet, CoinWallet, AppProcess,
        Snapshot, CoinSnapshot]
     end
 

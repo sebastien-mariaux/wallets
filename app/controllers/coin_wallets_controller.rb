@@ -5,8 +5,7 @@ class CoinWalletsController < ApplicationController
 
   layout false
 
-  def quantity
-  end
+  def quantity; end
 
   def total
     @total_value = CoinWallet.send("total_#{params['currency']}_value")

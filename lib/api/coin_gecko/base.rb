@@ -9,7 +9,7 @@ module Api
 
       base_uri 'https://api.coingecko.com/api/v3'
 
-      def run_api_call(params, &block)
+      def run_api_call(params)
         log("GET #{self.class::PATH}")
         begin
           @response = self.class.get(self.class::PATH, params)
@@ -17,8 +17,8 @@ module Api
         rescue Exception => e
           log(e)
         end
-        log("Completed")
-        log("---------")
+        log('Completed')
+        log('---------')
       end
 
       def log(text)

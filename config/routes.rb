@@ -16,10 +16,10 @@ Rails.application.routes.draw do
     get :reference_price, on: :member
     get :market_value_usd, on: :member
     get :variation_from_reference, on: :member
-    
+
     resources :transactions, only: %i[index new create destroy]
   end
-  
+
   resources :coin_wallets, only: [] do
     get :quantity, on: :collection
     get :total, on: :collection

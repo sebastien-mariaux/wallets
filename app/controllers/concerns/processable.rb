@@ -4,7 +4,7 @@ require 'active_support/concern'
 
 module Processable
   extend ActiveSupport::Concern
-  
+
   private
 
   def create_process

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require_relative './controllers_test'
 
 class CoinsControllerTest < ControllersTest
-
   context 'coin list' do
     should 'return process id' do
       get list_api_index_path

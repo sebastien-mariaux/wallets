@@ -8,8 +8,7 @@ class ImportsController < ApplicationController
 
   before_action :create_process, only: %i[]
 
-  def new
-  end
+  def new; end
 
   def create
     exchange = params['source']
@@ -28,5 +27,4 @@ class ImportsController < ApplicationController
     importer = ImportTransactions::BinanceImporter.new(file)
     importer.import
   end
-
 end

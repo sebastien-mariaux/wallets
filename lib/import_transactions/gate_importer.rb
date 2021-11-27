@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'csv'
 
 module ImportTransactions
   class GateImporter
     def initialize(file)
-      @csv_data =  CSV.read(file)
+      @csv_data = CSV.read(file)
       @headers = @csv_data.shift
       check_consistent_format
     end
@@ -17,12 +19,11 @@ module ImportTransactions
       end
     end
 
-
     def check_consistent_format
-      expected = ["id", "date", "type", "market", "price", "amount", "total", "fees"]
+      expected = %w[id date type market price amount total fees]
       return if @headers == expected
-      
-      raise "WARNING: Gate transaction file format have changed."
+
+      raise 'WARNING: Gate transaction file format have changed.'
     end
 
     class RowImporter
@@ -33,7 +34,7 @@ module ImportTransactions
       end
 
       def import
-        return if skip_row?  
+        return if skip_row?
 
         create_transaction
       end
@@ -42,7 +43,7 @@ module ImportTransactions
         return if Transaction.find_by(imported_from: SOURCE_NAME, cex_identifier: row_sha)
 
         Transaction.create!(imported_from: SOURCE_NAME, cex_identifier: row_sha,
-                            order_type: order_type, coin_id: coin_id, price_usd: price_usd, 
+                            order_type: order_type, coin_id: coin_id, price_usd: price_usd,
                             date: transaction_date, quantity: transaction_quantity)
       end
 
@@ -58,14 +59,14 @@ module ImportTransactions
       end
 
       def transaction_quantity
-        debugger if  @row[5].to_f.blank?
+        debugger if @row[5].to_f.blank?
         @row[5].to_f
       end
 
       def transaction_date
         @row[1]
       end
-      
+
       def price_usd
         @row[4].to_f
       end
@@ -88,6 +89,5 @@ module ImportTransactions
         @row.join('')
       end
     end
-    
   end
 end

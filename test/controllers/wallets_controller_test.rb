@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './controllers_test'
 
 class CoinsControllerTest < ControllersTest
@@ -26,7 +28,7 @@ class CoinsControllerTest < ControllersTest
   end
 
   should 'create successfully' do
-    params = {wallet: {name: 'Wallawallet', description: 'Un wallet pour HBAR'}}
+    params = { wallet: { name: 'Wallawallet', description: 'Un wallet pour HBAR' } }
     assert_difference 'Wallet.count', 1 do
       post wallets_path, params: params
       assert_response :redirect
@@ -34,7 +36,7 @@ class CoinsControllerTest < ControllersTest
   end
 
   should 'fail to create' do
-    params = {wallet: {description: 'Un wallet pour HBAR'}}
+    params = { wallet: { description: 'Un wallet pour HBAR' } }
     assert_no_difference 'Wallet.count' do
       post wallets_path, params: params
       assert_response :unprocessable_entity
@@ -42,7 +44,7 @@ class CoinsControllerTest < ControllersTest
   end
 
   should 'update wallet' do
-    params = {wallet: {description: 'new description'}}
+    params = { wallet: { description: 'new description' } }
     assert_no_difference 'Wallet.count' do
       put wallet_path(@binance), params: params
       assert_response :redirect
@@ -52,7 +54,7 @@ class CoinsControllerTest < ControllersTest
 
   should 'get total' do
     coinbase_eur_value = 207 * 0.930316
-    get total_wallet_path(@coinbase), params: {currency: 'eur'}
+    get total_wallet_path(@coinbase), params: { currency: 'eur' }
     assert_response :success
     assert_template :total
     assert_equal coinbase_eur_value, assigns(:currency_value)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddCexIdentifierToTransaction < ActiveRecord::Migration[6.1]
   def change
     add_columns :transactions, :imported_from, type: :string

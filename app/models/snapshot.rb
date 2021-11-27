@@ -19,7 +19,7 @@ class Snapshot < ApplicationRecord
   accepts_nested_attributes_for :coin_snapshots
 
   def display_coins
-    coin_list = coins.map{ |coin| coin.code.upcase }
+    coin_list = coins.map { |coin| coin.code.upcase }
     coin_count = coins.count
     "#{coin_count} tokens (#{coin_list.join(', ')})"
   end

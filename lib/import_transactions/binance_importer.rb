@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'csv'
 
 module ImportTransactions
   class BinanceImporter
     def initialize(file)
-      @csv_data =  CSV.read(file)
+      @csv_data = CSV.read(file)
       @headers = @csv_data.shift
       check_consistent_format
     end
@@ -15,15 +17,13 @@ module ImportTransactions
       end
     end
 
-    def import_row(row)
-
-    end
+    def import_row(row); end
 
     def check_consistent_format
-      expected = ["UTC_Time", "Account", "Operation", "Coin", "Change", "Remark"]
+      expected = %w[UTC_Time Account Operation Coin Change Remark]
       return if @headers == expected
-      
-      raise "WARNING: Binance transaction file format have changed."
+
+      raise 'WARNING: Binance transaction file format have changed.'
     end
 
     class RowImporter
@@ -34,7 +34,7 @@ module ImportTransactions
       end
 
       def import
-        return if skip_row?  
+        return if skip_row?
 
         create_transaction
       end
@@ -67,6 +67,5 @@ module ImportTransactions
         row.join('')
       end
     end
-    
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class CoinTest < ActiveSupport::TestCase
@@ -17,31 +19,29 @@ class CoinTest < ActiveSupport::TestCase
   context 'compute totals' do
     setup do
       @eth = coins(:eth)
-      @eth_binance = coin_wallets(:eth_binance)
-      @eth_ledger = coin_wallets(:eth_ledger)
       assert_equal 2.1, coin_wallets(:eth_binance).quantity
       assert_equal 5.41, coin_wallets(:eth_ledger).quantity
       assert_equal 2, coins(:eth).wallets.count
     end
 
     should 'compute total quantity' do
-      expected =  2.1 + 5.41
-      assert_equal expected, coins(:eth).total_quantity
+      expected = 2.1 + 5.41
+      assert_equal expected, @eth.total_quantity
     end
 
     should 'compute usd_value' do
       expected = (2.1 + 5.41) * 4212.51
-      assert_equal expected.round(4), coins(:eth).usd_value.round(4)
+      assert_equal expected.round(4), @eth.usd_value.round(4)
     end
 
     should 'compute eur value' do
       expected = (2.1 + 5.41) * 3737.68
-      assert_equal expected.round(4), coins(:eth).eur_value.round(4)
+      assert_equal expected.round(4), @eth.eur_value.round(4)
     end
 
     should 'compute btc value' do
       expected = (2.1 + 5.41) * 0.07319436
-      assert_equal expected.round(4), coins(:eth).btc_value.round(4)
+      assert_equal expected.round(4), @eth.btc_value.round(4)
     end
   end
 

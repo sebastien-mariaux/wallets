@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: transactions
@@ -14,19 +16,18 @@
 #  cex_identifier :string
 #
 class Transaction < ApplicationRecord
-  ORDER_TYPES = %w[sell buy]
+  ORDER_TYPES = %w[sell buy].freeze
 
   belongs_to :coin
 
-  validates :order_type, presence: true, inclusion: {in: ORDER_TYPES}
+  validates :order_type, presence: true, inclusion: { in: ORDER_TYPES }
   validates :quantity, presence: true
   validates :price_usd, presence: true
 
-  scope :buy, -> {where(order_type: 'buy')}
-  scope :sell, -> {where(order_type: 'sell')}
+  scope :buy, -> { where(order_type: 'buy') }
+  scope :sell, -> { where(order_type: 'sell') }
 
   def usd_value
     price_usd * quantity
   end
-
 end
