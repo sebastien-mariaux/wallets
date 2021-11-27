@@ -8,7 +8,7 @@ class CoinWalletsController < AuthenticatedController
   def quantity; end
 
   def total
-    @total_value = CoinWallet.send("total_#{params['currency']}_value")
+    @total_value = current_user.wealth.send("total_#{params['currency']}_value")
   end
 
   def create_or_update

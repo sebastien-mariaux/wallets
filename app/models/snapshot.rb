@@ -11,6 +11,7 @@
 #  investment_eur  :decimal(, )
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :uuid
 #
 class Snapshot < ApplicationRecord
   has_many :coin_snapshots, dependent: :destroy

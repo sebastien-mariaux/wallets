@@ -1,21 +1,35 @@
 <nav>
-  <div class='item'>
-    <%= link_to t('nav.home'), root_path %>
+  <div class=submenu>
+      <div class='item'>
+        <%= link_to t('nav.home'), root_path %>
+      </div>
+    <% if user_signed_in?%>
+      <div class='item'>
+        <%= link_to t('nav.overview'), root_path %>
+      </div>
+      <div class='item'>
+        <%= link_to t('nav.wallets'), wallets_path %>
+      </div>
+      <div class='item'>
+        <%= link_to t('nav.coins'), coins_path %>
+      </div>
+      <div class='item'>
+        <%= link_to t('nav.snapshots'), snapshots_path %>
+      </div>
+      <div class='item'>
+        <%= link_to t('nav.import'), new_imports_path %>
+      </div>
+    <% end %>
   </div>
-  <div class='item'>
-    <%= link_to t('nav.wallets'), wallets_path %>
-  </div>
-  <div class='item'>
-    <%= link_to t('nav.coins'), coins_path %>
-  </div>
-  <div class='item'>
-    <%= link_to t('nav.config'), config_path %>
-  </div>
-  <div class='item'>
-    <%= link_to t('nav.snapshots'), snapshots_path %>
-  </div>
-  <div class='item'>
-    <%= link_to t('nav.import'), new_imports_path %>
+  <div class='submenu'>
+    <% if user_signed_in?%>
+      <div class='item'>
+        <%= link_to t('nav.edit_user'), edit_profile_path %>
+      </div>
+      <div class='item'>
+        <%= link_to t('nav.logout'), destroy_user_session_path, method: :delete %>
+      </div>
+    <% end %>
   </div>
 
 </nav>

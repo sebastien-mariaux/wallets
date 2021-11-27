@@ -2,5 +2,10 @@
 
 </div>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+
+<% flash.each do |type, message| %>
+  <% mapped_type = type == 'notice' ? 'success' : 'warning' %>
+  <div class="alert alert-<%= mapped_type %>" role="alert">
+    <%= message %>
+  </div>
+<% end %>

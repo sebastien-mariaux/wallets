@@ -29,6 +29,11 @@ class User < ApplicationRecord
 
   has_many :coins, dependent: :destroy
   has_many :wallets, dependent: :destroy
+  has_many :coin_wallets, dependent: :destroy
   has_many :transactions, dependent: :destroy
   has_many :snapshots, dependent: :destroy
+
+  def wealth
+    @wealth ||= UserWealth.new(self)
+  end
 end

@@ -2,34 +2,59 @@
 #
 # Table name: gecko_coins
 #
-#  id         :uuid             not null, primary key
-#  name       :string
-#  code       :string
-#  api_id     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id               :uuid             not null, primary key
+#  name             :string
+#  code             :string
+#  api_id           :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  market_value_btc :decimal(, )
+#  market_value_eur :decimal(, )
+#  market_value_usd :decimal(, )
 #
 stak:
   name: Jigstack
   code: stak
   api_id: jigstack
+  market_value_usd: 0.01156245
+  market_value_eur: 0.01025913
+  market_value_btc: 0.000000201009
 eth:
   name: Ethereum
   code: eth
   api_id: ethereum
+  market_value_usd: 4212.51
+  market_value_eur: 3737.68
+  market_value_btc: 0.07319436
 btc:
   name: Bitcoin
   code: btc
   api_id: bitcoin
+  market_value_usd: 57693.0
+  market_value_eur: 51190.0
+  market_value_btc: 1.0
 xrp:
   name: XRP
   code: xrp
   api_id: ripple
+  market_value_usd: 1.05
+  market_value_eur: 0.930316
+  market_value_btc: 0.00001822
 cvx:
   name: CVX
   code: cvx
   api_id: "convex-finance"
+  market_value_usd: 20.67
+  market_value_eur: 18.34
+  market_value_btc: 0.00035915
 ada:
   name: Cardano
   code: ada
   api_id: cardano
+busd:
+  name: Binance (USD)
+  code: busd
+  api_id: binance-usd
+  market_value_usd: 1.0
+  market_value_eur: 0.889744
+  market_value_btc: 0.00001743

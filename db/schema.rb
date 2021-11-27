@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_27_165216) do
+ActiveRecord::Schema.define(version: 2021_11_27_180837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -57,14 +57,6 @@ ActiveRecord::Schema.define(version: 2021_11_27_165216) do
     t.uuid "user_id"
     t.index ["gecko_coin_id"], name: "index_coins_on_gecko_coin_id"
     t.index ["user_id"], name: "index_coins_on_user_id"
-  end
-
-  create_table "configs", force: :cascade do |t|
-    t.integer "singleton_guard", default: 0
-    t.decimal "investment_eur", default: "0.0"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "precision", default: 6
   end
 
   create_table "gecko_coins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -121,6 +113,8 @@ ActiveRecord::Schema.define(version: 2021_11_27_165216) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "precision", default: 6
+    t.decimal "investment_eur", default: "0.0"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

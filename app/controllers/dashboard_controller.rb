@@ -25,8 +25,7 @@ class DashboardController < AuthenticatedController
   end
 
   def load_summary_data
-    @config = Config.fetch
-    @total_value = CoinWallet.total_eur_value
+    @total_value = current_user.wealth.total_eur_value
   end
 
   def compute_labels(coins)
@@ -34,14 +33,14 @@ class DashboardController < AuthenticatedController
   end
 
   def compute_values(coins)
-    total_value = CoinWallet.total_usd_value
+    total_value = current_user.wealth.total_usd_value
     coins.map { |coin| (coin.usd_value / total_value * 100).round(2) }
   end
 
   def load_data
-    @coins = Coin.order(:name)
+    @coins = current_user.coins.order(:name)
     @coins = @coins.visible unless params[:display_all]
-    @wallets = Wallet.order(:name)
-    @coin_wallets = CoinWallet.all
+    @wallets = current_user.wallets.order(:name)
+    @coin_wallets = current_user.coin_wallets.all
   end
 end

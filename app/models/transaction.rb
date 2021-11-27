@@ -14,6 +14,7 @@
 #  updated_at     :datetime         not null
 #  imported_from  :string
 #  cex_identifier :string
+#  user_id        :uuid
 #
 class Transaction < ApplicationRecord
   ORDER_TYPES = %w[sell buy].freeze

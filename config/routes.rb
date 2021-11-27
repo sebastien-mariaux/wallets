@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get :summary
   end
 
+  resource :profile, only: %i[edit update]
+
   resources :wallets do
     get :total, on: :member
   end

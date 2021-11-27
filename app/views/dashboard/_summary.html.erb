@@ -1,4 +1,4 @@
 
-<div><%= t '.investment' %><%= number_with_precision(@config.investment_eur, precision: 2) %> € </div>
+<div><%= t '.investment' %><%= number_with_precision(current_user.investment_eur, precision: 2) %> € </div>
 <div><%= t '.current_value' %><%= number_with_precision(@total_value, precision: 2) %> € </div>
-<div><%= t '.delta' %><%= total_variation %> </div>
+<div><%= t '.delta' %><%= total_variation(current_user) %> </div>

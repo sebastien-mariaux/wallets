@@ -1,0 +1,18 @@
+<h1><%= t 'app.actions.edit_profile' %></h1>
+
+<p><%= t('.logged_as', email: @profile.email) %><p>
+
+<%= form_for @profile, url: profile_path, method: :put do |form| %>
+  <div class="mb-3">
+    <%= form.label :investment_eur, class: "form-label" %>
+    <%= form.text_field :investment_eur, required: true, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :precision, class: "form-label" %>
+    <%= form.text_field :precision, required: true, class: "form-control" %>
+  </div>
+
+  <%= form.submit t('app.actions.edit_profile'), class: "btn btn-primary" %>
+
+<% end %>

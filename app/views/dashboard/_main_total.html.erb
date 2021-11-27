@@ -1,4 +1,4 @@
-<% main_total = get_main_total(@coin_wallets, currency) %>
+<% main_total = get_main_total(current_user, currency) %>
 
 <th scope='row'  data-controller="template" 
      data-template-url-value="<%= total_coin_wallets_path(currency: currency) %>"

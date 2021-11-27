@@ -4,12 +4,15 @@
 #
 # Table name: gecko_coins
 #
-#  id         :uuid             not null, primary key
-#  name       :string
-#  code       :string
-#  api_id     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id               :uuid             not null, primary key
+#  name             :string
+#  code             :string
+#  api_id           :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  market_value_btc :decimal(, )
+#  market_value_eur :decimal(, )
+#  market_value_usd :decimal(, )
 #
 class GeckoCoin < ApplicationRecord
   has_many :coins, dependent: :nullify

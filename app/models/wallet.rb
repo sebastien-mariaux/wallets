@@ -9,12 +9,13 @@
 #  description :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :uuid
 #
 class Wallet < ApplicationRecord
   belongs_to :user
   has_many :coin_wallets
   has_many :coins, through: :coin_wallets
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { scope: :user_id }
 
   %w[usd eur btc].each do |currency|
     define_method "#{currency}_value" do

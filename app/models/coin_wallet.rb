@@ -10,6 +10,7 @@
 #  quantity   :decimal(, )
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :uuid
 #
 class CoinWallet < ApplicationRecord
   belongs_to :coin
@@ -19,13 +20,7 @@ class CoinWallet < ApplicationRecord
   validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   class << self
-    %w[eur usd btc].each do |currency|
-      define_method "total_#{currency}_value" do
-        CoinWallet.all.inject(0) do |sum, wallet|
-          sum += wallet.send("#{currency}_value")
-        end
-      end
-    end
+   
   end
 
   def usd_value

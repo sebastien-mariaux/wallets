@@ -4,17 +4,15 @@
 #
 # Table name: coins
 #
-#  id               :uuid             not null, primary key
-#  name             :string
-#  code             :string
-#  market_value_usd :decimal(, )
-#  market_value_eur :decimal(, )
-#  market_value_btc :decimal(, )
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  gecko_coin_id    :uuid
-#  reference_price  :decimal(, )
-#  hide             :boolean          default(FALSE)
+#  id              :uuid             not null, primary key
+#  name            :string
+#  code            :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  gecko_coin_id   :uuid
+#  reference_price :decimal(, )
+#  hide            :boolean          default(FALSE)
+#  user_id         :uuid
 #
 class Coin < ApplicationRecord
   belongs_to :gecko_coin, optional: true
@@ -24,18 +22,34 @@ class Coin < ApplicationRecord
   has_many :wallets, through: :coin_wallets
   has_many :transactions
 
-  validates :name, presence: true, uniqueness: true
-  validates :code, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { scope: :user_id }
+  validates :code, presence: true, uniqueness: { scope: :user_id }
 
-  delegate :market_value_usd, to: :gecko_coin
-  delegate :market_value_eur, to: :gecko_coin
-  delegate :market_value_btc, to: :gecko_coin
   delegate :api_id, to: :gecko_coin
 
   scope :visible, lambda {
     where.not(hide: true)
   }
 
+  def market_value_usd
+    return nil if gecko_coin_id.nil?
+
+     gecko_coin.market_value_usd
+  end
+  
+  def market_value_eur
+    return nil if gecko_coin_id.nil?
+
+     gecko_coin.market_value_eur
+  end
+  
+  def market_value_btc
+    return nil if gecko_coin_id.nil?
+
+     gecko_coin.market_value_btc
+  end
+  
+  
   def display_name
     "#{name} (#{code.upcase})"
   end
@@ -110,7 +124,7 @@ class Coin < ApplicationRecord
   end
 
   def variation_from_reference
-    return 0 unless market_value_usd && reference_price
+    return 0 unless market_value_usd.present? && reference_price.present?
 
     ((market_value_usd / reference_price) - 1) * 100
   end

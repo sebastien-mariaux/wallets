@@ -1,40 +1,8 @@
 <div class='home'>
   <h1><%= t '.title' %></h1>
-
-   <div class="template"
-       data-controller='template'
-       data-template-url-value="<%= summary_dashboard_path %>"
-       data-action="update-quantity@window->template#load update-data@window->template#load">
-    <div data-template-target="template">
-      <%= render 'summary' %>
-    </div>
-  </div>
-
-  <%= render 'actions' %>
-
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="tableau-tab" data-bs-toggle="tab" data-bs-target="#tableau" type="button" role="tab" aria-controls="tableau" aria-selected="false">Tableau</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="graph-tab" data-bs-toggle="tab" data-bs-target="#graph" type="button" role="tab" aria-controls="graph" aria-selected="true">Graphique</button>
-  </li>
-
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="tableau" role="tabpanel" aria-labelledby="tableau-tab">
-    <%= render 'table' %>
-  </div>
-  <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
-    <div id="pie-chart" data-controller='chart'
-                      data-chart-url-value="<%= chart_data_dashboard_path %>">
-      <div class="text-center spinner-container">
-        <div class="spinner-border text-secondary" role="status" id='graph-spinner'>
-          <span class="visually-hidden"><%= t 'app.events.loading' %></span>
-        </div>
-      </div>
-      <canvas id="wallet-pie" width="400" height="400">
-      </canvas>
-    </div>
-  </div>
+  <% if @wallets.present? && @coins.present?%>
+    <%= render 'home_content' %>
+  <% else %>
+    <%= render 'home_not_ready' %>
+  <% end %>
 </div>

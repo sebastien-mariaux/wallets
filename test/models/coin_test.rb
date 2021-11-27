@@ -4,25 +4,23 @@
 #
 # Table name: coins
 #
-#  id               :uuid             not null, primary key
-#  name             :string
-#  code             :string
-#  market_value_usd :decimal(, )
-#  market_value_eur :decimal(, )
-#  market_value_btc :decimal(, )
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  gecko_coin_id    :uuid
-#  reference_price  :decimal(, )
-#  hide             :boolean          default(FALSE)
+#  id              :uuid             not null, primary key
+#  name            :string
+#  code            :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  gecko_coin_id   :uuid
+#  reference_price :decimal(, )
+#  hide            :boolean          default(FALSE)
+#  user_id         :uuid
 #
 require 'test_helper'
 
 class CoinTest < ActiveSupport::TestCase
   should validate_presence_of(:name)
   should validate_presence_of(:code)
-  should validate_uniqueness_of(:name)
-  should validate_uniqueness_of(:code)
+  should validate_uniqueness_of(:name).scoped_to(:user_id)
+  should validate_uniqueness_of(:code).scoped_to(:user_id)
 
   should 'scope' do
     visible_coin = coins(:cvx)
@@ -64,19 +62,18 @@ class CoinTest < ActiveSupport::TestCase
   context 'compute variation from reference' do
     should 'return 0 without market value' do
       coin = coins(:xrp)
-      coin.update(reference_price: 10, market_value_usd: nil)
       assert_equal 0, coin.variation_from_reference
     end
 
     should 'return 0 without reference price' do
       coin = coins(:xrp)
-      coin.update(reference_price: nil, market_value_usd: 1.05)
       assert_equal 0, coin.variation_from_reference
     end
 
     should 'return variation' do
       coin = coins(:xrp)
-      coin.update(reference_price: 1, market_value_usd: 1.05)
+      coin.update!(reference_price: 1)
+      coin.gecko_coin.update!(market_value_usd: 1.05)
       assert_equal 5, coin.variation_from_reference
     end
   end

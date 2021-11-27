@@ -9,12 +9,13 @@
 #  description :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :uuid
 #
 require 'test_helper'
 
 class CoinTest < ActiveSupport::TestCase
   should validate_presence_of(:name)
-  should validate_uniqueness_of(:name)
+  should validate_uniqueness_of(:name).scoped_to(:user_id)
 
   context 'compute totals' do
     setup do

@@ -17,14 +17,28 @@ fr:
       update_list: Mettre à jour la liste des Cryptos
       update_prices: Mettre à jour les prix
     home:
-      title: Synthèse
+      title: Vue globale
+    home_not_ready:
+      add_coin: Ajouter une crypto
+      add_wallet: Ajouter un support
+      general-info: Pour commencer à utiliser votre portefeuille,
+        commencez par ajouter des crypto-monnaies à votre liste,
+        ainsi que leurs support (échange centralisé, wallet...)
+      empty: Votre portefeuille est vide !
+      no_coin: Il n'y a aucune crypto dans votre liste.
+      no_wallet: Vous n'avez créé aucune plateforme pour stocker vos cryptos.
     summary:
       current_value: "Valeur actuelle : "
       delta: "Variation : "
       investment: "Investissement : "
     table:
       delta: Variation
+  profiles:
+    edit:
+      logged_as: "Vous êtes connecté avec l'e-mail %{email}"
   wallets:
+    form:
+      warning: "Attention: n'utilisez en aucun cas ce champ (ni un autre) pour stocker vos mots de passes ou clés privés"
     index:
       new: Nouvelle plateforme
       title: Mes Plateformes

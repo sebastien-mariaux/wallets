@@ -4,22 +4,23 @@ require 'api/coin_gecko/coin_value'
 
 module Builders
   class SnapshotBuilder
-    def intialize
+    def intialize(user)
+      @user = user
       update_prices
     end
 
     def build
       Snapshot.create!(
-        total_usd_value: CoinWallet.total_usd_value,
-        total_eur_value: CoinWallet.total_eur_value,
-        total_btc_value: CoinWallet.total_btc_value,
+        total_usd_value: @user.wealth.total_usd_value,
+        total_eur_value: @user.wealth.total_eur_value,
+        total_btc_value: @user.wealth.total_btc_value,
         investment_eur: investment_eur,
         coin_snapshots_attributes: coin_snapshots_attributes
       )
     end
 
     def investment_eur
-      @investment_eur ||= Config.fetch.investment_eur
+      @investment_eur ||= @user.investment_eur
     end
 
     def coin_snapshots_attributes
@@ -27,7 +28,7 @@ module Builders
     end
 
     def owned_coins
-      Coin.all.select { |coin| coin.total_quantity.positive? }
+      user.coins.select { |coin| coin.total_quantity.positive? }
     end
 
     def update_prices

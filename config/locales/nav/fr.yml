@@ -2,7 +2,10 @@ fr:
   nav:
     coins: Mes cryptos
     config: Configuration
-    home: Vue globale
+    edit_user: Mon compte
+    home: Accueil
     import: Import
+    logout: Déconnexion
+    overview: Vue globale
     snapshots: Historique
     wallets: Mes Plateformes

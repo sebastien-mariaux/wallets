@@ -1,8 +1,12 @@
 nav {
     display: flex;
+    justify-content: space-between;
     padding: 0.5em;
     background-color: $gold;
 
+    .submenu {
+      display: flex;
+    }
     .item {
         margin: 0 1em;
 

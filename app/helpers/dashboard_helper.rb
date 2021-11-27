@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module DashboardHelper
-  def total_variation
-    delta = (CoinWallet.total_eur_value / Config.first.investment_eur - 1) * 100
+  def total_variation(user, currency: 'eur')
+    delta = user.wealth.delta_percent(currency)
     direction = delta >= 0 ? 'green' : 'red'
     tag.span class: direction do
       "#{number_with_precision(delta, precision: 2)} %"
@@ -40,17 +40,17 @@ module DashboardHelper
     format_number(value)
   end
 
-  def get_main_total(coin_wallets, currency)
-    total = coin_wallets.send("total_#{currency}_value")
+  def get_main_total(current_user, currency)
+    total = current_user.wealth.send("total_#{currency}_value")
     format_number(total)
   end
 
   def format_number(value, precision: nil)
     formatted_value = (value || 0).positive? ? value : '-'
-    number_with_precision formatted_value, precision: precision || default_precision
+    number_with_precision formatted_value, precision: current_user.precision || default_precision
   end
 
   def default_precision
-    Config.fetch.precision
+    4
   end
 end

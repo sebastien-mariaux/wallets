@@ -1,0 +1,15 @@
+
+
+<div class="alert alert-info" role="alert">
+  <h4 class="alert-heading"><%= t('.empty') %></h4>
+  <p><%= t('.general-info') %></p>
+  <hr>
+  <% if @coins.empty? %>
+    <div><%= t('.no_coin') %></div>
+    <%= icon_link_to t('.add_coin'), "fab fa-bitcoin", new_coin_path %>
+  <% end %>
+  <% if @wallets.empty? %>
+    <div><%= t('.no_wallet') %></div>
+    <%= icon_link_to t('.add_wallet'), "fas fa-lock", new_wallet_path %>
+  <% end %>
+  </div>

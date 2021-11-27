@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class CoinsController < AuthenticatedController
-  before_action :load_coins, only: :index
+  before_action :load_coins, only: %i[new index create]
   before_action :load_coin, only: %i[total edit update reference_price
                                      market_value_usd variation_from_reference]
 
   layout false, only: %i[total reference_price market_value_usd variation_from_reference]
 
   def new
-    @coin = current_user.coins.new
+    @coin = @coins.new
   end
 
   def index; end
@@ -24,7 +24,7 @@ class CoinsController < AuthenticatedController
   end
 
   def create
-    @coin = current_user.coins.new(allowed_params)
+    @coin = @coins.new(allowed_params)
     set_name_and_code
     if @coin.save
       redirect_to coins_path, notice: 'Success!'
@@ -41,7 +41,7 @@ class CoinsController < AuthenticatedController
   def reference_price; end
 
   def market_value_usd
-    value = @coin.market_value_usd.round(@config.precision)
+    value = @coin.market_value_usd.round(current_user.precision)
 
     render json: { value: value }
   end

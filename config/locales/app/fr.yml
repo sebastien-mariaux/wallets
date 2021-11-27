@@ -3,6 +3,7 @@ fr:
     actions:
       create: Créer
       edit: Modifier
+      edit_profile: Modifier mon profil
       new: Nouveau
       update: Modifier
     events:

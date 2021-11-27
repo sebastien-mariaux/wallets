@@ -6,7 +6,7 @@ class SnapshotsController < AuthenticatedController
   before_action :create_process, only: :request_snap
 
   def request_snap
-    SnapshotCreateJob.perform_later(@app_process)
+    SnapshotCreateJob.perform_later(current_user, @app_process)
     render json: { id: @app_process.id }
   end
 
@@ -15,6 +15,6 @@ class SnapshotsController < AuthenticatedController
   private
 
   def load_snapshots
-    @snapshots = Snapshot.order(:created_at)
+    @snapshots = current_user.snapshots.order(:created_at)
   end
 end

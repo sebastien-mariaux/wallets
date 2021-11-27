@@ -4,3 +4,7 @@ fr:
       coin:
         one: token
         other: tokens
+    attributes:
+      user:
+        investment_eur: Montant investi (EUR)
+        precision: Nombre de décimales des valeurs affichées
