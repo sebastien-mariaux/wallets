@@ -27,6 +27,9 @@ class Coin < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :code, presence: true, uniqueness: true
 
+  delegate :market_value_usd, to: :gecko_coin
+  delegate :market_value_eur, to: :gecko_coin
+  delegate :market_value_btc, to: :gecko_coin
   delegate :api_id, to: :gecko_coin
 
   scope :visible, lambda {

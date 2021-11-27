@@ -24,8 +24,7 @@ module Api
       end
 
       def coins
-        coins ||= Coin.joins(:gecko_coin)
-                      .where.not(gecko_coin: { api_id: nil })
+        coins ||= GeckoCoin.applied
       end
 
       def update_coins(response)
@@ -38,7 +37,7 @@ module Api
       end
 
       def update_coin(api_id, value_hash)
-        coin = coins.find_by(gecko_coin: { api_id: api_id })
+        coin = coins.find_by(api_id: api_id)
         @counter += 1 if coin.update(
           market_value_usd: value_hash['usd'],
           market_value_btc: value_hash['btc'],
