@@ -7,4 +7,7 @@ fr:
     attributes:
       user:
         investment_eur: Montant investi (EUR)
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
         precision: Nombre de décimales des valeurs affichées
+        remember_me: Maintenir ma connexion

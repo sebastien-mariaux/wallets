@@ -2,6 +2,7 @@
 
 class DashboardController < AuthenticatedController
   before_action :load_data, only: %i[home]
+  before_action :load_coins, only: %i[home chart_data]
   before_action :load_summary_data, only: %i[home summary]
 
   layout false, only: :summary
@@ -17,7 +18,7 @@ class DashboardController < AuthenticatedController
   private
 
   def generate_chart_data
-    coins = Coin.all.sort_by(&:usd_value)
+    coins = @coins.all.sort_by(&:usd_value)
     {
       labels: compute_labels(coins),
       values: compute_values(coins)
@@ -38,9 +39,12 @@ class DashboardController < AuthenticatedController
   end
 
   def load_data
-    @coins = current_user.coins.order(:name)
-    @coins = @coins.visible unless params[:display_all]
     @wallets = current_user.wallets.order(:name)
     @coin_wallets = current_user.coin_wallets.all
+  end
+
+  def load_coins
+    @coins = current_user.coins.order(:name)
+    @coins = @coins.visible unless params[:display_all]
   end
 end

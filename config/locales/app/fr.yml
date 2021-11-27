@@ -4,7 +4,9 @@ fr:
       create: Créer
       edit: Modifier
       edit_profile: Modifier mon profil
+      log_in: Se connecter
       new: Nouveau
+      sign_up: Inscription
       update: Modifier
     events:
       loading: En cours de chargement...

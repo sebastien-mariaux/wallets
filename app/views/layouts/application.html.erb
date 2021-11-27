@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body data-controller="app">
+  <body data-controller="app" class="<%= params[:controller].split('/').join( ' ') %>">
     <%= render 'layouts/header' %>
     <div class='main-container'>
       <%= render 'layouts/flash' %>

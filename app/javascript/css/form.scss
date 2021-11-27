@@ -3,4 +3,13 @@ form {
     font-size: smaller;
     color: #C1292E;
   }
+
+  .field {
+    &.required {
+      label:after {
+       content: '*';
+       color: red ;
+      }
+    }
+  }
 }
