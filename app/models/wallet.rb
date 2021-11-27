@@ -11,6 +11,7 @@
 #  updated_at  :datetime         not null
 #
 class Wallet < ApplicationRecord
+  belongs_to :user
   has_many :coin_wallets
   has_many :coins, through: :coin_wallets
   validates :name, presence: true, uniqueness: true

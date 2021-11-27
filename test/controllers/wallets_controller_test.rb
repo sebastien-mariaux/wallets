@@ -1,8 +1,7 @@
 # frozen_string_literal: true
+require_relative './user_authenticated_controller_test'
 
-require_relative './controllers_test'
-
-class CoinsControllerTest < ControllersTest
+class WalletsControllerTest < UserAuthenticatedControllerTest
   setup do
     @binance = wallets(:binance)
     @coinbase = wallets(:coinbase)

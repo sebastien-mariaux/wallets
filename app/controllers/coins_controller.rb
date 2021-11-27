@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CoinsController < ApplicationController
+class CoinsController < AuthenticatedController
   before_action :load_coins, only: :index
   before_action :load_coin, only: %i[total edit update reference_price
                                      market_value_usd variation_from_reference]
@@ -8,7 +8,7 @@ class CoinsController < ApplicationController
   layout false, only: %i[total reference_price market_value_usd variation_from_reference]
 
   def new
-    @coin = Coin.new
+    @coin = current_user.coins.new
   end
 
   def index; end
@@ -24,7 +24,7 @@ class CoinsController < ApplicationController
   end
 
   def create
-    @coin = Coin.new(allowed_params)
+    @coin = current_user.coins.new(allowed_params)
     set_name_and_code
     if @coin.save
       redirect_to coins_path, notice: 'Success!'
@@ -61,11 +61,11 @@ class CoinsController < ApplicationController
   end
 
   def load_coins
-    @coins = Coin.order(:name)
+    @coins =  current_user.coins.order(:name)
   end
 
   def load_coin
-    @coin = Coin.find(params[:id])
+    @coin = current_user.coins.find(params[:id])
   end
 
   def set_name_and_code

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SnapshotsController < ApplicationController
+class SnapshotsController < AuthenticatedController
   include Processable
   before_action :load_snapshots, only: :index
   before_action :create_process, only: :request_snap

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative './controllers_test'
+require_relative './user_authenticated_controller_test'
 
-class GeckoCoinsControllerTest < ControllersTest
+class GeckoCoinsControllerTest < UserAuthenticatedControllerTest
   should 'search' do
     get search_gecko_coins_path, params: { query: 'sta' }
     assert_response :success

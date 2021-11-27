@@ -10,9 +10,13 @@
 #
 binance:
   name: Binance
+  user: :seba
 coinbase:
   name: Coinbase
+  user: :seba
 samourai:
   name: Samouraï
+  user: :seba
 ledger:
   name: Ledger
+  user: :seba

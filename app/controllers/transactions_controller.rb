@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TransactionsController < ApplicationController
+class TransactionsController < AuthenticatedController
   before_action :load_coin
   before_action :load_transactions, only: %i[index destroy]
   before_action :load_transaction, only: :destroy

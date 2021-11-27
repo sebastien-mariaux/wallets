@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BackupsController < ApplicationController
+class BackupsController < AuthenticatedController
   include Processable
 
   before_action :create_process, only: %i[import export]

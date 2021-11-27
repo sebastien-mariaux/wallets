@@ -1,8 +1,6 @@
-# frozen_string_literal: true
+require_relative './user_authenticated_controller_test'
 
-require_relative './controllers_test'
-
-class ConfigControllerTest < ControllersTest
+class ConfigControllerTest < UserAuthenticatedControllerTest
   should 'show' do
     get config_path
     assert_response :success

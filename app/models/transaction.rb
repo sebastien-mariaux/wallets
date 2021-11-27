@@ -18,6 +18,7 @@
 class Transaction < ApplicationRecord
   ORDER_TYPES = %w[sell buy].freeze
 
+  belongs_to :user
   belongs_to :coin
 
   validates :order_type, presence: true, inclusion: { in: ORDER_TYPES }

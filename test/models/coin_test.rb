@@ -1,5 +1,21 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: coins
+#
+#  id               :uuid             not null, primary key
+#  name             :string
+#  code             :string
+#  market_value_usd :decimal(, )
+#  market_value_eur :decimal(, )
+#  market_value_btc :decimal(, )
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  gecko_coin_id    :uuid
+#  reference_price  :decimal(, )
+#  hide             :boolean          default(FALSE)
+#
 require 'test_helper'
 
 class CoinTest < ActiveSupport::TestCase

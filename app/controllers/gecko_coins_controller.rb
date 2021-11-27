@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GeckoCoinsController < ApplicationController
+class GeckoCoinsController < AuthenticatedController
   layout false, only: :search
 
   def search

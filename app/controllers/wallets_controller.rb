@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class WalletsController < ApplicationController
+class WalletsController < AuthenticatedController
   before_action :load_wallets, only: :index
   before_action :load_wallet, only: %i[edit total update]
   layout false, only: :total
 
   def new
-    @wallet = Wallet.new
+    @wallet = current_user.wallets.new
   end
 
   def index; end
@@ -14,7 +14,7 @@ class WalletsController < ApplicationController
   def edit; end
 
   def create
-    @wallet = Wallet.create(allowed_params)
+    @wallet = current_user.wallets.create(allowed_params)
     if @wallet.save
       redirect_to wallets_path, notice: 'Success!'
     else
@@ -41,10 +41,10 @@ class WalletsController < ApplicationController
   end
 
   def load_wallets
-    @wallets = Wallet.all
+    @wallets = current_user.wallets.all
   end
 
   def load_wallet
-    @wallet = Wallet.find(params[:id])
+    @wallet = current_user.wallets.find(params[:id])
   end
 end

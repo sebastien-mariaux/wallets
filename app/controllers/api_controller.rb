@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ApiController < ApplicationController
+class ApiController < AuthenticatedController
   include Processable
 
   before_action :create_process, only: %i[list prices]

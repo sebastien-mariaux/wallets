@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DashboardController < ApplicationController
+class DashboardController < AuthenticatedController
   before_action :load_data, only: %i[home]
   before_action :load_summary_data, only: %i[home summary]
 

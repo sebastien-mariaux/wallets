@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AppProcessesController < ApplicationController
+class AppProcessesController < AuthenticatedController
   before_action :load_app_process, only: :show
 
   def show

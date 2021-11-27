@@ -3,7 +3,7 @@
 require 'import_transactions/gate_importer'
 require 'import_transactions/binance_importer'
 
-class ImportsController < ApplicationController
+class ImportsController < AuthenticatedController
   include Processable
 
   before_action :create_process, only: %i[]

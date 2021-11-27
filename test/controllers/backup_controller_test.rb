@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative './controllers_test'
+require_relative './user_authenticated_controller_test'
 
-class CoinsControllerTest < ControllersTest
+class CoinsControllerTest < UserAuthenticatedControllerTest
   context 'run import' do
     should 'return process id' do
       get import_backup_path

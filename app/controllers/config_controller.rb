@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ConfigController < ApplicationController
+class ConfigController < AuthenticatedController
   def show; end
 
   def edit; end

@@ -18,6 +18,7 @@
 #
 class Coin < ApplicationRecord
   belongs_to :gecko_coin, optional: true
+  belongs_to :user
 
   has_many :coin_wallets
   has_many :wallets, through: :coin_wallets

@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-require_relative './controllers_test'
+require_relative './user_authenticated_controller_test'
 
-class CoinsControllerTest < ControllersTest
+class CoinsControllerTest < UserAuthenticatedControllerTest
   setup do
     @busd = coins(:busd)
     @eth = coins(:eth)
     @gecko_coin = gecko_coins(:ada)
+    sign_in @logged_user
   end
 
   should 'index' do

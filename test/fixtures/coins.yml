@@ -17,6 +17,7 @@
 stak:
   code: stak
   name: Jigstack
+  user: :seba
   market_value_usd: 0.01156245
   market_value_eur: 0.01025913
   market_value_btc: 0.000000201009
@@ -24,6 +25,7 @@ stak:
   reference_price: 0.14
 eth:
   name: Ethereum
+  user: :seba
   code: eth
   market_value_usd: 4212.51
   market_value_eur: 3737.68
@@ -32,6 +34,7 @@ eth:
   reference_price: 1853
 btc:
   name: Bitcoin
+  user: :seba
   code: btc
   market_value_usd: 57693.0
   market_value_eur: 51190.0
@@ -39,13 +42,15 @@ btc:
   gecko_coin: btc
 xrp:
   name: XRP
+  user: :seba
   code: xrp
   market_value_usd: 1.05
   market_value_eur: 0.930316
   market_value_btc: 0.00001822
   gecko_coin: xrp
-cvx: 
+cvx:
   name: Convex Finance
+  user: :seba
   code: cvx
   market_value_usd: 20.67
   market_value_eur: 18.34
@@ -54,8 +59,17 @@ cvx:
   reference_price: 12.13
 busd:
   name: Binance USD
+  user: :seba
   code: busd
   market_value_usd: 1.0
   market_value_eur: 0.889744
   market_value_btc: 0.00001743
   hide: true
+btc_james:
+  name: Bitcoin
+  user: :james
+  code: btc
+  market_value_usd: 57693.0
+  market_value_eur: 51190.0
+  market_value_btc: 1.0
+  gecko_coin: btc
