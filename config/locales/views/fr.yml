@@ -33,8 +33,11 @@ fr:
       investment: "Investissement : "
     table:
       delta: Variation
+      price: Cours
+      ref_price: Prix de réf.
   profiles:
     edit:
+      main_currency: Devise de référence
       logged_as: "Vous êtes connecté avec l'e-mail %{email}"
   wallets:
     form:

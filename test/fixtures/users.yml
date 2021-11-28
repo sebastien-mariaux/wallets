@@ -30,7 +30,9 @@ seba:
   email: seba@wallets.com
   encrypted_password: <%= User.new.send(:password_digest, 'abcd1234') %>
   confirmed_at: <%= DateTime.current - 15.days %>
+  main_currency: eur
 james:
   email: james@hotmail.fr
   encrypted_password: <%= User.new.send(:password_digest, 'abcd1234') %>
   confirmed_at: <%= DateTime.current - 10.days %>
+  main_currency: cad

@@ -1,11 +1,11 @@
 
 <div>
-  <%= t '.investment' %>
-  <%= number_with_precision(current_user.investment_eur, precision: 2) %> € 
+  <%= "#{t('.investment')} #{current_user.main_currency.upcase}" %> 
+  <%= number_with_precision(current_user.investment, precision: 2) %> 
 </div>
 <div>
-  <%= t '.current_value' %>
-  <%= number_with_precision(@total_value, precision: 2) %> € 
+  <%= "#{t('.current_value')} #{current_user.main_currency.upcase}" %> 
+  <%= number_with_precision(current_user.wealth.total_ref_value, precision: 2) %>
 </div>
 <div>
   <%= t '.delta' %><%= total_variation(current_user) %> 

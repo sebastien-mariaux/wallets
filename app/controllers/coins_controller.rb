@@ -41,7 +41,7 @@ class CoinsController < AuthenticatedController
   def reference_price; end
 
   def market_value_usd
-    value = @coin.market_value_usd.round(current_user.precision)
+    value = @coin.market_value('usd').round(current_user.precision)
 
     render json: { value: value }
   end
@@ -53,7 +53,7 @@ class CoinsController < AuthenticatedController
   def compute_total(currency)
     return @coin.total_quantity if currency.nil?
 
-    @currency_value = @coin.send("#{params['currency']}_value")
+    @currency_value = @coin.currency_value(params["currency"])
   end
 
   def allowed_params

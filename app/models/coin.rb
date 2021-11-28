@@ -31,23 +31,29 @@ class Coin < ApplicationRecord
     where.not(hide: true)
   }
 
-  def market_value_usd
+  def market_value(currency)
     return nil if gecko_coin_id.nil?
 
-     gecko_coin.market_value_usd
+     gecko_coin.send("market_value_#{currency}")
   end
+
+  # def market_value_usd
+  #   return nil if gecko_coin_id.nil?
+
+  #    gecko_coin.market_value_usd
+  # end
   
-  def market_value_eur
-    return nil if gecko_coin_id.nil?
+  # def market_value_eur
+  #   return nil if gecko_coin_id.nil?
 
-     gecko_coin.market_value_eur
-  end
+  #    gecko_coin.market_value_eur
+  # end
   
-  def market_value_btc
-    return nil if gecko_coin_id.nil?
+  # def market_value_btc
+  #   return nil if gecko_coin_id.nil?
 
-     gecko_coin.market_value_btc
-  end
+  #    gecko_coin.market_value_btc
+  # end
   
   
   def display_name
@@ -90,7 +96,7 @@ class Coin < ApplicationRecord
   end
 
   def current_usd_value_in_wallet
-    remaining_quantity * market_value_usd
+    remaining_quantity * market_value('usd')
   end
 
   def net_result
@@ -115,17 +121,23 @@ class Coin < ApplicationRecord
     total_value / total_sell_quantity
   end
 
-  %w[usd eur btc].each do |currency|
-    define_method "#{currency}_value" do
-      coin_wallets.inject(0) do |sum, coin_wallet|
-        sum += coin_wallet.send("#{currency}_value")
-      end
+  # %w[usd eur btc].each do |currency|
+  #   define_method "#{currency}_value" do
+  #     coin_wallets.inject(0) do |sum, coin_wallet|
+  #       sum += coin_wallet.send("#{currency}_value")
+  #     end
+  #   end
+  # end
+
+  def currency_value(currency)
+    coin_wallets.inject(0) do |sum, coin_wallet|
+      sum += coin_wallet.currency_value(currency)
     end
   end
 
   def variation_from_reference
-    return 0 unless market_value_usd.present? && reference_price.present?
+    return 0 unless market_value('usd').present? && reference_price.present?
 
-    ((market_value_usd / reference_price) - 1) * 100
+    ((market_value('usd') / reference_price) - 1) * 100
   end
 end

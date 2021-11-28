@@ -14,13 +14,13 @@ module Builders
         total_usd_value: @user.wealth.total_usd_value,
         total_eur_value: @user.wealth.total_eur_value,
         total_btc_value: @user.wealth.total_btc_value,
-        investment_eur: investment_eur,
+        investment: investment,
         coin_snapshots_attributes: coin_snapshots_attributes
       )
     end
 
-    def investment_eur
-      @investment_eur ||= @user.investment_eur
+    def investment
+      @investment ||= @user.investment
     end
 
     def coin_snapshots_attributes

@@ -19,7 +19,8 @@ class ProfilesController < AuthenticatedController
   private
 
   def allowed_params
-    params.require(:user).permit(:investment_eur, :precision)
+    params.require(:user).permit(:investment, :precision, :main_currency, 
+                                 :display_local, :display_usd, :display_btc)
   end
 
   def load_profile

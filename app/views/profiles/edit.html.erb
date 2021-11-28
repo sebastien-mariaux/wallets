@@ -3,15 +3,38 @@
 <p><%= t('.logged_as', email: @profile.email) %><p>
 
 <%= form_for @profile, url: profile_path, method: :put do |form| %>
-  <div class="mb-3">
-    <%= form.label :investment_eur, class: "form-label" %>
-    <%= form.text_field :investment_eur, required: true, class: "form-control" %>
+  <div class="mb-3 required field">
+    <%= form.label :main_currency, class: "form-label" %>
+    <%= form.select :main_currency, display_currencies, {},
+                    class: "form-select",
+                    required: true  %>
+  </div>
+
+  <div class="mb-3" >
+    <%= form.label :investment, class: "form-label"  %>
+    <i class="fas fa-info-circle" data-bs-toggle='tooltip' 
+        data-bs-placement='top' title="<%= t('.main_currency')%>"></i>
+    <%= form.text_field :investment, required: true, class: "form-control" %>
   </div>
 
   <div class="mb-3">
     <%= form.label :precision, class: "form-label" %>
     <%= form.text_field :precision, required: true, class: "form-control" %>
   </div>
+
+  <div class="mb-3">
+    <%= form.check_box :display_local, class: "form-check-input" %>
+    <%= form.label :display_local, class: "form-check-label" %>
+  </div>
+  <div class="mb-3">
+    <%= form.check_box :display_usd, class: "form-check-input" %>
+    <%= form.label :display_usd, class: "form-check-label" %>
+  </div>
+  <div class="mb-3">
+    <%= form.check_box :display_btc, class: "form-check-input" %>
+    <%= form.label :display_btc, class: "form-check-label" %>
+  </div>
+
 
   <%= form.submit t('app.actions.edit_profile'), class: "btn btn-primary" %>
 

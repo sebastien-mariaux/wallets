@@ -23,7 +23,5 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should validate_inclusion_of(:main_currency).in_array(User::SUPPORTED_CURRENCIES)
 end

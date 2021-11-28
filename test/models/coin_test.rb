@@ -45,17 +45,17 @@ class CoinTest < ActiveSupport::TestCase
 
     should 'compute usd_value' do
       expected = (2.1 + 5.41) * 4212.51
-      assert_equal expected.round(4), @eth.usd_value.round(4)
+      assert_equal expected.round(4), @eth.currency_value('usd').round(4)
     end
 
     should 'compute eur value' do
       expected = (2.1 + 5.41) * 3737.68
-      assert_equal expected.round(4), @eth.eur_value.round(4)
+      assert_equal expected.round(4), @eth.currency_value('eur').round(4)
     end
 
     should 'compute btc value' do
       expected = (2.1 + 5.41) * 0.07319436
-      assert_equal expected.round(4), @eth.btc_value.round(4)
+      assert_equal expected.round(4), @eth.currency_value('btc').round(4)
     end
   end
 

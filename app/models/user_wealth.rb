@@ -3,31 +3,39 @@ class UserWealth
     @user = user
   end
 
-  %w[eur usd btc].each do |currency|
-    define_method "total_#{currency}_value" do
-      @user.coin_wallets.all.inject(0) do |sum, wallet|
-        sum += wallet.send("#{currency}_value")
-      end
+  def total_ref_value
+    total_value(@user.main_currency)
+  end
+
+  def total_value(currency)
+    @user.coin_wallets.all.inject(0) do |sum, wallet|
+      sum += wallet.currency_value(currency)
     end
   end
 
-  def delta_percent(currency = 'eur')
-    return unless can_compute_delta?(currency)
+  # %w[eur usd btc].each do |currency|
+  #   define_method "total_#{currency}_value" do
+  #     @user.coin_wallets.all.inject(0) do |sum, wallet|
+  #       sum += wallet.send("#{currency}_value")
+  #     end
+  #   end
+  # end
 
-    delta(currency) * 100
+  def delta_percent
+    return unless can_compute_delta?
+
+    delta * 100
   end
 
-  def delta(currency = 'eur')
-    return unless can_compute_delta?(currency)
+  def delta
+    return unless can_compute_delta?
 
-    (send("total_#{currency}_value") / @user.investment_eur.to_f - 1)
+    total_ref_value / @user.investment.to_f - 1
   end
 
   private
 
-  def can_compute_delta?(currency)
-    raise NotImplementedError unless currency == 'eur'
-
-    return @user.investment_eur.present? &&  @user.investment_eur.positive?
+  def can_compute_delta?
+    return @user.investment.present? &&  @user.investment.positive?
   end
 end

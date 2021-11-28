@@ -14,7 +14,7 @@
     <% @coins.each do |coin| %>
       <tr>
         <td><%= coin.display_name %> </td>
-        <td><%= coin.market_value_usd %> </td>
+        <td><%= coin.market_value('usd') %> </td>
         <%= render 'reference_price_td', coin: coin %>
         <td>
           <% if coin.hide %>

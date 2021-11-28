@@ -2,7 +2,7 @@
 
 module DashboardHelper
   def total_variation(user, currency: 'eur')
-    delta = user.wealth.delta_percent(currency)
+    delta = user.wealth.delta_percent
     return '-' unless delta 
     
     direction = delta >= 0 ? 'green' : 'red'
@@ -28,14 +28,14 @@ module DashboardHelper
   end
 
   def get_wallet_total(wallets, wallet_id, currency)
-    value = wallets.find { |wallet| wallet.id == wallet_id }&.send("#{currency}_value")
+    value = wallets.find { |wallet| wallet.id == wallet_id }&.currency_value(currency)
     format_number(value)
   end
 
   def get_coin_total(coins, coin_id, currency)
     coin = coins.find { |coin| coin.id == coin_id }
     value = if currency
-              coin&.send("#{currency}_value")
+              coin.currency_value(currency)
             else
               coin.total_quantity
             end
@@ -43,7 +43,7 @@ module DashboardHelper
   end
 
   def get_main_total(current_user, currency)
-    total = current_user.wealth.send("total_#{currency}_value")
+    total = current_user.wealth.total_value(currency)
     format_number(total)
   end
 

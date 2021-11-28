@@ -6,7 +6,7 @@ class CreateSnapshot < ActiveRecord::Migration[6.1]
       t.decimal :total_usd_value
       t.decimal :total_eur_value
       t.decimal :total_btc_value
-      t.decimal :investment_eur
+      t.decimal :investment
 
       t.timestamps
     end

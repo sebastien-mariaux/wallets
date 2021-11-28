@@ -5,8 +5,10 @@
         <th scope='col'>
           <%= render 'toggle_visible_coins' %>
         </th>
-        <th scope='col' data-bs-toggle="tooltip" data-bs-placement="top" title="USD">Cours</th>
-        <th scope='col' data-bs-toggle="tooltip" data-bs-placement="top" title="USD">Prix de réf.</th>
+        <th scope='col' data-bs-toggle="tooltip" data-bs-placement="top"
+            title="<%= current_user.main_currency.upcase %>"><%= t('.price') %></th>
+        <th scope='col' data-bs-toggle="tooltip" data-bs-placement="top" 
+            title="USD"><%= t('.ref_price') %></th>
         <th scope='col'><%= t '.delta' %></th>
         <% @wallets.each do |wallet| %>
           <th scope='col'><%= wallet.name %></th>
@@ -26,7 +28,7 @@
               data-dynamic-value-url-value="<%= market_value_usd_coin_path(coin) %>"
               data-action="update-data@window->dynamic_value#load"
               >
-              <%= number_with_precision coin.market_value_usd, precision: 4 %>
+              <%= number_with_precision coin.market_value(current_user.main_currency), precision: 4 %>
           </td>
           <td scope='row' class='text-end'><%= number_with_precision coin.reference_price, precision: 4 %></td>
           <td scope='row' data-controller="template" 

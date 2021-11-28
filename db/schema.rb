@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_27_180837) do
+ActiveRecord::Schema.define(version: 2021_11_28_162739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -68,6 +68,64 @@ ActiveRecord::Schema.define(version: 2021_11_27_180837) do
     t.decimal "market_value_btc"
     t.decimal "market_value_eur"
     t.decimal "market_value_usd"
+    t.decimal "market_value_eth"
+    t.decimal "market_value_ltc"
+    t.decimal "market_value_bch"
+    t.decimal "market_value_bnb"
+    t.decimal "market_value_eos"
+    t.decimal "market_value_xrp"
+    t.decimal "market_value_xlm"
+    t.decimal "market_value_lin"
+    t.decimal "market_value_dot"
+    t.decimal "market_value_yfi"
+    t.decimal "market_value_aed"
+    t.decimal "market_value_ars"
+    t.decimal "market_value_sat"
+    t.decimal "market_value_aud"
+    t.decimal "market_value_bdt"
+    t.decimal "market_value_bhd"
+    t.decimal "market_value_bmd"
+    t.decimal "market_value_brl"
+    t.decimal "market_value_cad"
+    t.decimal "market_value_chf"
+    t.decimal "market_value_clp"
+    t.decimal "market_value_cny"
+    t.decimal "market_value_czk"
+    t.decimal "market_value_dkk"
+    t.decimal "market_value_gbp"
+    t.decimal "market_value_hkd"
+    t.decimal "market_value_huf"
+    t.decimal "market_value_idr"
+    t.decimal "market_value_ils"
+    t.decimal "market_value_inr"
+    t.decimal "market_value_jpy"
+    t.decimal "market_value_krw"
+    t.decimal "market_value_kwd"
+    t.decimal "market_value_lkr"
+    t.decimal "market_value_mmk"
+    t.decimal "market_value_mxn"
+    t.decimal "market_value_myr"
+    t.decimal "market_value_ngn"
+    t.decimal "market_value_nok"
+    t.decimal "market_value_nzd"
+    t.decimal "market_value_php"
+    t.decimal "market_value_pkr"
+    t.decimal "market_value_pln"
+    t.decimal "market_value_rub"
+    t.decimal "market_value_sar"
+    t.decimal "market_value_sek"
+    t.decimal "market_value_sgd"
+    t.decimal "market_value_thb"
+    t.decimal "market_value_try"
+    t.decimal "market_value_twd"
+    t.decimal "market_value_uah"
+    t.decimal "market_value_vef"
+    t.decimal "market_value_vnd"
+    t.decimal "market_value_zar"
+    t.decimal "market_value_xdr"
+    t.decimal "market_value_xag"
+    t.decimal "market_value_xau"
+    t.decimal "market_value_bit"
   end
 
   create_table "snapshots", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -114,7 +172,12 @@ ActiveRecord::Schema.define(version: 2021_11_27_180837) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "precision", default: 6
-    t.decimal "investment_eur", default: "0.0"
+    t.decimal "investment", default: "0.0"
+    t.boolean "display_usd"
+    t.boolean "display_btc"
+    t.boolean "display_local"
+    t.string "local_currency", default: "eur"
+    t.string "main_currency", default: "eur"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

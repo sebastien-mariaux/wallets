@@ -11,7 +11,7 @@ class ApiController < AuthenticatedController
   end
 
   def prices
-    ApiPricesJob.perform_later(@app_process)
+    ApiPricesJob.perform_later(@app_process, current_user)
     render json: { id: @app_process.id }
   end
 end

@@ -6,7 +6,11 @@ fr:
         other: tokens
     attributes:
       user:
-        investment_eur: Montant investi (EUR)
+        investment: Montant investi
+        main_currency: Devise de référence
+        display_btc: Afficher les montants en Bitcoin
+        display_usd: Afficher les montants en USD 
+        display_local: Afficher les montants dans la devise de référence
         password: Mot de passe
         password_confirmation: Confirmation du mot de passe
         precision: Nombre de décimales des valeurs affichées

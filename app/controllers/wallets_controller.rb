@@ -31,7 +31,7 @@ class WalletsController < AuthenticatedController
   end
 
   def total
-    @currency_value = @wallet.send("#{params['currency']}_value")
+    @currency_value = @wallet.currency_value(params['currency'])
   end
 
   private

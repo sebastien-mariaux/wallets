@@ -23,15 +23,19 @@ class CoinWallet < ApplicationRecord
    
   end
 
-  def usd_value
-    (quantity * (coin.market_value_usd || 0)).to_f
+  def currency_value(currency)
+    (quantity * (coin.market_value(currency) || 0)).to_f
   end
 
-  def eur_value
-    (quantity * (coin.market_value_eur || 0)).to_f
-  end
+  # def usd_value
+  #   (quantity * (coin.market_value_usd || 0)).to_f
+  # end
 
-  def btc_value
-    (quantity * (coin.market_value_btc || 0)).to_f
-  end
+  # def eur_value
+  #   (quantity * (coin.market_value_eur || 0)).to_f
+  # end
+
+  # def btc_value
+  #   (quantity * (coin.market_value_btc || 0)).to_f
+  # end
 end
