@@ -40,3 +40,4 @@ ls and more.
 yarn-debug.log*
 .yarn-integrity
 db/dump/*
+coverage/*

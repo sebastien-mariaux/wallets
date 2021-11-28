@@ -1,0 +1,20 @@
+one:
+  total_usd_value: 8705.83
+  total_eur_value: 7726.07
+  total_btc_value: 0.15129
+  investment_eur: 8671.37
+  user: :seba
+
+two:
+  total_usd_value: 8807.22
+  total_eur_value: 7735.12
+  total_btc_value: 0.15289
+  investment_eur: 8658.46
+  user: :seba
+
+james_one:
+  total_usd_value: 125000
+  total_eur_value: 113000
+  total_btc_value: 2.1
+  investment_eur: 59000
+  user: :james

@@ -12,6 +12,7 @@ class WalletsControllerTest < UserAuthenticatedControllerTest
     assert_response :success
     assert_select 'h1', text: 'Mes Plateformes'
     assert_select '.btn', text: 'Nouvelle plateforme'
+    assert_not assigns(:wallets).include? wallets(:james_binance)
   end
 
   should 'get new' do
