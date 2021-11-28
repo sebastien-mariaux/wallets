@@ -15,6 +15,7 @@ class CoinsControllerTest < UserAuthenticatedControllerTest
     assert_response :success
     assert_select 'h1', text: 'Mes cryptos'
     assert_select '.btn', text: 'Ajouter une crypto'
+    assert_not assigns(:coins).include? coins(:btc_james)
   end
 
   should 'get new' do
