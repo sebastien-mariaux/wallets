@@ -24,12 +24,7 @@ module Api
       end
 
       def vs_currencies
-        return @vs_currencies if @vs_currencies
-
-         @vs_currencies = [@user.main_currency]
-         @vs_currencies << 'usd' if @user.display_usd
-         @vs_currencies << 'btc' if @user.display_btc
-         @vs_currencies
+         @vs_currencies ||= [@user.main_currency, @user.secondary_currency, @user.tertiary_currency]
       end
 
       def vs_currency_param

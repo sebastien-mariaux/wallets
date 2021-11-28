@@ -1,30 +1,30 @@
 <tfoot>
 
-  <% if current_user.display_local %>
+  <% if current_user.display_main %>
     <tr>
       <th scope='row'>Total (<%= @main_currency.upcase %>) </th>
       <td></td>
       <td></td>
-      <% if current_user.display_usd %>
+      <% if current_user.display_secondary %>
         <th scope='row'></th>
       <% end %>
       <% @wallets.each do |wallet| %>
         <%= render 'wallet_total', wallet_id: wallet.id, currency: @main_currency  %>
       <% end %>
       <td></td>
-      <% if current_user.display_local %>
+      <% if current_user.display_main %>
        <%= render 'main_total', currency:  @main_currency %>
       <% end %>
       <td></td>
-      <% if current_user.display_btc %>
+      <% if current_user.display_tertiary %>
         <td></td>
       <% end %>
     </tr>
   <% end %>
 
-  <% if current_user.display_usd %>
+  <% if current_user.display_secondary %>
     <tr>
-      <th scope='row'>Total (USD) </th>
+      <th scope='row'>Total (<%= @secondary_currency.upcase %>) </th>
       <td></td>
       <td></td>
       <th scope='row'></th>
@@ -32,21 +32,21 @@
         <%= render 'wallet_total', wallet_id: wallet.id, currency: 'usd'  %>
       <% end %>
       <td></td>
-      <% if current_user.display_local %>
+      <% if current_user.display_main %>
         <td></td>
       <% end %>
-      <% if current_user.display_usd %>
-        <%= render 'main_total', currency: 'usd' %>
+      <% if current_user.display_secondary %>
+        <%= render 'main_total', currency: @secondary_currency %>
       <% end %>
-      <% if current_user.display_btc %>
+      <% if current_user.display_tertiary %>
         <td></td>
       <% end %>
     </tr>
   <% end %>
 
-  <% if current_user.display_btc %>
+  <% if current_user.display_tertiary %>
     <tr>
-      <th scope='row'>Total (BTC) </th>
+      <th scope='row'>Total (<%= @tertiary_currency.upcase %>) </th>
       <td></td>
       <td></td>
       <th scope='row'></th>
@@ -54,10 +54,10 @@
         <%= render 'wallet_total', wallet_id: wallet.id, currency: 'btc'  %>
       <% end %>
       <td></td>
-      <% if current_user.display_usd %>
+      <% if current_user.display_secondary %>
         <td></td>
       <% end %>
-      <% if current_user.display_local %>
+      <% if current_user.display_main %>
         <td></td>
       <% end %>
       <%= render 'main_total',   currency: 'btc' %>

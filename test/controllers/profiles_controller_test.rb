@@ -12,14 +12,14 @@ class ProfilesControllerTest < UserAuthenticatedControllerTest
 
   should 'update' do
     params = {user: {investment: 8000, precision: 2, main_currency: 'cad', 
-              display_usd: true, display_btc: false, display_local: true}}
+              display_secondary: true, display_tertiary: false, display_main: true}}
     put profile_path, params: params
     assert_response :redirect
     assert_equal 2, @logged_user.reload.precision
     assert_equal 8000, @logged_user.investment
-    assert_equal true,  @logged_user.display_usd
-    assert_equal false,  @logged_user.display_btc
-    assert_equal true,  @logged_user.display_local
+    assert_equal true,  @logged_user.display_secondary
+    assert_equal false,  @logged_user.display_tertiary
+    assert_equal true,  @logged_user.display_main
     assert_equal 'cad', @logged_user.main_currency
   end
 end

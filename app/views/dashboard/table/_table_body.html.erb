@@ -30,16 +30,16 @@
 
       <%= render 'coin_total', coin_id: coin.id, currency: nil  %>
 
-      <% if current_user.display_local %>
+      <% if current_user.display_main %>
         <%= render 'coin_total', coin_id: coin.id, currency: @main_currency  %>
       <% end %>
 
-      <% if current_user.display_usd %>
-        <%= render 'coin_total', coin_id: coin.id, currency: 'usd'  %>
+      <% if current_user.display_secondary %>
+        <%= render 'coin_total', coin_id: coin.id, currency: @secondary_currency  %>
       <% end %>
       
-      <% if current_user.display_btc %>
-        <%= render 'coin_total', coin_id: coin.id, currency: 'btc'  %>
+      <% if current_user.display_tertiary %>
+        <%= render 'coin_total', coin_id: coin.id, currency: @tertiary_currency  %>
       <% end %>
     </tr>
   <% end %>

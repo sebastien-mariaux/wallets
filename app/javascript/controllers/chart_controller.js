@@ -13,13 +13,17 @@ export default class extends Controller {
     var ctx = document.querySelector('#wallet-pie');
     let params = this.chartParams(data)
     new Chart(ctx, params);
-    this.element.querySelector('.spinner-container').remove()
+
+    var spinnerElt = $(this.element).find('.spinner-container')
+    if (spinnerElt != null) {
+      spinnerElt.remove()
+    }
   }
 
   initChart() {
     fetch(this.urlValue)
-    .then(response =>  response.json())
-    .then(data => this.createChart(data))
+      .then(response => response.json())
+      .then(data => this.createChart(data))
   }
 
   chartParams(walletData) {
@@ -45,7 +49,7 @@ export default class extends Controller {
     }
     return color;
   }
-  
+
   getColors(labels) {
     return labels.map(x => this.getRandomColor());
   }
@@ -58,7 +62,6 @@ export default class extends Controller {
 
 
 
-  
 
 
- 
+

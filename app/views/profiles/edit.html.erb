@@ -9,6 +9,16 @@
                     class: "form-select",
                     required: true  %>
   </div>
+  <div class="mb-3 ">
+    <%= form.label :secondary_currency, class: "form-label" %>
+    <%= form.select :secondary_currency, display_currencies, {},
+                    class: "form-select"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :tertiary_currency, class: "form-label" %>
+    <%= form.select :tertiary_currency, display_currencies, {},
+                    class: "form-select"  %>
+  </div>
 
   <div class="mb-3" >
     <%= form.label :investment, class: "form-label"  %>
@@ -23,16 +33,16 @@
   </div>
 
   <div class="mb-3">
-    <%= form.check_box :display_local, class: "form-check-input" %>
-    <%= form.label :display_local, class: "form-check-label" %>
+    <%= form.check_box :display_main, class: "form-check-input" %>
+    <%= form.label :display_main, class: "form-check-label" %>
   </div>
   <div class="mb-3">
-    <%= form.check_box :display_usd, class: "form-check-input" %>
-    <%= form.label :display_usd, class: "form-check-label" %>
+    <%= form.check_box :display_secondary, class: "form-check-input" %>
+    <%= form.label :display_secondary, class: "form-check-label" %>
   </div>
   <div class="mb-3">
-    <%= form.check_box :display_btc, class: "form-check-input" %>
-    <%= form.label :display_btc, class: "form-check-label" %>
+    <%= form.check_box :display_tertiary, class: "form-check-input" %>
+    <%= form.label :display_tertiary, class: "form-check-label" %>
   </div>
 
 

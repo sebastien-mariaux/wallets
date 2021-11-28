@@ -12,6 +12,13 @@
     tr:hover {
       background-color: #ebebeb;
     }
+
+    .dynamic-field {
+      background-color: aliceblue;
+      &:hover {
+        background-color: #ebebeb;
+      }
+    }
   }
 
   #pie-chart {

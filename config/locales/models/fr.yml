@@ -8,9 +8,11 @@ fr:
       user:
         investment: Montant investi
         main_currency: Devise de référence
-        display_btc: Afficher les montants en Bitcoin
-        display_usd: Afficher les montants en USD 
-        display_local: Afficher les montants dans la devise de référence
+        secondary_currency: Seconde devise
+        tertiary_currency: Troisième devise
+        display_main: Afficher les montants dans la devise de référence
+        display_secondary: Afficher les montants dans la seconde devise
+        display_tertiary: Afficher les montants dans la troisième devise
         password: Mot de passe
         password_confirmation: Confirmation du mot de passe
         precision: Nombre de décimales des valeurs affichées

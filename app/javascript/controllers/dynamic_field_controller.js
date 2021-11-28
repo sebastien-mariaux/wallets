@@ -5,6 +5,10 @@ export default class extends Controller {
   static values = { url: String }
   static targets = ['display', 'input']
 
+  connect() {
+    this.element.classList.add('dynamic-field')
+  }
+
   load() {
     fetch(this.urlValue)
       .then(response => response.text())
@@ -12,7 +16,7 @@ export default class extends Controller {
   }
 
   displayForm() {
-    this.inputTarget.type = 'number'
+    this.inputTarget.type = 'text'
     this.inputTarget.value = this.quantityValue()
     this.displayTarget.classList.add('hidden')
     this.inputTarget.focus()
