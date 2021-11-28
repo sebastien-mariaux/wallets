@@ -1,0 +1,46 @@
+<tbody>
+  <% @coins.each do |coin| %>
+    <tr>
+      <th scope='row' data-bs-toggle="tooltip" data-bs-placement="right" title="<%= coin.name %>" >
+        <%= coin.code.upcase %>
+      </th>
+
+      <td scope='row' class='text-end'
+          data-controller="dynamic-value" 
+          data-dynamic-value-url-value="<%= market_value_coin_path(coin, currency: @main_currency) %>"
+          data-action="update-data@window->dynamic_value#load"
+          >
+          <%= number_with_precision coin.market_value(@main_currency), precision: 4 %>
+      </td>
+
+      <td scope='row' class='text-end'><%= number_with_precision coin.reference_price, precision: 4 %></td>
+
+      <td scope='row' data-controller="template" 
+          data-template-url-value="<%= variation_from_reference_coin_path(coin) %>"
+          data-action="update-data@window->template#load"
+          >
+          <div class='text-end' data-template-target="template">
+            <%= variation_from_reference(coin) %>
+          </div>
+      </td>
+
+      <% @wallets.each do |wallet| %>
+        <%= render 'cell_form', coin: coin, wallet: wallet %>
+      <% end %>
+
+      <%= render 'coin_total', coin_id: coin.id, currency: nil  %>
+
+      <% if current_user.display_usd %>
+        <%= render 'coin_total', coin_id: coin.id, currency: 'usd'  %>
+      <% end %>
+      
+      <% if current_user.display_local %>
+        <%= render 'coin_total', coin_id: coin.id, currency: @main_currency  %>
+      <% end %>
+
+      <% if current_user.display_btc %>
+        <%= render 'coin_total', coin_id: coin.id, currency: 'btc'  %>
+      <% end %>
+    </tr>
+  <% end %>
+</tbody>

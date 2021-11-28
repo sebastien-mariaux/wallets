@@ -3,9 +3,9 @@
 class CoinsController < AuthenticatedController
   before_action :load_coins, only: %i[new index create]
   before_action :load_coin, only: %i[total edit update reference_price
-                                     market_value_usd variation_from_reference]
+                                     market_value variation_from_reference]
 
-  layout false, only: %i[total reference_price market_value_usd variation_from_reference]
+  layout false, only: %i[total reference_price market_value variation_from_reference]
 
   def new
     @coin = @coins.new
@@ -40,8 +40,8 @@ class CoinsController < AuthenticatedController
 
   def reference_price; end
 
-  def market_value_usd
-    value = @coin.market_value('usd').round(current_user.precision)
+  def market_value
+    value = @coin.market_value(params["currency"])&.round(current_user.precision)
 
     render json: { value: value }
   end

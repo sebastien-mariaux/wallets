@@ -32,9 +32,10 @@ fr:
       delta: "Variation : "
       investment: "Investissement : "
     table:
-      delta: Variation
-      price: Cours
-      ref_price: Prix de réf.
+      table_head:
+        price: Cours
+        ref_price: Prix de réf.
+        delta: Variation
   profiles:
     edit:
       main_currency: Devise de référence

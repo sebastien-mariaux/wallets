@@ -14,7 +14,7 @@ class ProfilesControllerTest < UserAuthenticatedControllerTest
     params = {user: {investment: 8000, precision: 2, main_currency: 'cad', 
               display_usd: true, display_btc: false, display_local: true}}
     put profile_path, params: params
-    assert_response :success
+    assert_response :redirect
     assert_equal 2, @logged_user.reload.precision
     assert_equal 8000, @logged_user.investment
     assert_equal true,  @logged_user.display_usd

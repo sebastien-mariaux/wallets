@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: snapshots
+#
+#  id              :uuid             not null, primary key
+#  total_usd_value :decimal(, )
+#  total_eur_value :decimal(, )
+#  total_btc_value :decimal(, )
+#  investment_eur  :decimal(, )
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  user_id         :uuid
+#
 one:
   total_usd_value: 8705.83
   total_eur_value: 7726.07

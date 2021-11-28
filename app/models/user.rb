@@ -19,6 +19,13 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  precision              :integer          default(6)
+#  investment             :decimal(, )      default(0.0)
+#  display_usd            :boolean
+#  display_btc            :boolean
+#  display_local          :boolean
+#  local_currency         :string           default("eur")
+#  main_currency          :string           default("eur")
 #
 class User < ApplicationRecord
   # https://api.coingecko.com/api/v3/simple/supported_vs_currencies

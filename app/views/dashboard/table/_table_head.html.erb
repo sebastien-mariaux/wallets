@@ -1,0 +1,34 @@
+    <thead>
+      <tr>
+        <th scope='col'>
+          <%= render 'toggle_visible_coins' %>
+        </th>
+
+        <th scope='col' data-bs-toggle="tooltip" data-bs-placement="top"
+            title="<%= @main_currency.upcase %>"><%= t('.price') %></th>
+
+        <th scope='col' data-bs-toggle="tooltip" data-bs-placement="top" 
+            title="USD"><%= t('.ref_price') %></th>
+
+        <th scope='col'><%= t '.delta' %></th>
+
+        <% @wallets.each do |wallet| %>
+          <th scope='col'><%= wallet.name %></th>
+        <% end %>
+
+        <th scope='col'>Total (token)</th>
+
+        <% if current_user.display_usd %>
+          <th scope='col'>Total (USD)</th>
+        <% end %>
+
+        <% if current_user.display_local %>
+          <th scope='col'>Total (<%= @main_currency.upcase %>)</th>
+        <% end %>
+
+        <% if current_user.display_btc %>
+          <th scope='col'>Total (BTC)</th>
+        <% end %>
+      </tr>
+
+    </thead>

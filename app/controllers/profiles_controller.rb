@@ -8,8 +8,7 @@ class ProfilesController < AuthenticatedController
 
   def update
     if current_user.update(allowed_params)
-      flash.now.notice = t('.success')
-      render :edit
+      redirect_to root_path, notice: t('.success')
     else
       flash.now.alert = t('.failure')
       render :edit, status: :unprocessable_entity, notice: 'failure'

@@ -92,10 +92,18 @@ class CoinsControllerTest < UserAuthenticatedControllerTest
     assert_template :reference_price
   end
 
-  should 'get market_value_usd' do
-    get market_value_usd_coin_path(@eth)
+  should 'get market_value usd' do
+    get market_value_coin_path(@eth), params: {currency: 'usd'}
     assert_response :success
-    assert_equal ['value'], JSON.parse(response.body).keys
+    expected = { "value" => "4212.51" }
+    assert_equal expected, JSON.parse(response.body)
+  end
+
+  should 'get market_value other currency' do
+    get market_value_coin_path(@eth), params: {currency: 'cad'}
+    assert_response :success
+    expected = { "value" => nil }
+    assert_equal expected, JSON.parse(response.body)
   end
 
   should 'get variation from reference' do

@@ -8,7 +8,7 @@
 #  total_usd_value :decimal(, )
 #  total_eur_value :decimal(, )
 #  total_btc_value :decimal(, )
-#  investment  :decimal(, )
+#  investment_eur  :decimal(, )
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  user_id         :uuid
