@@ -18,12 +18,12 @@
 
         <th scope='col'>Total (token)</th>
 
-        <% if current_user.display_usd %>
-          <th scope='col'>Total (USD)</th>
-        <% end %>
-
         <% if current_user.display_local %>
           <th scope='col'>Total (<%= @main_currency.upcase %>)</th>
+        <% end %>
+
+        <% if current_user.display_usd %>
+          <th scope='col'>Total (USD)</th>
         <% end %>
 
         <% if current_user.display_btc %>

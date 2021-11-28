@@ -30,14 +30,14 @@
 
       <%= render 'coin_total', coin_id: coin.id, currency: nil  %>
 
-      <% if current_user.display_usd %>
-        <%= render 'coin_total', coin_id: coin.id, currency: 'usd'  %>
-      <% end %>
-      
       <% if current_user.display_local %>
         <%= render 'coin_total', coin_id: coin.id, currency: @main_currency  %>
       <% end %>
 
+      <% if current_user.display_usd %>
+        <%= render 'coin_total', coin_id: coin.id, currency: 'usd'  %>
+      <% end %>
+      
       <% if current_user.display_btc %>
         <%= render 'coin_total', coin_id: coin.id, currency: 'btc'  %>
       <% end %>

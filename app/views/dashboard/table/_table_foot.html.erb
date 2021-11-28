@@ -1,25 +1,4 @@
 <tfoot>
-  <tr>
-    <% if current_user.display_usd %>
-      <th scope='row'>Total (USD) </th>
-      <td></td>
-      <td></td>
-      <th scope='row'></th>
-      <% @wallets.each do |wallet| %>
-        <%= render 'wallet_total', wallet_id: wallet.id, currency: 'usd'  %>
-      <% end %>
-      <td></td>
-      <% if current_user.display_usd %>
-        <%= render 'main_total', currency: 'usd' %>
-      <% end %>
-      <% if current_user.display_local %>
-        <td></td>
-      <% end %>
-      <% if current_user.display_btc %>
-        <td></td>
-      <% end %>
-    </tr>
-  <% end %>
 
   <% if current_user.display_local %>
     <tr>
@@ -33,9 +12,31 @@
         <%= render 'wallet_total', wallet_id: wallet.id, currency: @main_currency  %>
       <% end %>
       <td></td>
-      <td></td>
       <% if current_user.display_local %>
        <%= render 'main_total', currency:  @main_currency %>
+      <% end %>
+      <td></td>
+      <% if current_user.display_btc %>
+        <td></td>
+      <% end %>
+    </tr>
+  <% end %>
+
+  <% if current_user.display_usd %>
+    <tr>
+      <th scope='row'>Total (USD) </th>
+      <td></td>
+      <td></td>
+      <th scope='row'></th>
+      <% @wallets.each do |wallet| %>
+        <%= render 'wallet_total', wallet_id: wallet.id, currency: 'usd'  %>
+      <% end %>
+      <td></td>
+      <% if current_user.display_local %>
+        <td></td>
+      <% end %>
+      <% if current_user.display_usd %>
+        <%= render 'main_total', currency: 'usd' %>
       <% end %>
       <% if current_user.display_btc %>
         <td></td>
