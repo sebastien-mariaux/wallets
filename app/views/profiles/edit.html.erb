@@ -5,25 +5,38 @@
 <%= form_for @profile, url: profile_path, method: :put do |form| %>
   <div class="mb-3 required field">
     <%= form.label :main_currency, class: "form-label" %>
+    <i class="fas fa-info-circle" data-bs-toggle='tooltip' 
+        data-bs-placement='top' title="<%= t('.main_currency')%>"></i>
     <%= form.select :main_currency, display_currencies, {},
                     class: "form-select",
                     required: true  %>
   </div>
   <div class="mb-3 ">
     <%= form.label :secondary_currency, class: "form-label" %>
+    <i class="fas fa-info-circle" data-bs-toggle='tooltip' 
+        data-bs-placement='top' title="<%= t('.secondary_currency')%>"></i>
     <%= form.select :secondary_currency, display_currencies, {},
                     class: "form-select"  %>
   </div>
   <div class="mb-3">
     <%= form.label :tertiary_currency, class: "form-label" %>
+    <i class="fas fa-info-circle" data-bs-toggle='tooltip' 
+        data-bs-placement='top' title="<%= t('.tertiary_currency')%>"></i>
     <%= form.select :tertiary_currency, display_currencies, {},
+                    class: "form-select"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :investment_currency, class: "form-label" %>
+    <i class="fas fa-info-circle" data-bs-toggle='tooltip' 
+        data-bs-placement='top' title="<%= t('.investment_currency')%>"></i>
+    <%= form.select :investment_currency, display_currencies, {},
                     class: "form-select"  %>
   </div>
 
   <div class="mb-3" >
     <%= form.label :investment, class: "form-label"  %>
     <i class="fas fa-info-circle" data-bs-toggle='tooltip' 
-        data-bs-placement='top' title="<%= t('.main_currency')%>"></i>
+        data-bs-placement='top' title="<%= t('.investment')%>"></i>
     <%= form.text_field :investment, required: true, class: "form-control" %>
   </div>
 

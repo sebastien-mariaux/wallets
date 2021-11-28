@@ -47,8 +47,28 @@ class User < ApplicationRecord
   has_many :snapshots, dependent: :destroy
 
   validates :main_currency, inclusion: { in: SUPPORTED_CURRENCIES }
+  validates :secondary_currency, inclusion: { in: SUPPORTED_CURRENCIES, allow_nil: true }
+  validates :tertiary_currency, inclusion: { in: SUPPORTED_CURRENCIES, allow_nil: true }
+  validate :check_investment_currency
+
+  before_create :set_default_values
 
   def wealth
     @wealth ||= UserWealth.new(self)
+  end
+
+  private
+
+  def check_investment_currency
+    return if [main_currency, secondary_currency, tertiary_currency].include? investment_currency
+
+    errors.add(:investment_currency, :unknown_currency)
+  end
+
+  def set_default_values
+    self.main_currency = 'eur'
+    self.secondary_currency = 'usd'
+    self.tertiary_currency = 'btc'
+    self.investment_currency = 'eur'
   end
 end

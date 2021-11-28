@@ -51,7 +51,7 @@
       <td></td>
       <th scope='row'></th>
       <% @wallets.each do |wallet| %>
-        <%= render 'wallet_total', wallet_id: wallet.id, currency: 'btc'  %>
+        <%= render 'wallet_total', wallet_id: wallet.id, currency: @tertiary_currency  %>
       <% end %>
       <td></td>
       <% if current_user.display_secondary %>
@@ -60,7 +60,7 @@
       <% if current_user.display_main %>
         <td></td>
       <% end %>
-      <%= render 'main_total',   currency: 'btc' %>
+      <%= render 'main_total',   currency: @tertiary_currency %>
     </tr>
   <% end %>
 </tfoot>

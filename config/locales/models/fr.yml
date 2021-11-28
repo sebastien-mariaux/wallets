@@ -7,9 +7,8 @@ fr:
     attributes:
       user:
         investment: Montant investi
+        investment_currency: Devise d'investissement
         main_currency: Devise de référence
-        secondary_currency: Seconde devise
-        tertiary_currency: Troisième devise
         display_main: Afficher les montants dans la devise de référence
         display_secondary: Afficher les montants dans la seconde devise
         display_tertiary: Afficher les montants dans la troisième devise
@@ -17,3 +16,5 @@ fr:
         password_confirmation: Confirmation du mot de passe
         precision: Nombre de décimales des valeurs affichées
         remember_me: Maintenir ma connexion
+        secondary_currency: Seconde devise
+        tertiary_currency: Troisième devise

@@ -20,6 +20,7 @@ class ProfilesController < AuthenticatedController
   def allowed_params
     params.require(:user).permit(:investment, :precision, :main_currency, 
                                  :secondary_currency, :tertiary_currency,
+                                 :investment_currency,
                                  :display_main, :display_secondary, :display_tertiary)
   end
 

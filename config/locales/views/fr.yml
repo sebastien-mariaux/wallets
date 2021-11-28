@@ -1,7 +1,9 @@
 fr:
   coins:
     index:
+      market_price: Prix de marché
       new_coin: Ajouter une crypto
+      ref_price: Prix de référence
       title: Mes cryptos
     new:
       title: Nouvelle crypto
@@ -38,8 +40,12 @@ fr:
         delta: Variation
   profiles:
     edit:
-      main_currency: Devise de référence
+      investment: Montant initial investi
+      investment_currency: Devise utilisé pour le calcul de la varition globale du portefeuille
       logged_as: "Vous êtes connecté avec l'e-mail %{email}"
+      main_currency: Devise de référence (utilisée pour les valeurs de référence des cryptos)
+      secondary_currency: Seconde devise à afficher (optionnelle)
+      tertiary_currency: Troisième devise à afficher (optionnelle)
   wallets:
     form:
       warning: "Attention: n'utilisez en aucun cas ce champ (ni un autre) pour stocker vos mots de passes ou clés privés"

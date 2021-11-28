@@ -14,5 +14,6 @@ class AuthenticatedController < ApplicationController
     @main_currency = current_user.main_currency
     @secondary_currency = current_user.secondary_currency
     @tertiary_currency = current_user.tertiary_currency
+    @investment_currency = current_user.investment_currency
   end
 end

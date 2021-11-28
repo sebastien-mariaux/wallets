@@ -4,7 +4,7 @@ class UserWealth
   end
 
   def total_ref_value
-    total_value(@user.main_currency)
+    total_value(@user.investment_currency)
   end
 
   def total_value(currency)

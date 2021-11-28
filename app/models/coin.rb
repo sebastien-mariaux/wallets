@@ -35,26 +35,7 @@ class Coin < ApplicationRecord
     return nil if gecko_coin_id.nil?
 
      gecko_coin.send("market_value_#{currency}")
-  end
-
-  # def market_value_usd
-  #   return nil if gecko_coin_id.nil?
-
-  #    gecko_coin.market_value_usd
-  # end
-  
-  # def market_value_eur
-  #   return nil if gecko_coin_id.nil?
-
-  #    gecko_coin.market_value_eur
-  # end
-  
-  # def market_value_btc
-  #   return nil if gecko_coin_id.nil?
-
-  #    gecko_coin.market_value_btc
-  # end
-  
+  end  
   
   def display_name
     "#{name} (#{code.upcase})"
@@ -95,8 +76,8 @@ class Coin < ApplicationRecord
     total_buy_quantity - total_sell_quantity
   end
 
-  def current_usd_value_in_wallet
-    remaining_quantity * market_value('usd')
+  def current_value_in_wallet(currency)
+    remaining_quantity * market_value(currency)
   end
 
   def net_result
@@ -121,14 +102,6 @@ class Coin < ApplicationRecord
     total_value / total_sell_quantity
   end
 
-  # %w[usd eur btc].each do |currency|
-  #   define_method "#{currency}_value" do
-  #     coin_wallets.inject(0) do |sum, coin_wallet|
-  #       sum += coin_wallet.send("#{currency}_value")
-  #     end
-  #   end
-  # end
-
   def currency_value(currency)
     coin_wallets.inject(0) do |sum, coin_wallet|
       sum += coin_wallet.currency_value(currency)
@@ -136,8 +109,8 @@ class Coin < ApplicationRecord
   end
 
   def variation_from_reference
-    return 0 unless market_value('usd').present? && reference_price.present?
+    return 0 unless market_value(user.main_currency).present? && reference_price.present?
 
-    ((market_value('usd') / reference_price) - 1) * 100
+    ((market_value(user.main_currency) / reference_price) - 1) * 100
   end
 end

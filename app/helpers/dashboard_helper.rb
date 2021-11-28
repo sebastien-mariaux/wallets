@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module DashboardHelper
-  def total_variation(user, currency: 'eur')
+  def total_variation(user)
     delta = user.wealth.delta_percent
     return '-' unless delta 
     
