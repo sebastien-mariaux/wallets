@@ -51,6 +51,7 @@ ada:
   name: Cardano
   code: ada
   api_id: cardano
+
 busd:
   name: Binance (USD)
   code: busd

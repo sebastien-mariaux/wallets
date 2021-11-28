@@ -1,0 +1,35 @@
+one:
+  coin: :xrp
+  order_type: buy
+  price_usd: 0.95
+  quantity: 100
+  date: <%= Date.current - 60.days %>
+  user: :seba
+two:
+  coin: :xrp
+  order_type: buy
+  price_usd: 1.1
+  quantity: 200
+  date: <%= Date.current - 30.days %>
+  user: :seba
+three:
+  coin: :xrp
+  order_type: sell
+  price_usd: 1.3
+  quantity: 50
+  date: <%= Date.current - 20.days %>
+  user: :seba
+four:
+  coin: :xrp
+  order_type: buy
+  price_usd: 0.85
+  quantity: 400
+  date: <%= Date.current - 20.days %>
+  user: :seba
+five:
+  coin: :xrp
+  order_type: sell
+  price_usd: 1.2
+  quantity: 150
+  date: <%= Date.current - 20.days %>
+  user: :seba

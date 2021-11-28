@@ -77,4 +77,58 @@ class CoinTest < ActiveSupport::TestCase
       assert_equal 5, coin.variation_from_reference
     end
   end
+
+  context 'transactions' do
+    setup do
+      @xrp = coins(:xrp)
+      @cvx = coins(:cvx) 
+      assert_equal 5, @xrp.transactions.count
+      assert_equal 0, @cvx.transactions.count
+    end
+
+    should 'compute total buy quantity with transactions' do
+      assert_equal 700, @xrp.total_buy_quantity
+    end
+
+    should 'compute total sell quantity with transactions' do
+      assert_equal 200, @xrp.total_sell_quantity
+    end
+
+    should 'compute total buy with transactions' do
+      expected = 0.95 * 100 + 1.1 * 200 + 0.85 * 400
+      assert_equal expected, @xrp.total_buy_usd
+    end
+
+    should 'compute total sell with transactions' do
+      expected = 1.3 * 50 + 1.2 * 150
+      assert_equal expected, @xrp.total_sell_usd
+    end
+
+    should 'compute remaining quantity' do
+      assert_equal 500, @xrp.remaining_quantity
+    end
+
+    should 'compute current value' do
+      assert_equal 1.05, gecko_coins(:xrp).market_value_usd
+      assert_equal 500 * 1.05, @xrp.current_usd_value_in_wallet
+    end
+
+    should 'compute net result' do
+      #total sell + current value - investment
+      expected = 245 + 500 * 1.05 - 655
+      assert_equal expected, @xrp.net_result
+    end
+
+    should 'compute all without transactions' do
+      assert_equal 0, @cvx.total_buy_usd
+      assert_equal 0, @cvx.total_sell_usd
+      assert_equal 0, @cvx.total_buy_quantity
+      assert_equal 0, @cvx.total_sell_quantity
+      assert_equal 0, @cvx.remaining_quantity
+      assert_equal 0, @cvx.current_usd_value_in_wallet
+      assert_equal 0, @cvx.net_result
+      assert_equal 0, @cvx.average_buy_price
+      assert_equal 0, @cvx.average_sell_price
+    end
+  end
 end

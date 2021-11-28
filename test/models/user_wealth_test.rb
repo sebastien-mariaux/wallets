@@ -1,3 +1,4 @@
+require 'test_helper'
 
 class UserWealthTest < ActiveSupport::TestCase
   setup do
@@ -24,6 +25,31 @@ class UserWealthTest < ActiveSupport::TestCase
                 2.1 * 0.07319436 + 5.41 * 0.07319436 + 207 * 0.00001822 + 
                 25 * 0.00035915 + 125896 * 0.000000201009
     assert_equal expected, @user_wealth.total_btc_value
+  end
+
+  should 'compute delta' do
+    @user.update!(investment_eur: 8000)
+    assert_equal 46858.59364248, @user_wealth.total_eur_value
+    assert_equal 485.73, @user_wealth.delta_percent.round(2)
+  end
+
+  should 'not compute delta without investment' do
+    @user.update!(investment_eur: nil)
+    assert_equal 46858.59364248, @user_wealth.total_eur_value
+    assert_not @user_wealth.delta_percent
+  end
+
+  should 'not compute delta with 0 investment' do
+    @user.update!(investment_eur: 0)
+    assert_equal 46858.59364248, @user_wealth.total_eur_value
+    assert_not @user_wealth.delta_percent
+  end
+
+  should 'not compute delta and raise' do
+    @user.update!(investment_eur: 8000)
+    assert_raise NotImplementedError do
+      @user_wealth.delta_percent('usd')
+    end
   end
   
 end

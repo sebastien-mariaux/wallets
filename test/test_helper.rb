@@ -12,7 +12,6 @@ require 'rails/test_help'
 require 'shoulda/matchers'
 
 
-
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
