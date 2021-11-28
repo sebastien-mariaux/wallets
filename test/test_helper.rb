@@ -2,7 +2,9 @@
 
 # Coverage
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start 'rails' do
+  command_name 'unit'
+end
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
