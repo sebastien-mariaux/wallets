@@ -1,0 +1,9 @@
+<div class='calculator component' data-controller='calculator'>
+  <h2><%= t('.title') %></h2>
+  <div class='calculator-input' >
+    <input type='text' data-calculator-target="input" data-action="input->calculator#compute"/>
+  </div>
+  <div class='calculator-result'>
+    <p data-calculator-target="output"></p>
+  </div>
+  </div>

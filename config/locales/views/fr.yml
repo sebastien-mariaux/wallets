@@ -1,4 +1,7 @@
 fr:
+  components:
+    calculator:
+      title: Calculatrice
   coins:
     index:
       market_price: Prix de marché

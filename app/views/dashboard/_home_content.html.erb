@@ -1,12 +1,15 @@
 
-<div class="template"
-      data-controller='template'
-      data-template-url-value="<%= summary_dashboard_path %>"
-      data-action="update-quantity@window->template#load update-data@window->template#load">
-  <div data-template-target="template">
-    <%= render 'summary' %>
+<div class='top-row'>
+  <div class="template"
+        data-controller='template'
+        data-template-url-value="<%= summary_dashboard_path %>"
+        data-action="update-quantity@window->template#load update-data@window->template#load">
+    <div data-template-target="template">
+      <%= render 'summary' %>
+    </div>
   </div>
-</div>
+  <%= render 'components/calculator' %>
+</div>  
 
 <%= render 'actions' %>
 

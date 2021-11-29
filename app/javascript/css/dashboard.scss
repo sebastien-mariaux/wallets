@@ -13,12 +13,12 @@
       background-color: #ebebeb;
     }
 
-    .dynamic-field {
-      background-color: aliceblue;
-      &:hover {
-        background-color: #ebebeb;
-      }
-    }
+    // .dynamic-field {
+    //   background-color: aliceblue;
+    //   &:hover {
+    //     background-color: #ebebeb;
+    //   }
+    // }
   }
 
   #pie-chart {
@@ -33,6 +33,11 @@
   .icon-link-to {
     margin-top: 0.5em;
     margin-bottom: 1em;
+  }
+
+  .top-row {
+    display:flex;
+    justify-content: space-between;
   }
 
 }
