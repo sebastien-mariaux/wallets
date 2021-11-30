@@ -1,10 +1,10 @@
 
 <div>
-  <%= "#{t('.investment')} #{@investment_currency.upcase}" %> 
+  <%= "#{t('.investment')} #{@investment_currency&.upcase}" %> 
   <%= number_with_precision(current_user.investment, precision: 2) %> 
 </div>
 <div>
-  <%= "#{t('.current_value')} #{@investment_currency.upcase}" %> 
+  <%= "#{t('.current_value')} #{@investment_currency&.upcase}" %> 
   <%= number_with_precision(current_user.wealth.total_ref_value, precision: 2) %>
 </div>
 <div>
