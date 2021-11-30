@@ -4,9 +4,9 @@
   <thead>
     <tr>
       <th scope='col'>Date</th>
-      <th scope='col'>Valeur du portefeuille (USD)</th>
-      <th scope='col'>Valeur du portefeuille (EUR)</th>
-      <th scope='col'>Valeur du portefeuille (BTC)</th>
+      <% @user_currencies.each do |user_currency| %>
+        <th scope='col'>Valeur du portefeuille (<%= user_currency.upcase %>)</th>
+      <% end %>
       <th scope='col'>Investissement cumulé</th>
       <th scope='col'>Token détenus</th>
     </tr>
@@ -14,12 +14,21 @@
   <tbody>
     <% @snapshots.each do |snapshot| %>
       <tr>
-        <td><%= snapshot.created_at %></td>
-        <td><%= number_with_precision snapshot.total_usd_value, precision: 2 %></td>
-        <td><%= number_with_precision snapshot.total_eur_value, precision: 2 %></td>
-        <td><%= number_with_precision snapshot.total_btc_value, precision: 2 %></td>
-        <td><%= number_with_precision snapshot.investment_eur, precision: 2 %></td>
-        <td><%= snapshot.display_coins %></td>
+        <td>
+          <%= snapshot.created_at %>
+        </td>
+        <% @user_currencies.each do |user_currency| %>
+          <td>
+            <%= number_with_precision( snapshot.total_value(user_currency), precision: 2) || '-' %>
+          </td>
+        <% end %>
+        <td>
+          <%= number_with_precision snapshot.investment, precision: 2 %>
+          (<%= snapshot.investment_currency&.upcase %>)
+        </td>
+        <td>
+          <%= snapshot.display_coins %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -39,6 +39,15 @@ james_one:
   total_value_currency_2: 113000
   total_value_currency_3: 2.1
   currency_1: "usd"
+  currency_2: "cad"
+  currency_3: "btc"
+  investment: 59000
+  user: :james
+james_two:
+  total_value_currency_1: 125000
+  total_value_currency_2: 113500
+  total_value_currency_3: 2.1
+  currency_1: "usd"
   currency_2: "eur"
   currency_3: "btc"
   investment: 59000

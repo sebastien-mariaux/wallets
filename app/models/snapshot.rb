@@ -5,7 +5,7 @@
 # Table name: snapshots
 #
 #  id                     :uuid             not null, primary key
-#  investment_eur         :decimal(, )
+#  investment        :decimal(, )
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  user_id                :uuid
@@ -23,9 +23,32 @@ class Snapshot < ApplicationRecord
 
   accepts_nested_attributes_for :coin_snapshots
 
+  scope :for_currency, lambda { |currency|
+    where('currency_1 = :curr OR currency_2 = :curr OR currency_3 = :curr', curr: currency)
+  }
+
+  def self.user_currencies(user)
+    user.snapshots.pluck(:currency_1, :currency_2, :currency_3)
+        .flatten.uniq.compact
+  end
+  
   def display_coins
     coin_list = coins.map { |coin| coin.code.upcase }
     coin_count = coins.count
     "#{coin_count} tokens (#{coin_list.join(', ')})"
+  end
+
+  def valued_in?(currency)
+    [currency_1, currency_2, currency_3].include? currency
+  end
+
+  def total_value(currency)
+    currency_values[currency]
+  end
+
+  def currency_values
+    { currency_1 => total_value_currency_1,
+      currency_2 => total_value_currency_2,
+      currency_3 => total_value_currency_3 }
   end
 end

@@ -10,7 +10,9 @@ class SnapshotsController < AuthenticatedController
     render json: { id: @app_process.id }
   end
 
-  def index; end
+  def index
+    @user_currencies = current_user.snapshots.user_currencies(current_user)
+  end
 
   private
 
