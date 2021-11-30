@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_28_221028) do
+ActiveRecord::Schema.define(version: 2021_11_29_235334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 2021_11_28_221028) do
     t.uuid "coin_id"
     t.uuid "snapshot_id"
     t.decimal "quantity"
-    t.decimal "usd_price"
-    t.decimal "eur_price"
+    t.decimal "price_currency_1"
+    t.decimal "price_currency_2"
+    t.decimal "price_currency_3"
     t.index ["coin_id"], name: "index_coin_snapshots_on_coin_id"
     t.index ["snapshot_id"], name: "index_coin_snapshots_on_snapshot_id"
   end
@@ -129,13 +130,17 @@ ActiveRecord::Schema.define(version: 2021_11_28_221028) do
   end
 
   create_table "snapshots", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.decimal "total_usd_value"
-    t.decimal "total_eur_value"
-    t.decimal "total_btc_value"
-    t.decimal "investment_eur"
+    t.decimal "investment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "user_id"
+    t.string "currency_1"
+    t.string "currency_2"
+    t.string "currency_3"
+    t.decimal "total_value_currency_1"
+    t.decimal "total_value_currency_2"
+    t.decimal "total_value_currency_3"
+    t.string "investment_currency"
     t.index ["user_id"], name: "index_snapshots_on_user_id"
   end
 

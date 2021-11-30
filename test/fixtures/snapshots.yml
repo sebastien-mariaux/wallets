@@ -2,32 +2,44 @@
 #
 # Table name: snapshots
 #
-#  id              :uuid             not null, primary key
-#  total_usd_value :decimal(, )
-#  total_eur_value :decimal(, )
-#  total_btc_value :decimal(, )
-#  investment_eur  :decimal(, )
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  user_id         :uuid
+#  id                     :uuid             not null, primary key
+#  investment_eur         :decimal(, )
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  user_id                :uuid
+#  currency_1             :string
+#  currency_2             :string
+#  currency_3             :string
+#  total_value_currency_1 :decimal(, )
+#  total_value_currency_2 :decimal(, )
+#  total_value_currency_3 :decimal(, )
 #
 one:
-  total_usd_value: 8705.83
-  total_eur_value: 7726.07
-  total_btc_value: 0.15129
-  investment_eur: 8671.37
+  total_value_currency_1: 8705.83
+  total_value_currency_2: 7726.07
+  total_value_currency_3: 0.15129
+  currency_1: "usd"
+  currency_2: "eur"
+  currency_3: "btc"
+  investment: 8671.37
   user: :seba
 
 two:
-  total_usd_value: 8807.22
-  total_eur_value: 7735.12
-  total_btc_value: 0.15289
-  investment_eur: 8658.46
+  total_value_currency_1: 8807.22
+  total_value_currency_2: 7735.12
+  total_value_currency_3: 0.15289
+  currency_1: "usd"
+  currency_2: "eur"
+  currency_3: "btc"
+  investment: 8658.46
   user: :seba
 
 james_one:
-  total_usd_value: 125000
-  total_eur_value: 113000
-  total_btc_value: 2.1
-  investment_eur: 59000
+  total_value_currency_1: 125000
+  total_value_currency_2: 113000
+  total_value_currency_3: 2.1
+  currency_1: "usd"
+  currency_2: "eur"
+  currency_3: "btc"
+  investment: 59000
   user: :james

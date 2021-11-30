@@ -21,11 +21,14 @@
 #  updated_at             :datetime         not null
 #  precision              :integer          default(6)
 #  investment             :decimal(, )      default(0.0)
-#  display_secondary            :boolean
-#  display_tertiary            :boolean
-#  display_main          :boolean
+#  display_main           :boolean
 #  local_currency         :string           default("eur")
 #  main_currency          :string           default("eur")
+#  display_secondary      :boolean
+#  display_tertiary       :boolean
+#  secondary_currency     :text
+#  tertiary_currency      :text
+#  investment_currency    :text
 #
 class User < ApplicationRecord
   # https://api.coingecko.com/api/v3/simple/supported_vs_currencies

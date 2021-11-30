@@ -11,6 +11,9 @@ require_relative '../config/environment'
 require 'rails/test_help'
 require 'shoulda/matchers'
 
+# should be after require 'rails/test_help'
+require 'minitest/unit'
+require 'mocha/minitest'
 
 module ActiveSupport
   class TestCase

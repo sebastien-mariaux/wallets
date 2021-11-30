@@ -24,7 +24,7 @@ module Api
       end
 
       def vs_currencies
-         @vs_currencies ||= [@user.main_currency, @user.secondary_currency, @user.tertiary_currency]
+        @vs_currencies ||= [@user.main_currency, @user.secondary_currency, @user.tertiary_currency]
       end
 
       def vs_currency_param
@@ -50,9 +50,8 @@ module Api
       end
 
       def update_params(value_hash)
-        vs_currencies.inject({}) do |hash, curr|
+        vs_currencies.each_with_object({}) do |curr, hash|
           hash["market_value_#{curr}"] = value_hash[curr]
-          hash
         end
       end
 

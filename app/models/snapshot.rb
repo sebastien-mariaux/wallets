@@ -4,14 +4,17 @@
 #
 # Table name: snapshots
 #
-#  id              :uuid             not null, primary key
-#  total_usd_value :decimal(, )
-#  total_eur_value :decimal(, )
-#  total_btc_value :decimal(, )
-#  investment_eur  :decimal(, )
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  user_id         :uuid
+#  id                     :uuid             not null, primary key
+#  investment_eur         :decimal(, )
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  user_id                :uuid
+#  currency_1             :string
+#  currency_2             :string
+#  currency_3             :string
+#  total_value_currency_1 :decimal(, )
+#  total_value_currency_2 :decimal(, )
+#  total_value_currency_3 :decimal(, )
 #
 class Snapshot < ApplicationRecord
   has_many :coin_snapshots, dependent: :destroy
