@@ -51,4 +51,8 @@ class Snapshot < ApplicationRecord
       currency_2 => total_value_currency_2,
       currency_3 => total_value_currency_3 }
   end
+
+  def delta_percent
+    (total_value(investment_currency) / investment - 1) * 100
+  end
 end

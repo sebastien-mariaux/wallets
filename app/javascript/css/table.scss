@@ -1,0 +1,21 @@
+table.custom-table {
+    font-size: smaller;
+    color: $black;
+
+    input {
+      &#quantity {
+        max-width: 100px;
+      }
+    }
+
+    tr:hover {
+      background-color: #ebebeb;
+    }
+
+    // .dynamic-field {
+    //   background-color: aliceblue;
+    //   &:hover {
+    //     background-color: #ebebeb;
+    //   }
+    // }
+  }
