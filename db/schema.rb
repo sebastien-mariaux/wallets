@@ -178,8 +178,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_235334) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "precision", default: 6
     t.decimal "investment", default: "0.0"
-    t.boolean "display_main"
-    t.string "local_currency", default: "eur"
+    t.boolean "display_main", default: true
     t.string "main_currency", default: "eur"
     t.boolean "display_secondary"
     t.boolean "display_tertiary"
