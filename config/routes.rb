@@ -50,6 +50,4 @@ Rails.application.routes.draw do
     get :import, on: :collection
     get :export, on: :collection
   end
-
-  resource :imports, only: %i[new create]
 end

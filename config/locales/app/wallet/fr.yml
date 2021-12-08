@@ -1,0 +1,9 @@
+fr:
+  wallets:
+    form:
+      warning: "Attention: n'utilisez en aucun cas ce champ (ni un autre) pour stocker vos mots de passes ou clés privés"
+    index:
+      new: Nouvelle plateforme
+      title: Mes Plateformes
+    new:
+      title: Nouvelle plateforme

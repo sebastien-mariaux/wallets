@@ -1,0 +1,9 @@
+fr:
+  transactions:
+    index:
+      total_investment: "Investissement total (%{currency})"
+      average_buy_price: "Prix d'achat moyen (%{currency})"
+      total_sold: "Total vendu (%{currency})"
+      average_sell_price: "Prix de vente moyen (%{currency})"
+      value_in_wallet: "Valeur en portefeuille (%{currency})"
+      net_result: "Résulta net (%{currency})"

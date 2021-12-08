@@ -29,19 +29,19 @@ class UserWealthTest < ActiveSupport::TestCase
 
   should 'compute delta' do
     @user.update!(investment: 8000, main_currency: 'eur')
-    assert_equal 46858.59364248, @user_wealth.total_value('eur')
+    assert_equal 46858.5936, @user_wealth.total_value('eur').round(4)
     assert_equal 485.73, @user_wealth.delta_percent.round(2)
   end
 
   should 'not compute delta without investment' do
     @user.update!(investment: nil, main_currency: 'eur')
-    assert_equal 46858.59364248, @user_wealth.total_value('eur')
+    assert_equal 46858.5936, @user_wealth.total_value('eur').round(4)
     assert_not @user_wealth.delta_percent
   end
 
   should 'not compute delta with 0 investment' do
     @user.update!(investment: 0, main_currency: 'eur')
-    assert_equal 46858.59364248, @user_wealth.total_value('eur')
+    assert_equal 46858.5936, @user_wealth.total_value('eur').round(4)
     assert_not @user_wealth.delta_percent
   end  
 end

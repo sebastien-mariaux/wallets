@@ -21,8 +21,7 @@
 #  updated_at             :datetime         not null
 #  precision              :integer          default(6)
 #  investment             :decimal(, )      default(0.0)
-#  display_main           :boolean
-#  local_currency         :string           default("eur")
+#  display_main           :boolean          default(TRUE)
 #  main_currency          :string           default("eur")
 #  display_secondary      :boolean
 #  display_tertiary       :boolean
@@ -41,8 +40,9 @@ seba:
   encrypted_password: <%= User.new.send(:password_digest, 'abcd1234') %>
   confirmed_at: <%= DateTime.current - 15.days %>
   main_currency: eur
-  secondary_currency: "usd"
-  tertiary_currency: "btc"
+  secondary_currency: usd
+  tertiary_currency: btc
+  investment_currency: eur
 james:
   email: james@hotmail.fr
   encrypted_password: <%= User.new.send(:password_digest, 'abcd1234') %>

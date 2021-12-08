@@ -2,14 +2,28 @@
 
 <%= link_to "Ajouter", new_coin_transaction_path(@coin) %>
 
+<% investment_currency = current_user.investment_currency.upcase %>
+
 <section class='summary'>
   <ul>
-    <li>Investissement total (USD) : <%= @coin.total_buy_usd %></li>
-    <li>Prix d'achat moyen (USD) : <%= @coin.average_buy_price %></li>
-    <li>Total vendu (USD) : <%= @coin.total_sell_usd %></li>
-    <li>Prix de vente moyen (USD) : <%= @coin.average_sell_price %></li>
-    <li>Valeur en portefeuille (USD) : <%= @coin.current_usd_value_in_wallet %></li>
-    <li>Résultat net : <%= @coin.net_result %></li>
+    <li>
+      <%= t('.total_investment', currency: investment_currency) %>
+    </li>
+    <li>
+      <%= t('.average_buy_price', currency: investment_currency) %>
+    </li>
+    <li>
+      <%= t('.total_sold', currency: investment_currency) %>
+    </li>
+    <li>
+      <%= t('.average_sell_price', currency: investment_currency) %>
+    </li>
+    <li>
+      <%= t('.value_in_wallet', currency: investment_currency) %>
+      </li>
+    <li>
+      <%= t('.net_result', currency: investment_currency) %>
+    </li>
   </ul>
 </section>
 

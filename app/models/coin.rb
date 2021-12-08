@@ -48,59 +48,60 @@ class Coin < ApplicationRecord
     end
   end
 
-  def total_buy_usd
-    transactions.buy.inject(0) do |sum, transaction|
-      sum += transaction.usd_value
-    end
-  end
+  # def total_buy_usd
+  #   transactions.buy.inject(0) do |sum, transaction|
+  #     sum += transaction.usd_value
+  #   end
+  # end
 
-  def total_sell_usd
-    transactions.sell.inject(0) do |sum, transaction|
-      sum += transaction.usd_value
-    end
-  end
+  # def total_sell_usd
+  #   transactions.sell.inject(0) do |sum, transaction|
+  #     sum += transaction.usd_value
+  #   end
+  # end
 
-  def total_buy_quantity
-    transactions.buy.inject(0) do |sum, transaction|
-      sum += transaction.quantity
-    end
-  end
+  # def total_buy_quantity
+  #   transactions.buy.inject(0) do |sum, transaction|
+  #     sum += transaction.quantity
+  #   end
+  # end
 
-  def total_sell_quantity
-    transactions.sell.inject(0) do |sum, transaction|
-      sum += transaction.quantity
-    end
-  end
+  # def total_sell_quantity
+  #   transactions.sell.inject(0) do |sum, transaction|
+  #     sum += transaction.quantity
+  #   end
+  # end
 
-  def remaining_quantity
-    total_buy_quantity - total_sell_quantity
-  end
+  # def remaining_quantity
+  #   total_buy_quantity - total_sell_quantity
+  # end
 
-  def current_value_in_wallet(currency)
-    remaining_quantity * market_value(currency)
-  end
+  # def current_value_in_wallet(currency)
+  #   remaining_quantity * market_value(currency)
+  # end
 
-  def net_result
-    current_usd_value_in_wallet + total_sell_usd - total_buy_usd
-  end
+  # def net_result
+  #   currency = 
+  #   current_value_in_wallet(currency) + total_sell_usd - total_buy_usd
+  # end
 
-  def average_buy_price
-    return 0 if transactions.buy.empty?
+  # def average_buy_price
+  #   return 0 if transactions.buy.empty?
 
-    total_value = transactions.buy.inject(0) do |sum, transaction|
-      sum += transaction.price_usd * transaction.quantity
-    end
-    total_value / total_buy_quantity
-  end
+  #   total_value = transactions.buy.inject(0) do |sum, transaction|
+  #     sum += transaction.price_usd * transaction.quantity
+  #   end
+  #   total_value / total_buy_quantity
+  # end
 
-  def average_sell_price
-    return 0 if transactions.sell.empty?
+  # def average_sell_price
+  #   return 0 if transactions.sell.empty?
 
-    total_value = transactions.sell.inject(0) do |sum, transaction|
-      sum += transaction.price_usd * transaction.quantity
-    end
-    total_value / total_sell_quantity
-  end
+  #   total_value = transactions.sell.inject(0) do |sum, transaction|
+  #     sum += transaction.price_usd * transaction.quantity
+  #   end
+  #   total_value / total_sell_quantity
+  # end
 
   def currency_value(currency)
     coin_wallets.inject(0) do |sum, coin_wallet|

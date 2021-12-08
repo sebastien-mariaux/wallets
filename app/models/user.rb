@@ -21,8 +21,7 @@
 #  updated_at             :datetime         not null
 #  precision              :integer          default(6)
 #  investment             :decimal(, )      default(0.0)
-#  display_main           :boolean
-#  local_currency         :string           default("eur")
+#  display_main           :boolean          default(TRUE)
 #  main_currency          :string           default("eur")
 #  display_secondary      :boolean
 #  display_tertiary       :boolean

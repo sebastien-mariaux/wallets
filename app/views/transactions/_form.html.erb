@@ -15,5 +15,9 @@
     <%= form.label :price_usd, class: "form-label" %>
     <%= form.text_field :price_usd, class: "form-control" %>
   </div>
+  <div class="mb-3">
+    <%= form.label :cex_identifier, class: "form-label" %>
+    <%= form.text_field :cex_identifier, class: "form-control" %>
+  </div>
   <%= form.submit "Create", class: "btn btn-primary" %>
 <% end %>

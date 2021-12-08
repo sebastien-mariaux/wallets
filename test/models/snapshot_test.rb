@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: snapshots
+#
+#  id                     :uuid             not null, primary key
+#  investment             :decimal(, )
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  user_id                :uuid
+#  currency_1             :string
+#  currency_2             :string
+#  currency_3             :string
+#  total_value_currency_1 :decimal(, )
+#  total_value_currency_2 :decimal(, )
+#  total_value_currency_3 :decimal(, )
+#  investment_currency    :string
+#
 require 'test_helper'
 
 class SnapshotTest < ActiveSupport::TestCase

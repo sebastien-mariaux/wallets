@@ -1,4 +1,7 @@
 fr:
+  errors:
+    messages:
+      record_invalid: Enregistrement invalide
   profiles:
     update:
       failure: Echec de la mise à jour

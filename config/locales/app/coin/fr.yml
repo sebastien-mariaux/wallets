@@ -1,0 +1,14 @@
+fr:
+  activerecord:
+    models:
+      coin:
+        one: token
+        other: tokens
+  coins:
+    index:
+      market_price: Prix de marché
+      new_coin: Ajouter une crypto
+      ref_price: Prix de référence
+      title: Mes cryptos
+    new:
+      title: Nouvelle crypto

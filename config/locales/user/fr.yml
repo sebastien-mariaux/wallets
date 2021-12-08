@@ -1,9 +1,5 @@
 fr:
   activerecord:
-    models:
-      coin:
-        one: token
-        other: tokens
     attributes:
       user:
         investment: Montant investi
@@ -18,3 +14,17 @@ fr:
         remember_me: Maintenir ma connexion
         secondary_currency: Seconde devise
         tertiary_currency: Troisième devise
+    errors:
+      models: 
+        user: 
+          attributes:
+            investment_currency:
+              unknown_currency: Devise d'investissement inconnue
+  profiles:
+    edit:
+      investment: Montant initial investi
+      investment_currency: Devise utilisé pour le calcul de la varition globale du portefeuille
+      logged_as: "Vous êtes connecté avec l'e-mail %{email}"
+      main_currency: Devise de référence (utilisée pour les valeurs de référence des cryptos)
+      secondary_currency: Seconde devise à afficher (optionnelle)
+      tertiary_currency: Troisième devise à afficher (optionnelle)

@@ -5,7 +5,7 @@
 # Table name: snapshots
 #
 #  id                     :uuid             not null, primary key
-#  investment        :decimal(, )
+#  investment             :decimal(, )
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  user_id                :uuid
@@ -15,6 +15,7 @@
 #  total_value_currency_1 :decimal(, )
 #  total_value_currency_2 :decimal(, )
 #  total_value_currency_3 :decimal(, )
+#  investment_currency    :string
 #
 class Snapshot < ApplicationRecord
   has_many :coin_snapshots, dependent: :destroy
@@ -53,6 +54,11 @@ class Snapshot < ApplicationRecord
   end
 
   def delta_percent
-    (total_value(investment_currency) / investment - 1) * 100
+    return 0 unless investment.positive?
+    
+    total_value_currency = total_value(investment_currency)
+    return unless total_value_currency.present?
+
+    (total_value_currency / investment - 1) * 100
   end
 end

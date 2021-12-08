@@ -3,7 +3,7 @@
 # Table name: snapshots
 #
 #  id                     :uuid             not null, primary key
-#  investment_eur         :decimal(, )
+#  investment             :decimal(, )
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  user_id                :uuid
@@ -13,6 +13,7 @@
 #  total_value_currency_1 :decimal(, )
 #  total_value_currency_2 :decimal(, )
 #  total_value_currency_3 :decimal(, )
+#  investment_currency    :string
 #
 one:
   total_value_currency_1: 8705.83
