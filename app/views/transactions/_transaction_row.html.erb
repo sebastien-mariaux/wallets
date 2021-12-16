@@ -1,0 +1,10 @@
+<tr>
+  <td><%= transaction.date %> </td>
+  <td><%= transaction.order_type %> </td>
+  <td><%= transaction.quantity %> </td>
+  <td><%= transaction.price_reference_currency %> </td>
+  <td><%= transaction.reference_currency.upcase %> </td>
+  <td>
+      <%= link_to('Supprimer', coin_transaction_path(@coin, transaction), method: 'delete')  %>
+  </td>
+</tr>

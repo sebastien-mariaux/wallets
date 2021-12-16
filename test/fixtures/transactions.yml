@@ -6,7 +6,7 @@
 #  order_type     :string
 #  coin_id        :uuid
 #  quantity       :decimal(, )
-#  price_usd      :decimal(, )
+#  price_reference_currency      :decimal(, )
 #  date           :date
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -17,35 +17,35 @@
 one:
   coin: :xrp
   order_type: buy
-  price_usd: 0.95
+  price_reference_currency: 0.95
+  reference_currency: 'eur'
   quantity: 100
   date: <%= Date.current - 60.days %>
-  user: :seba
 two:
   coin: :xrp
   order_type: buy
-  price_usd: 1.1
+  price_reference_currency: 1.1
+  reference_currency: 'eur'
   quantity: 200
   date: <%= Date.current - 30.days %>
-  user: :seba
 three:
   coin: :xrp
   order_type: sell
-  price_usd: 1.3
+  price_reference_currency: 1.3
+  reference_currency: 'eur'
   quantity: 50
   date: <%= Date.current - 20.days %>
-  user: :seba
 four:
   coin: :xrp
   order_type: buy
-  price_usd: 0.85
+  price_reference_currency: 0.85
+  reference_currency: 'eur'
   quantity: 400
   date: <%= Date.current - 20.days %>
-  user: :seba
 five:
   coin: :xrp
   order_type: sell
-  price_usd: 1.2
+  price_reference_currency: 1.2
+  reference_currency: 'eur'
   quantity: 150
   date: <%= Date.current - 20.days %>
-  user: :seba

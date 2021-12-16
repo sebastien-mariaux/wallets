@@ -1,6 +1,6 @@
 <h1><%= @coin.display_name %> - Transactions</h1>
 
-<%= link_to "Ajouter", new_coin_transaction_path(@coin) %>
+<%= link_to t('.new_transaction'), new_coin_transaction_path(@coin), class: 'btn btn-info'  %>
 
 <% investment_currency = current_user.investment_currency.upcase %>
 
@@ -27,27 +27,27 @@
   </ul>
 </section>
 
-<table class='table table-sm'>
-  <thead>
-    <tr>
-      <th scope='col'>Date</th>
-      <th scope='col'>Type</th>
-      <th scope='col'>Quantité</th>
-      <th scope='col'>Valeur (USD)</th>
-      <th scope='col'></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @transactions.each do |transaction| %>
-      <tr>
-        <td><%= transaction.date %> </td>
-        <td><%= transaction.order_type %> </td>
-        <td><%= transaction.quantity %> </td>
-        <td><%= transaction.price_usd %> </td>
-        <td>
-          <%= link_to('Supprimer', coin_transaction_path(@coin, transaction), method: 'delete')  %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div data-controller='transaction-form'>
+  <div data-transaction-form-target='formWrapper'>
+    <%= render 'inline_form', transaction: Transaction.new(reference_currency: 'usd', date: Date.current), method: :create %>
+  </div>
+  <% if @transactions.present? %>
+    <table class='table table-sm'>
+      <thead>
+        <tr>
+          <th scope='col'><%= Transaction.human_attribute_name(:date) %></th>
+          <th scope='col'><%= Transaction.human_attribute_name(:order_type) %></th>
+          <th scope='col'><%= Transaction.human_attribute_name(:quantity) %></th>
+          <th scope='col'><%= Transaction.human_attribute_name(:price_reference_currency) %></th>
+          <th scope='col'><%= Transaction.human_attribute_name(:reference_currency) %></th>
+          <th scope='col'></th>
+        </tr>
+      </thead>
+      <tbody data-transaction-form-target='indexBody'>
+        <% @transactions.each do |transaction| %>
+          <%= render 'transaction_row', transaction: transaction %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

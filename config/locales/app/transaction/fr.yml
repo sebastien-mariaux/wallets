@@ -1,5 +1,21 @@
 fr:
+  activerecord:
+    attributes:
+      transaction:
+        cex_identifier: Plateforme d'échange
+        date: Date
+        order_type: Opération
+        price_reference_currency: Prix
+        quantity: Quantité
+        reference_currency: Devise échangée
   transactions:
+    form: 
+      buy: Achat
+      sell: Vente
+    inline_form: 
+      buy: Achat
+      create: Ajouter
+      sell: Vente
     index:
       total_investment: "Investissement total (%{currency})"
       average_buy_price: "Prix d'achat moyen (%{currency})"
@@ -7,3 +23,5 @@ fr:
       average_sell_price: "Prix de vente moyen (%{currency})"
       value_in_wallet: "Valeur en portefeuille (%{currency})"
       net_result: "Résulta net (%{currency})"
+      new_transaction: Ajouter une transaction
+    

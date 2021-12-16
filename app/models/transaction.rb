@@ -19,17 +19,16 @@
 class Transaction < ApplicationRecord
   ORDER_TYPES = %w[sell buy].freeze
 
-  belongs_to :user
   belongs_to :coin
-
+  
+  delegate :user, to: :coin
+  
   validates :order_type, presence: true, inclusion: { in: ORDER_TYPES }
   validates :quantity, presence: true
-  validates :price_usd, presence: true
+  validates :price_reference_currency, presence: true
+  validates :reference_currency, presence: true, inclusion: { in: SUPPORTED_CURRENCIES }
 
   scope :buy, -> { where(order_type: 'buy') }
   scope :sell, -> { where(order_type: 'sell') }
 
-  def usd_value
-    price_usd * quantity
-  end
 end

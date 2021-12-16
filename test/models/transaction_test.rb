@@ -19,7 +19,8 @@ require 'test_helper'
 class TransactionTest < ActiveSupport::TestCase
   should validate_presence_of :order_type
   should validate_inclusion_of(:order_type).in_array(%w[sell buy])
-  should validate_presence_of :price_usd
+  should validate_presence_of :price_reference_currency
+  should validate_presence_of :reference_currency
   should validate_presence_of :quantity
 
   should 'scope buy' do

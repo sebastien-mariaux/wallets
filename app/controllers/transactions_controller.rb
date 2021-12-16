@@ -5,6 +5,8 @@ class TransactionsController < AuthenticatedController
   before_action :load_transactions, only: %i[index destroy]
   before_action :load_transaction, only: :destroy
 
+  layout false, only: :create
+
   def index; end
 
   def new; end
@@ -17,20 +19,22 @@ class TransactionsController < AuthenticatedController
   def create
     @transaction = @coin.transactions.new(allowed_params)
     if @transaction.save
-      redirect_to coin_transactions_path(@coin)
+      render :transaction_row
     else
-      render :new, status: :unprocessable_entity
+      render :inline_form, status: :unprocessable_entity
     end
   end
 
   private
 
   def allowed_params
-    params.require(:transaction).permit(:date, :order_type, :quantity, :price_usd)
+    params.require(:transaction)
+          .permit(:date, :order_type, :quantity, :price_reference_currency, 
+                  :reference_currency, :cex_identifier )
   end
 
   def load_coin
-    @coin = Coin.find(params[:coin_id])
+    @coin = current_user.coins.find(params[:coin_id])
   end
 
   def load_transactions
