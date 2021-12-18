@@ -67,3 +67,14 @@ h1 {
 .dynamic-field:hover {
   cursor: pointer;
 }
+
+.segment {
+  position: relative;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
+  box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
+  margin: 1rem 0;
+  padding: 0.5em;
+  border-radius: 0.28571429rem;
+  border: 1px solid rgba(34,36,38,.15);
+}

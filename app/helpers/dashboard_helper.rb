@@ -24,12 +24,12 @@ module DashboardHelper
       cw.coin_id == coin_id && cw.wallet_id == wallet_id
     end
     quantity = coin_wallet&.quantity
-    format_number(quantity)
+    format_positive_number(quantity)
   end
 
   def get_wallet_total(wallets, wallet_id, currency)
     value = wallets.find { |wallet| wallet.id == wallet_id }&.currency_value(currency)
-    format_number(value)
+    format_positive_number(value)
   end
 
   def get_coin_total(coins, coin_id, currency)
@@ -39,17 +39,21 @@ module DashboardHelper
             else
               coin.total_quantity
             end
-    format_number(value)
+    format_positive_number(value)
   end
 
   def get_main_total(current_user, currency)
     total = current_user.wealth.total_value(currency)
-    format_number(total)
+    format_positive_number(total)
+  end
+
+  def format_positive_number(value, precision: nil)
+    formatted_value = (value || 0).positive? ? value : '-'
+    number_with_precision formatted_value, precision: current_user.precision || default_precision
   end
 
   def format_number(value, precision: nil)
-    formatted_value = (value || 0).positive? ? value : '-'
-    number_with_precision formatted_value, precision: current_user.precision || default_precision
+    number_with_precision value, precision: current_user.precision || default_precision
   end
 
   def default_precision

@@ -17,11 +17,10 @@ fr:
       create: Ajouter
       sell: Vente
     index:
-      total_investment: "Investissement total (%{currency})"
-      average_buy_price: "Prix d'achat moyen (%{currency})"
-      total_sold: "Total vendu (%{currency})"
-      average_sell_price: "Prix de vente moyen (%{currency})"
-      value_in_wallet: "Valeur en portefeuille (%{currency})"
-      net_result: "Résulta net (%{currency})"
-      new_transaction: Ajouter une transaction
+      total_investment: "Investissement total : %{value}"
+      average_buy_price: "Prix d'achat moyen : %{value}"
+      total_sold: "Total vendu : %{value}"
+      average_sell_price: "Prix de vente moyen : %{value}"
+      quantity_in_wallet: "Quantité en portefeuille : %{value}"
+      net_result: "Résultat net : %{value}"
     

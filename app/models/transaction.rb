@@ -30,5 +30,9 @@ class Transaction < ApplicationRecord
 
   scope :buy, -> { where(order_type: 'buy') }
   scope :sell, -> { where(order_type: 'sell') }
+  scope :for_currency, lambda{ |currency| where(reference_currency: currency) }
 
+  def transaction_value
+    quantity * price_reference_currency
+  end
 end

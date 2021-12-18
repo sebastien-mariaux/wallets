@@ -1,53 +1,53 @@
 <h1><%= @coin.display_name %> - Transactions</h1>
 
-<%= link_to t('.new_transaction'), new_coin_transaction_path(@coin), class: 'btn btn-info'  %>
+<% investment_currency = current_user.main_currency.upcase %>
 
-<% investment_currency = current_user.investment_currency.upcase %>
-
-<section class='summary'>
-  <ul>
-    <li>
-      <%= t('.total_investment', currency: investment_currency) %>
-    </li>
-    <li>
-      <%= t('.average_buy_price', currency: investment_currency) %>
-    </li>
-    <li>
-      <%= t('.total_sold', currency: investment_currency) %>
-    </li>
-    <li>
-      <%= t('.average_sell_price', currency: investment_currency) %>
-    </li>
-    <li>
-      <%= t('.value_in_wallet', currency: investment_currency) %>
+<% @coin.transaction_currencies.each do |currency| %>
+  <section class='summary'>
+    <h3><%= currency.upcase %></h3>
+    <ul>
+      <li>
+        <%= t('.total_investment', value: format_positive_number(@coin.total_investment)) %>
       </li>
-    <li>
-      <%= t('.net_result', currency: investment_currency) %>
-    </li>
-  </ul>
-</section>
+      <li>
+        <%= t('.average_buy_price', value: format_positive_number(@coin.average_buy_price)) %>
+      </li>
+      <li>
+        <%= t('.total_sold', value: format_positive_number(@coin.total_sold_value)) %>
+      </li>
+      <li>
+        <%= t('.average_sell_price', value: format_positive_number(@coin.average_sell_price)) %>
+      </li>
+      <li>
+        <%= t('.quantity_in_wallet', value: format_positive_number(@coin.remaining_quantity)) %>
+      </li>
+      <li>
+        <%= t('.net_result', value: format_number(@coin.net_result)) %>
+      </li>
+    </ul>
+  </section>
+<% end %>
 
 <div data-controller='transaction-form'>
-  <div data-transaction-form-target='formWrapper'>
+  <div data-transaction-form-target='formWrapper' class='segment'>
     <%= render 'inline_form', transaction: Transaction.new(reference_currency: 'usd', date: Date.current), method: :create %>
   </div>
-  <% if @transactions.present? %>
-    <table class='table table-sm'>
-      <thead>
-        <tr>
-          <th scope='col'><%= Transaction.human_attribute_name(:date) %></th>
-          <th scope='col'><%= Transaction.human_attribute_name(:order_type) %></th>
-          <th scope='col'><%= Transaction.human_attribute_name(:quantity) %></th>
-          <th scope='col'><%= Transaction.human_attribute_name(:price_reference_currency) %></th>
-          <th scope='col'><%= Transaction.human_attribute_name(:reference_currency) %></th>
-          <th scope='col'></th>
-        </tr>
-      </thead>
-      <tbody data-transaction-form-target='indexBody'>
-        <% @transactions.each do |transaction| %>
-          <%= render 'transaction_row', transaction: transaction %>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+  <table class='table table-sm'>
+    <thead>
+      <tr>
+        <th scope='col'><%= Transaction.human_attribute_name(:date) %></th>
+        <th scope='col'><%= Transaction.human_attribute_name(:order_type) %></th>
+        <th scope='col'><%= Transaction.human_attribute_name(:quantity) %></th>
+        <th scope='col'><%= Transaction.human_attribute_name(:price_reference_currency) %></th>
+        <th scope='col'><%= Transaction.human_attribute_name(:transaction_value) %></th>
+        <th scope='col'><%= Transaction.human_attribute_name(:reference_currency) %></th>
+        <th scope='col'></th>
+      </tr>
+    </thead>
+    <tbody data-transaction-form-target='indexBody'>
+      <% @transactions.each do |transaction| %>
+        <%= render 'transaction_row', transaction: transaction %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
