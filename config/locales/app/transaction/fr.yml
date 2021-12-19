@@ -12,7 +12,7 @@ fr:
     form: 
       buy: Achat
       sell: Vente
-    inline_form: 
+    inline_form_fields: 
       buy: Achat
       create: Ajouter
       sell: Vente

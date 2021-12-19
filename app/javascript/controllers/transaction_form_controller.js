@@ -13,6 +13,12 @@ export default class extends Controller {
     $(this.firstFieldTarget).focus()
   }
 
+  handleDashboardSuccess() {
+    const event = new CustomEvent("update-quantity")
+    window.dispatchEvent(event)
+    $(this.firstFieldTarget).focus()
+  }
+
   handleError(event) {
     $(this.formWrapperTarget).html(event.detail[2].responseText)
   }
