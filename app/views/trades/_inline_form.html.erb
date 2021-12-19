@@ -1,0 +1,6 @@
+<%= form_for @trade || Trade.new, method: :post, url: trades_path,
+              data: {"trade-form-target" => "form", 
+                     "action" => "ajax:error->trade-form#handleError ajax:success->trade-form#handleSuccess"}, 
+              remote: true, local: false do |form| %>
+  <%= render 'trades/inline_form_fields', form: form %>
+<% end %>

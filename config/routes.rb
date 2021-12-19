@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resource :profile, only: %i[edit update]
 
+  resources :trades, only: %i[create]
+
   resources :wallets do
     get :total, on: :member
   end

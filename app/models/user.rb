@@ -42,6 +42,7 @@ class User < ApplicationRecord
   has_many :coin_wallets, dependent: :destroy
   has_many :transactions, dependent: :destroy
   has_many :snapshots, dependent: :destroy
+  has_many :trades, dependent: :destroy
 
   validates :main_currency, inclusion: { in: SUPPORTED_CURRENCIES }
   validates :secondary_currency, inclusion: { in: SUPPORTED_CURRENCIES, allow_nil: true }

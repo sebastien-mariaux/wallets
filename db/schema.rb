@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_170546) do
+ActiveRecord::Schema.define(version: 2021_12_19_162326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -144,6 +144,22 @@ ActiveRecord::Schema.define(version: 2021_12_12_170546) do
     t.index ["user_id"], name: "index_snapshots_on_user_id"
   end
 
+  create_table "trades", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "buy_coin_id"
+    t.uuid "sell_coin_id"
+    t.decimal "buy_quantity"
+    t.decimal "sell_quantity"
+    t.date "date"
+    t.uuid "wallet_id"
+    t.uuid "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["buy_coin_id"], name: "index_trades_on_buy_coin_id"
+    t.index ["sell_coin_id"], name: "index_trades_on_sell_coin_id"
+    t.index ["user_id"], name: "index_trades_on_user_id"
+    t.index ["wallet_id"], name: "index_trades_on_wallet_id"
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.string "order_type"
     t.uuid "coin_id"
@@ -207,6 +223,10 @@ ActiveRecord::Schema.define(version: 2021_12_12_170546) do
   add_foreign_key "coin_wallets", "wallets"
   add_foreign_key "coins", "users"
   add_foreign_key "snapshots", "users"
+  add_foreign_key "trades", "coins", column: "buy_coin_id"
+  add_foreign_key "trades", "coins", column: "sell_coin_id"
+  add_foreign_key "trades", "users"
+  add_foreign_key "trades", "wallets"
   add_foreign_key "transactions", "coins"
   add_foreign_key "transactions", "users"
   add_foreign_key "wallets", "users"

@@ -1,0 +1,39 @@
+<div class='row'>
+  <div class="col required field">
+    <%= form.label :date, class: "form-label" %>
+    <%= form.date_field :date, class: " #{validation_class(form.object, :date)} form-control form-control-sm", 
+                        data: {'trade-form-target'=>'firstField' }, value: Date.current %>
+  </div>
+  <div class="col required field">
+    <%= form.label :wallet_id, class: "form-label" %>
+    <%= form.collection_select :wallet_id, current_user.wallets.all, :id, :name, {}, 
+                                class: " #{validation_class(form.object, :wallet_id)} form-select form-select-sm" %>
+  </div>
+  <div class="col required field">
+    <%= form.label :buy_coin_id, class: "form-label" %>
+    <%= form.collection_select :buy_coin_id, current_user.coins.all, :id, :code, {}, 
+                              class: " #{validation_class(form.object, :buy_coin_id)} form-select form-select-sm" %>
+  </div>
+  <div class="col required field">
+    <%= form.label :buy_quantity, class: "form-label" %>
+    <%= form.text_field :buy_quantity, data: {'trade-form-target'=>'resetField' },
+                        class: "#{validation_class(form.object, :buy_quantity)} form-control form-control-sm" %>
+  </div>
+  <div class="col required field">
+    <%= form.label :sell_coin_id, class: "form-label" %>
+    <%= form.collection_select :sell_coin_id, 
+                               current_user.coins.all, 
+                               :id, :code, {}, 
+                               class: " #{validation_class(form.object, :sell_coin_id)} form-select form-select-sm" %>
+  </div>
+  <div class="col required field">
+    <%= form.label :sell_quantity, class: "form-label" %>
+    <%= form.text_field :sell_quantity, data: {'trade-form-target'=>'resetField' },
+                        class: " #{validation_class(form.object, :sell_quantity)} form-control form-control-sm" %>
+  </div>
+
+
+  <div class="col">
+    <%= button_tag t('.create'), class: "btn btn-primary", data: {action: "trade-form#create"} %>
+  </div>
+</div>

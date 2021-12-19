@@ -1,0 +1,16 @@
+fr:
+  activerecord:
+    attributes:
+      trade:
+        buy_coin_id: Token acheté
+        buy_coin: Token acheté
+        sell_coin_id: Token vendu
+        sell_coin: Token vendu
+        buy_quantity: Quantité achetée
+        sell_quantity: Quantité vendu
+        date: Date
+        wallet: Plateforme
+        wallet_id: Plateforme
+  trades:
+    inline_form_fields: 
+      create: Ajouter
