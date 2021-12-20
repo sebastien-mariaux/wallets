@@ -7,11 +7,12 @@
   <div class="col required field">
     <%= form.label :wallet_id, class: "form-label" %>
     <%= form.collection_select :wallet_id, current_user.wallets.all, :id, :name, {}, 
+                                data: {'trade-form-target'=>'walletField' },
                                 class: " #{validation_class(form.object, :wallet_id)} form-select form-select-sm" %>
   </div>
   <div class="col required field">
     <%= form.label :buy_coin_id, class: "form-label" %>
-    <%= form.collection_select :buy_coin_id, current_user.coins.all, :id, :code, {}, 
+    <%= form.collection_select :buy_coin_id, current_user.coins.all, :id, :code, {}, data: {'trade-form-target'=>'coinField' },
                               class: " #{validation_class(form.object, :buy_coin_id)} form-select form-select-sm" %>
   </div>
   <div class="col required field">
@@ -23,7 +24,7 @@
     <%= form.label :sell_coin_id, class: "form-label" %>
     <%= form.collection_select :sell_coin_id, 
                                current_user.coins.all, 
-                               :id, :code, {}, 
+                               :id, :code, {}, data: {'trade-form-target'=>'coinField' },
                                class: " #{validation_class(form.object, :sell_coin_id)} form-select form-select-sm" %>
   </div>
   <div class="col required field">

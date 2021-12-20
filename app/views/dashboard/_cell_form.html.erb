@@ -3,12 +3,16 @@
 <td  data-controller="dynamic-field" 
      data-action="click->dynamic-field#displayForm"
      data-dynamic-field-url-value="<%= quantity_coin_wallets_path(coin_id: coin.id, wallet_id: wallet.id) %>"
+     data-dynamic-field-coin-value="<%= coin.id %>"
+     data-dynamic-field-wallet-value="<%= wallet.id %>"
      class='user-input'>
     <div class='text-end quantity-value' 
          data-dynamic-field-target="display"><%= quantity %></div>
     <%= form_with url: create_or_update_coin_wallets_path(coin_id: coin.id, wallet_id: wallet.id),
                   remote: true, local: false,
-                  data: {action: "ajax:error->dynamic-field#handleError ajax:success->dynamic-field#handleSuccess"} do %>
+                  data: {action: "ajax:error->dynamic-field#handleError 
+                                  ajax:success->dynamic-field#handleSuccess 
+                                  add-trade@window->dynamic-field#reloadQuantity"} do %>
     <%= hidden_field_tag :quantity, nil, 
                           class: "form-control form-control-sm", 
                           data: { 'action' => "focusout->dynamic-field#updateValue",

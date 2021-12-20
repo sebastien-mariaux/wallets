@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import Rails from "@rails/ujs";
 
 export default class extends Controller {
-  static values = { url: String }
+  static values = { url: String, coin: String, wallet: String }
   static targets = ['display', 'input']
 
   connect() {
@@ -13,6 +13,14 @@ export default class extends Controller {
     fetch(this.urlValue)
       .then(response => response.text())
       .then(html => this.displayTarget.innerHTML = html)
+  }
+
+  reloadQuantity(event) {
+    let coinIds = event.detail.coinIds
+    let walletId = event.detail.walletId
+    if ( walletId == this.walletValue && coinIds.includes(this.coinValue) ) {
+      this.load()
+    }
   }
 
   displayForm() {
