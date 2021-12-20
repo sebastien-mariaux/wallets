@@ -48,11 +48,22 @@ export default class extends Controller {
 
   handleSuccess() {
     this.hideForm()
-    const event = new CustomEvent("update-quantity")
-    window.dispatchEvent(event)
+    this.sendEvent()
   }
 
   handleError() {
     this.hideForm()
+  }
+
+  sendEvent() {
+    const event = new CustomEvent("update-quantity", {detail: this.eventData()})
+    window.dispatchEvent(event)
+  }
+
+  eventData() {
+    return {
+      coinId: this.coinValue, 
+      walletId: this.walletValue
+    }
   }
 }

@@ -17,7 +17,9 @@
 
       <td scope='row' data-controller="template" 
           data-template-url-value="<%= variation_from_reference_coin_path(coin) %>"
-          data-action="update-data@window->template#load"
+          data-template-coin-value="<%= coin.id %>"
+          data-template-wallet-value=""
+          data-action="update-data@window->template#reload"
           >
           <div class='text-end' data-template-target="template">
             <%= variation_from_reference(coin) %>

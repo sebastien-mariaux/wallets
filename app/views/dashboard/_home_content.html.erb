@@ -4,7 +4,9 @@
     <div class="template"
           data-controller='template'
           data-template-url-value="<%= summary_dashboard_path %>"
-          data-action="update-quantity@window->template#load update-data@window->template#load">
+          data-template-coin-value=""
+          data-template-wallet-value=""
+          data-action="update-quantity@window->template#reload update-data@window->template#reload">
       <div data-template-target="template">
         <%= render 'summary' %>
       </div>

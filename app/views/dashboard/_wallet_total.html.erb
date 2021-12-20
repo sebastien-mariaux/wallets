@@ -2,7 +2,9 @@
 
 <td  data-controller="template" 
      data-template-url-value="<%= total_wallet_path(wallet_id, currency: currency) %>"
-     data-action="update-quantity@window->template#load update-data@window->template#load"
+     data-template-coin-value=""
+     data-template-wallet-value="<%= wallet_id %>"
+     data-action="update-quantity@window->template#reload update-data@window->template#reload"
      >
   <div class='text-end' data-template-target="template">
     <%= wallet_total %>
