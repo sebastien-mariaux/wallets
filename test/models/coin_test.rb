@@ -80,9 +80,9 @@ class CoinTest < ActiveSupport::TestCase
 
   context 'transactions' do
     setup do
-      skip("Rewrite test after transaction rework")
+      skip('Rewrite test after transaction rework')
       @xrp = coins(:xrp)
-      @cvx = coins(:cvx) 
+      @cvx = coins(:cvx)
       assert_equal 5, @xrp.transactions.count
       assert_equal 0, @cvx.transactions.count
     end
@@ -115,7 +115,7 @@ class CoinTest < ActiveSupport::TestCase
     end
 
     should 'compute net result' do
-      #total sell + current value - investment
+      # total sell + current value - investment
       expected = 245 + 500 * 1.05 - 655
       assert_equal expected, @xrp.net_result
     end

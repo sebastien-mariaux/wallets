@@ -32,7 +32,7 @@ class Snapshot < ApplicationRecord
     user.snapshots.pluck(:currency_1, :currency_2, :currency_3)
         .flatten.uniq.compact
   end
-  
+
   def display_coins
     coin_list = coins.map { |coin| coin.code.upcase }
     coin_count = coins.count
@@ -55,7 +55,7 @@ class Snapshot < ApplicationRecord
 
   def delta_percent
     return 0 unless investment.positive?
-    
+
     total_value_currency = total_value(investment_currency)
     return unless total_value_currency.present?
 

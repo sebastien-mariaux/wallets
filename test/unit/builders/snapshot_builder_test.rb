@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require 'api/coin_gecko/coin_value'
 require 'builders/snapshot_builder'
@@ -6,7 +8,7 @@ class SnapshotBuilderTest < ActiveSupport::TestCase
   setup do
     @user = users(:seba)
   end
-  
+
   should 'update price before creating' do
     Api::CoinGecko::CoinValue.any_instance.expects(:run).once
     Builders::SnapshotBuilder.new(@user).build

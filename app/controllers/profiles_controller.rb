@@ -3,8 +3,7 @@
 class ProfilesController < AuthenticatedController
   before_action :load_profile, only: %i[edit update]
 
-  def edit
-  end
+  def edit; end
 
   def update
     if current_user.update(allowed_params)
@@ -18,7 +17,7 @@ class ProfilesController < AuthenticatedController
   private
 
   def allowed_params
-    params.require(:user).permit(:investment, :precision, :main_currency, 
+    params.require(:user).permit(:investment, :precision, :main_currency,
                                  :secondary_currency, :tertiary_currency,
                                  :investment_currency,
                                  :display_main, :display_secondary, :display_tertiary)

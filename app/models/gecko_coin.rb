@@ -83,7 +83,7 @@ class GeckoCoin < ApplicationRecord
   }
 
   scope :applied, lambda {
-    joins(:coins).where.not(coins: {id: nil})
+    joins(:coins).where.not(coins: { id: nil })
   }
 
   def display_name

@@ -20,7 +20,6 @@ class CoinWallet < ApplicationRecord
   validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   class << self
-   
   end
 
   def currency_value(currency)

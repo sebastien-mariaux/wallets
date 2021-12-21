@@ -25,10 +25,10 @@ module Backup
 
     def import_users
       puts 'importing User...'
-      objects_for(User).each { |object| 
+      objects_for(User).each do |object|
         object.merge!(password: Devise.friendly_token.first(16))
-        create_instance(User, object) 
-      }
+        create_instance(User, object)
+      end
     end
 
     def create_instance(model, object)
@@ -43,5 +43,4 @@ module Backup
       JSON.parse(File.read(target_file))['data']
     end
   end
-  
 end

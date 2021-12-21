@@ -61,6 +61,8 @@ export default class extends Controller {
   }
 
   eventData() {
+    console.log(this.coinValue)
+    console.log(this.walletValue)
     return {
       coinId: this.coinValue, 
       walletId: this.walletValue

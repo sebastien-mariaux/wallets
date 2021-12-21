@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RestructurateSnapshot < ActiveRecord::Migration[6.1]
   def change
     add_column :snapshots, :currency_1, :string
@@ -21,13 +23,12 @@ class RestructurateSnapshot < ActiveRecord::Migration[6.1]
 
     remove_column :coin_snapshots, :usd_price, :decimal
     remove_column :coin_snapshots, :eur_price, :decimal
-    
   end
 
   def migrate_snapshot_data
     Snapshot.find_each do |snapshot|
       snapshot.update!(currency_1: 'eur', currency_2: 'usd', currency_3: 'btc',
-                       total_value_currency_1: snapshot.total_eur_value, 
+                       total_value_currency_1: snapshot.total_eur_value,
                        total_value_currency_2: snapshot.total_usd_value,
                        total_value_currency_2: snapshot.total_btc_value)
     end
@@ -35,7 +36,7 @@ class RestructurateSnapshot < ActiveRecord::Migration[6.1]
 
   def migrate_coin_snapshot_data
     CoinSnapshot.find_each do |coin_snap|
-      coin_snap.update!(price_currency_1: coin_snap.eur_price, 
+      coin_snap.update!(price_currency_1: coin_snap.eur_price,
                         price_currency_2: coin_snap.usd_price)
     end
   end

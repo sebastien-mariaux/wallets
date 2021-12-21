@@ -93,16 +93,16 @@ class CoinsControllerTest < UserAuthenticatedControllerTest
   end
 
   should 'get market_value usd' do
-    get market_value_coin_path(@eth), params: {currency: 'usd'}
+    get market_value_coin_path(@eth), params: { currency: 'usd' }
     assert_response :success
-    expected = { "value" => "4212.51" }
+    expected = { 'value' => '4212.51' }
     assert_equal expected, JSON.parse(response.body)
   end
 
   should 'get market_value other currency' do
-    get market_value_coin_path(@eth), params: {currency: 'cad'}
+    get market_value_coin_path(@eth), params: { currency: 'cad' }
     assert_response :success
-    expected = { "value" => nil }
+    expected = { 'value' => nil }
     assert_equal expected, JSON.parse(response.body)
   end
 

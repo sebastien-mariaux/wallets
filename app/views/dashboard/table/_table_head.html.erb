@@ -13,7 +13,13 @@
         <th scope='col'><%= t '.delta' %></th>
 
         <% @wallets.each do |wallet| %>
-          <th scope='col'><%= wallet.name %></th>
+          <th scope='col'>
+            <div class='wallet-head'>
+              <%= wallet.name %>
+              <a href='' class='hidden display-hover'>
+              <i class="far fa-eye-slash"></i></a>
+            </div>
+          </th>
         <% end %>
 
         <th scope='col'>Total (token)</th>

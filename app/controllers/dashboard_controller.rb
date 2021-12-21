@@ -17,7 +17,7 @@ class DashboardController < AuthenticatedController
   private
 
   def generate_chart_data
-    coins = @coins.all.sort_by{|coin| coin.currency_value(@main_currency)}
+    coins = @coins.all.sort_by { |coin| coin.currency_value(@main_currency) }
     {
       labels: compute_labels(coins),
       values: compute_values(coins)

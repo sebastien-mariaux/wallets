@@ -29,8 +29,8 @@ class TransactionsController < AuthenticatedController
 
   def allowed_params
     params.require(:transaction)
-          .permit(:date, :order_type, :quantity, :price_reference_currency, 
-                  :reference_currency, :cex_identifier )
+          .permit(:date, :order_type, :quantity, :price_reference_currency,
+                  :reference_currency, :cex_identifier)
   end
 
   def load_coin

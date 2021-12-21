@@ -26,4 +26,17 @@
     }
   }
 
+  th:hover  {
+    .display-hover {
+      display: initial !important;
+    }
+  }
+
+  .wallet-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
 }

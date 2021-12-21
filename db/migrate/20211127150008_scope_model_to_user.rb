@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ScopeModelToUser < ActiveRecord::Migration[6.1]
   def change
     # create_initial_user

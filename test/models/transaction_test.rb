@@ -1,18 +1,21 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: transactions
 #
-#  id             :bigint           not null, primary key
-#  order_type     :string
-#  coin_id        :uuid
-#  quantity       :decimal(, )
-#  price_usd      :decimal(, )
-#  date           :date
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  imported_from  :string
-#  cex_identifier :string
-#  user_id        :uuid
+#  id                       :bigint           not null, primary key
+#  order_type               :string
+#  coin_id                  :uuid
+#  quantity                 :decimal(, )
+#  date                     :date
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  imported_from            :string
+#  cex_identifier           :string
+#  user_id                  :uuid
+#  price_reference_currency :decimal(, )
+#  reference_currency       :string
 #
 require 'test_helper'
 

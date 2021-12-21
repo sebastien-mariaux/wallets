@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TransactionHelper
   def order_type_select
     [

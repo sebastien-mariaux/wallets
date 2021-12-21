@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSecondaryCurrencyToUser < ActiveRecord::Migration[6.1]
   def change
     remove_column :users, :display_usd, :boolean

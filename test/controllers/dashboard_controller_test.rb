@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './user_authenticated_controller_test'
 
 class DashboardControllerTest < UserAuthenticatedControllerTest
@@ -49,6 +51,6 @@ class DashboardControllerTest < UserAuthenticatedControllerTest
   should 'chart data' do
     get chart_data_dashboard_path
     assert_response :success
-    assert_equal ['labels', 'values'], JSON.parse(response.body).keys
+    assert_equal %w[labels values], JSON.parse(response.body).keys
   end
 end

@@ -1,3 +1,20 @@
+# frozen_string_literal: true
+
+# == Schema Information
+#
+# Table name: trades
+#
+#  id            :uuid             not null, primary key
+#  buy_coin_id   :uuid
+#  sell_coin_id  :uuid
+#  buy_quantity  :decimal(, )
+#  sell_quantity :decimal(, )
+#  date          :date
+#  wallet_id     :uuid
+#  user_id       :uuid
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
 class Trade < ApplicationRecord
   belongs_to :buy_coin, class_name: 'Coin'
   belongs_to :sell_coin, class_name: 'Coin'
@@ -10,6 +27,7 @@ class Trade < ApplicationRecord
   validates_numericality_of :sell_quantity, greater_than: 0
 
   after_save :update_coin_wallets_quantity
+  before_save :set_default_date
 
   private
 
@@ -28,5 +46,11 @@ class Trade < ApplicationRecord
     coin_wallet = user.coin_wallets.find_or_create_by(coin_id: buy_coin_id, wallet_id: wallet_id)
     new_quantity = (coin_wallet.quantity || 0) + buy_quantity
     coin_wallet.update(quantity: new_quantity)
+  end
+
+  def set_default_date
+    return if date
+
+    self.date = Date.current
   end
 end

@@ -3,8 +3,8 @@
 module DashboardHelper
   def total_variation(user)
     delta = user.wealth.delta_percent
-    return '-' unless delta 
-    
+    return '-' unless delta
+
     direction = delta >= 0 ? 'green' : 'red'
     tag.span class: direction do
       "#{number_with_precision(delta, precision: 2)} %"

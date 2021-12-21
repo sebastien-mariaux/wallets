@@ -11,8 +11,12 @@ export default class extends Controller {
   }
 
   reload(event) {
-    let coinId = event.detail.coinId
-    let walletId = event.detail.walletId
+    if (event.detail === null) {
+      this.load()
+    } else {
+      var coinId = event.detail.coinId
+      var walletId = event.detail.walletId
+    }
     if ( walletId === this.walletValue || coinId === this.coinValue || this.alwaysUpdate() ) {
       this.load()
     } 

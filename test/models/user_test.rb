@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -29,7 +31,7 @@
 #  tertiary_currency      :text
 #  investment_currency    :text
 #
-require "test_helper"
+require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   should validate_inclusion_of(:main_currency).in_array(User::SUPPORTED_CURRENCIES)

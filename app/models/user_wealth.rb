@@ -1,4 +1,6 @@
-class UserWealth 
+# frozen_string_literal: true
+
+class UserWealth
   def initialize(user)
     @user = user
   end
@@ -36,6 +38,6 @@ class UserWealth
   private
 
   def can_compute_delta?
-    return @user.investment.present? &&  @user.investment.positive?
+    @user.investment.present? && @user.investment.positive?
   end
 end

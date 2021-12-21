@@ -38,11 +38,15 @@ class Coin < ApplicationRecord
   def market_value(currency)
     return nil if gecko_coin_id.nil? || currency.blank?
 
-     gecko_coin.send("market_value_#{currency}")
-  end  
-  
+    gecko_coin.send("market_value_#{currency}")
+  end
+
   def display_name
     "#{name} (#{code.upcase})"
+  end
+
+  def display_code
+    "#{code.upcase} (#{name})"
   end
 
   def total_quantity
