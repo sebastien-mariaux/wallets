@@ -31,6 +31,10 @@ class Coin < ApplicationRecord
     where.not(hide: true)
   }
 
+  def trades
+    user.trades.where("buy_coin_id = :id or sell_coin_id = :id", id: id)
+  end
+
   def transaction_currencies
     transactions.pluck(:reference_currency).uniq
   end

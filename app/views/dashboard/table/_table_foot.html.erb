@@ -29,7 +29,7 @@
       <td></td>
       <th scope='row'></th>
       <% @wallets.each do |wallet| %>
-        <%= render 'wallet_total', wallet_id: wallet.id, currency: 'usd'  %>
+        <%= render 'wallet_total', wallet_id: wallet.id, currency: @secondary_currency  %>
       <% end %>
       <td></td>
       <% if current_user.display_main %>

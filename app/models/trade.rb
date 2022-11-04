@@ -29,6 +29,22 @@ class Trade < ApplicationRecord
   after_save :update_coin_wallets_quantity
   before_save :set_default_date
 
+  # def order_type(coin)
+  #   return nil unless buy_coin == coin || sell_coin == coin
+
+  #   return 'buy' if coin == buy_coin
+
+  #   'sell'
+  # end
+
+  def buy_price
+    sell_quantity / buy_quantity
+  end
+
+  def sell_price
+    1 / buy_price
+  end
+
   private
 
   def update_coin_wallets_quantity

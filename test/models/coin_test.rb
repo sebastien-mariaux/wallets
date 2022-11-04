@@ -132,4 +132,10 @@ class CoinTest < ActiveSupport::TestCase
       assert_equal 0, @cvx.average_sell_price
     end
   end
+
+  test 'trades' do
+    coin = coins(:xrp)
+    expected = [trades(:xrp_busd), trades(:xrp_busd_2), trades(:busd_xrp)]
+    assert_same_element expected, coin.trades
+  end
 end

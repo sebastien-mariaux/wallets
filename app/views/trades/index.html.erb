@@ -1,0 +1,33 @@
+<h1><%= @coin.display_name %> - Trades</h1>
+
+
+<table class='table table-sm'>
+  <thead>
+    <tr>
+      <th scope='col'><%= Trade.human_attribute_name(:date) %></th>
+      <th scope='col'><%= Trade.human_attribute_name(:buy_coin) %></th>
+      <th scope='col'><%= Trade.human_attribute_name(:buy_quantity) %></th>
+      <th scope='col'><%= Trade.human_attribute_name(:buy_price) %></th>
+      <th scope='col'><%= Trade.human_attribute_name(:sell_coin) %></th>
+      <th scope='col'><%= Trade.human_attribute_name(:sell_quantity) %></th>
+      <th scope='col'><%= Trade.human_attribute_name(:sell_price) %></th>
+      <th scope='col'></th>
+    </tr>
+  </thead>
+  <tbody data-transaction-form-target='indexBody'>
+    <% @trades.each do |trade| %>
+      <tr>
+        <td><%= trade.date %> </td>
+        <td><%= trade.buy_coin.display_name %> </td>
+        <td><%= trade.buy_quantity %> </td>
+        <td><%= format_number trade.buy_price %> </td>
+        <td><%= trade.sell_coin.display_name %> </td>
+        <td><%= trade.sell_quantity %> </td>
+        <td><%= format_number trade.sell_price %> </td>
+        <td>
+            <%#= link_to('Supprimer', coin_transaction_path(@coin, transaction), method: 'delete')  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

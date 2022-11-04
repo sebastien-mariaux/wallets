@@ -12,5 +12,8 @@ fr:
         wallet: Plateforme
         wallet_id: Plateforme
   trades:
+    index:
+      buy: Achat
+      sell: Vente
     inline_form_fields: 
       create: Ajouter

@@ -8,7 +8,7 @@ module Backup
 
     def ordered_models
       [User, GeckoCoin, Coin, Wallet, CoinWallet, AppProcess,
-       Snapshot, CoinSnapshot]
+       Snapshot, CoinSnapshot, Trade]
     end
 
     def file_for(model)

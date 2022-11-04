@@ -17,9 +17,22 @@
 # This model initially had no columns defined. If you add columns to the
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+
+xrp_busd:
+  buy_coin: :xrp
+  sell_coin: :busd
+  buy_quantity: 100
+  sell_quantity: 110
+  wallet: :binance
+xrp_busd_2:
+  buy_coin: :xrp
+  sell_coin: :busd
+  buy_quantity: 200
+  sell_quantity: 199
+  wallet: :binance
+busd_xrp: 
+  buy_coin: :busd
+  sell_coin: :xrp
+  buy_quantity: 120
+  sell_quantity: 50
+  wallet: :binance

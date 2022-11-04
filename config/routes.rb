@@ -16,13 +16,14 @@ Rails.application.routes.draw do
   resources :wallets do
     get :total, on: :member
   end
+
   resources :coins do
     get :total, on: :member
     get :reference_price, on: :member
     get :market_value, on: :member
     get :variation_from_reference, on: :member
 
-    resources :transactions, only: %i[index new create destroy]
+    resources :trades, only: %i[index new create destroy]
   end
 
   resources :coin_wallets, only: [] do

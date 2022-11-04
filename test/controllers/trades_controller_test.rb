@@ -31,4 +31,9 @@ class TradesControllerTest < UserAuthenticatedControllerTest
       assert_response :unprocessable_entity
     end
   end
+
+  should 'get index' do
+    get coin_trades_path(@xrp)
+    assert_response :success
+  end
 end
