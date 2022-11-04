@@ -28,6 +28,7 @@
 
     <%= button_tag "Backup", 
                    class:"btn btn-outline-info btn-sm",
+                   style: 'display: none',
                    data: {controller: 'button',
                           'button-url-value' => export_backup_path,
                           'action': 'click->button#load' } do %>
