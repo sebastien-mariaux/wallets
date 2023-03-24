@@ -6,8 +6,14 @@
     <%= text_field_tag :gecko_coin, '', class: "form-control", 
                        data: {action: "input->search-dropdown#load"} %>
     <div data-search-dropdown-target='results'></div>
-    <%= form.hidden_field :gecko_coin_id,
+    <%#= form.hidden_field :gecko_coin_id,
                           data: {'search-dropdown-target' => 'input'} %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :coingecko, class: "form-label" %>
+    <%= form.collection_select :gecko_coin_id, GeckoCoin.all, :id, :name, {}, 
+                               data: {'trade-form-target'=>'walletField' },
+                               class: "search form-select form-select-sm" %>
   </div>
   <div class="mb-3">
     <%= form.label :name, class: "form-label" %>

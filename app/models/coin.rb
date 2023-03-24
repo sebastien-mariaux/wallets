@@ -15,7 +15,7 @@
 #  user_id         :uuid
 #
 class Coin < ApplicationRecord
-  belongs_to :gecko_coin, optional: true
+  belongs_to :gecko_coin
   belongs_to :user
 
   has_many :coin_wallets
